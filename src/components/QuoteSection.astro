@@ -1,0 +1,146 @@
+<section class="section" id="contact" data-quote-section>
+  <div class="container">
+    <div class="cta card quote-reveal-shell" data-quote-reveal>
+      <div class="cta-copy quote-reveal-copy" data-quote-reveal style="--reveal-delay: 0s;">
+        <span class="eyebrow">Devis</span>
+        <h2>Un accompagnement clair, avec projection visuelle du résultat.</h2>
+        <p class="lead">
+          Lors de la demande de devis, il est possible de travailler à partir d’une photo de votre pièce ou de votre espace afin de vous montrer une projection du rendu final avant la réalisation. C’est un excellent support pour choisir une teinte, visualiser l’ambiance et sécuriser votre décision.
+        </p>
+
+        <div class="info-list">
+          <div>
+            <strong>Adresse</strong>
+            <p>Rue des Moges · 4120 Neupré</p>
+          </div>
+          <div>
+            <strong>Entrepreneur</strong>
+            <p>Arno Momin, peintre depuis plus de 10 ans, vous propose un travail de qualité au meilleur prix.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-actions quote-reveal-actions" data-quote-reveal style="--reveal-delay: 0.2s;">
+        <a class="btn btn-primary" href="mailto:contact@momentdart.be">Demander un devis</a>
+        <a class="btn btn-secondary" href="/devis">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: 1.8rem;
+    display: grid;
+    grid-template-columns: 1.15fr auto;
+    gap: 1rem;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,233,223,0.86));
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: flex-end;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.84rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .cta-copy h2 {
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .cta-copy .lead {
+    margin-top: 0;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  .cta-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  /* Animations */
+  .quote-reveal-shell,
+  .quote-reveal-copy,
+  .quote-reveal-actions {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .quote-reveal-shell.is-visible,
+  .quote-reveal-copy.is-visible,
+  .quote-reveal-actions.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .quote-reveal-shell,
+    .quote-reveal-copy,
+    .quote-reveal-actions {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .cta {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-actions {
+      justify-content: flex-start;
+    }
+  }
+</style>
+
+<script>
+  const quoteSection = document.querySelector('[data-quote-section]');
+
+  if (quoteSection && typeof window !== 'undefined') {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = quoteSection.querySelectorAll('[data-quote-reveal]');
+
+    if (prefersReducedMotion) {
+      items.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                items.forEach((item) => item.classList.add('is-visible'));
+              }, 250);
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: '0px 0px -8% 0px',
+        }
+      );
+
+      observer.observe(quoteSection);
+    }
+  }
+</script>

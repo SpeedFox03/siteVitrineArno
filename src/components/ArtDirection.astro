@@ -1,0 +1,92 @@
+<section class="section" id="direction-artistique">
+  <div class="container art-grid">
+    <div class="art-copy">
+      <span class="eyebrow">Direction artistique</span>
+      <h2>Un univers premium, minéral et intemporel.</h2>
+      <p class="lead">
+        Le site doit évoquer un niveau de finition élevé dès les premières secondes. La mise en page s’appuie sur le calme,
+        l’espace, la qualité des images et une palette retenue pour inspirer confiance à une clientèle haut de gamme.
+      </p>
+    </div>
+
+    <div class="moodboard card">
+      <div class="swatches">
+        <div><span style="background:#F6F2EB;"></span><strong>Ivoire minéral</strong><small>#F6F2EB</small></div>
+        <div><span style="background:#D8D1C7;"></span><strong>Pierre douce</strong><small>#D8D1C7</small></div>
+        <div><span style="background:#1E1C19;"></span><strong>Anthracite</strong><small>#1E1C19</small></div>
+        <div><span style="background:#B08D57;"></span><strong>Bronze discret</strong><small>#B08D57</small></div>
+      </div>
+      <div class="art-notes">
+        <article class="note">
+          <strong>Palette réduite</strong>
+          <p>Un seul accent premium, utilisé avec retenue pour souligner les détails utiles sans parasiter les visuels.</p>
+        </article>
+        <article class="note">
+          <strong>Logo inchangé</strong>
+          <p>Le logo d’origine est conservé tel quel et traité comme une signature, jamais transformée ni recolorisée.</p>
+        </article>
+        <article class="note">
+          <strong>Avant / après éditorial</strong>
+          <p>Les sliders deviennent des preuves concrètes : lieu, type de chantier, portée de l’intervention et qualité du rendu.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .art-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .art-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 7.5rem;
+  }
+  .moodboard {
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(244,239,231,0.82));
+  }
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .swatches div, .note {
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(23,22,20,0.08);
+    border-radius: 22px;
+    padding: 1rem;
+  }
+  .swatches span {
+    display: block;
+    width: 100%;
+    height: 88px;
+    border-radius: 16px;
+    margin-bottom: 0.85rem;
+  }
+  .swatches strong,
+  .note strong {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  .swatches small { color: var(--muted); }
+  .art-notes {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .art-grid { grid-template-columns: 1fr; }
+    .art-copy { position: static; }
+  }
+  @media (max-width: 640px) {
+    .swatches { grid-template-columns: 1fr; }
+  }
+</style>

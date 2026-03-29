@@ -1,0 +1,150 @@
+---
+const services = [
+  { href: '/services/peinture-interieure', title: 'Peinture intérieure', text: 'Murs, plafonds, cages d’escalier, pièces de vie et ensembles décoratifs traités avec précision.' },
+  { href: '/services/peinture-exterieure', title: 'Peinture extérieure', text: 'Façades, annexes et éléments extérieurs protégés avec des produits adaptés et une finition durable.' },
+  { href: '/services/peinture-boiserie', title: 'Peinture boiserie', text: 'Portes, châssis, moulures et boiseries mis en valeur dans un esprit haut standing.' },
+  { href: '/services/peinture-ascenseur', title: 'Peinture d’ascenseur', text: 'Cabines et accès traités avec sobriété, résistance et souci de présentation.' },
+  { href: '/services/revetement-mural', title: 'Revêtement mural', text: 'Pose de papiers peints, textures murales et finitions décoratives élégantes.' },
+  { href: '/services/parquet-flottant', title: 'Pose de parquet flottant', text: 'Sols chaleureux et contemporains pour compléter une rénovation cohérente et premium.' },
+];
+---
+
+<section class="section" id="services-apercu" data-services-section>
+  <div class="container">
+    <div class="section-header services-reveal-head" data-services-reveal>
+      <span class="eyebrow">Services</span>
+      <h2>Une offre complète, pensée pour des lieux exigeants.</h2>
+      <p class="lead">Chaque prestation possède sa propre page de service pour détailler les usages, les finitions et les typologies de projets concernés.</p>
+    </div>
+
+    <div class="service-grid">
+      {services.map((service, index) => (
+        <a
+          href={service.href}
+          class="service card service-reveal"
+          data-services-reveal
+          style={`--reveal-delay: ${0.12 * (index + 1)}s;`}
+        >
+          <span class="service-index">0{index + 1}</span>
+          <h3>{service.title}</h3>
+          <p>{service.text}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .service {
+    padding: 1.4rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(247,243,236,0.72));
+    border: 1px solid rgba(255,255,255,0.7);
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  .service:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(23,22,20,0.08);
+    border-color: rgba(176, 141, 87, 0.28);
+  }
+
+  .service-index {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .service h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .services-reveal-head,
+  .service-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .services-reveal-head.is-visible,
+  .service-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .services-reveal-head {
+    --reveal-delay: 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-reveal-head,
+    .service-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .service {
+      transition: none;
+    }
+
+    .service:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const servicesSection = document.querySelector('[data-services-section]');
+
+  if (servicesSection && typeof window !== 'undefined') {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = servicesSection.querySelectorAll('[data-services-reveal]');
+
+    if (prefersReducedMotion) {
+      items.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            items.forEach((item) => item.classList.add('is-visible'));
+          }, 250); // ⏱️ délai de 0.5s
+
+          observer.unobserve(entry.target);
+        }
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: '0px 0px -8% 0px',
+        }
+      );
+
+      observer.observe(servicesSection);
+    }
+  }
+</script>

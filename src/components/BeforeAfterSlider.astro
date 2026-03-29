@@ -1,0 +1,225 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  meta: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  beforeImage: string;
+  afterImage: string;
+}
+
+const {
+  title,
+  description,
+  meta,
+  beforeLabel = 'Avant',
+  afterLabel = 'Après',
+  beforeImage,
+  afterImage,
+} = Astro.props;
+---
+
+<article class="showcase card">
+  <div class="showcase-head">
+    <div>
+      <p class="meta">{meta}</p>
+      <h3>{title}</h3>
+    </div>
+    <p>{description}</p>
+  </div>
+
+  <div class="ba-slider" data-ba-slider>
+    <img src={beforeImage} alt={`${title} - ${beforeLabel}`} class="base-image" loading="lazy" />
+    <div class="overlay" style="width: 50%;">
+      <img src={afterImage} alt={`${title} - ${afterLabel}`} loading="lazy" />
+    </div>
+    <div class="labels">
+      <span>{beforeLabel}</span>
+      <span>{afterLabel}</span>
+    </div>
+    <input aria-label={`Comparer ${beforeLabel} et ${afterLabel}`} type="range" min="0" max="100" value="50" />
+    <div class="divider" style="left: 50%;">
+      <div class="handle"></div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .showcase {
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    height: 100%;
+    background: var(--surface-strong);
+  }
+
+  .showcase-head {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 0.35rem 0.35rem 0;
+    min-height: 148px;
+  }
+
+  .showcase-head > div,
+  .showcase-head > p {
+    margin: 0;
+  }
+
+  .showcase-head h3 {
+    margin: 0;
+  }
+
+  .meta {
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .ba-slider {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    background: #ece4d8;
+    border: 1px solid rgba(23,22,20,0.08);
+  }
+
+  .ba-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .base-image {
+    filter: grayscale(0.18) saturate(0.7) brightness(0.96);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0 auto 0 0;
+    overflow: hidden;
+    border-right: 1px solid rgba(255,255,255,0.85);
+  }
+
+  .overlay img {
+    filter: saturate(0.95) contrast(1.02);
+  }
+
+  .labels {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .labels span {
+    background: rgba(255,255,255,0.82);
+    color: var(--text);
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(23,22,20,0.06);
+  }
+
+  .ba-slider input[type='range'] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    margin: 0;
+  }
+
+  .divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    pointer-events: none;
+  }
+
+  .divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 0 0 1px rgba(23,22,20,0.08);
+  }
+
+  .handle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.88);
+    box-shadow: 0 14px 28px rgba(23,22,20,0.12);
+    border: 1px solid rgba(23,22,20,0.08);
+  }
+
+  .handle::before,
+  .handle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-top: 1.5px solid var(--text);
+    border-right: 1.5px solid var(--text);
+  }
+
+  .handle::before {
+    left: 17px;
+    transform: translateY(-50%) rotate(-135deg);
+  }
+
+  .handle::after {
+    right: 17px;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  @media (max-width: 860px) {
+    .showcase-head {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
+    const input = slider.querySelector('input');
+    const overlay = slider.querySelector('.overlay');
+    const divider = slider.querySelector('.divider');
+
+    const update = () => {
+      const value = `${input.value}%`;
+      overlay.style.width = value;
+      divider.style.left = value;
+    };
+
+    input.addEventListener('input', update);
+    update();
+  });
+</script>

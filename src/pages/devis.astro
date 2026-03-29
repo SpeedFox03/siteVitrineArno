@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Devis — Moment D.Art">
+  <Header />
+  <section class="page-hero">
+    <div class="container">
+      <div class="card grid-2">
+        <div>
+          <span class="eyebrow">Devis</span>
+          <h1>Une demande claire, avec possibilité de projection avant travaux.</h1>
+          <p class="lead">Pour certains projets, une simple photo de la pièce ou du bâtiment peut servir de base pour visualiser le résultat final avant la réalisation. Cela permet de mieux choisir une ambiance, une teinte ou une direction de finition.</p>
+          <div class="btn-row" style="margin-top:1rem;">
+            <a class="btn btn-primary" href="mailto:contact@momentdart.be">Envoyer une demande</a>
+            <a class="btn btn-secondary" href="/realisations">Voir les réalisations</a>
+          </div>
+        </div>
+        <div class="card" style="padding:1.5rem; background:rgba(255,255,255,0.55);">
+          <h3>Informations à prévoir</h3>
+          <div class="info-list">
+            <div><strong>Votre projet</strong><p>Type de bien, pièces concernées, délai souhaité et type de finition attendu.</p></div>
+            <div><strong>Photos</strong><p>Une ou plusieurs vues du lieu permettent de préparer une première projection visuelle du résultat.</p></div>
+            <div><strong>Coordonnées</strong><p>Arno Momin · Rue des Moges · 4120 Neupré.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2>Pourquoi intégrer cette possibilité ?</h2>
+          <p class="lead">Sur des projets premium, la projection du rendu final rassure le client et améliore la prise de décision. Elle aide à se projeter avant le lancement du chantier.</p>
+        </div>
+        <div class="card" style="padding:1.5rem;">
+          <h3>Message de confiance</h3>
+          <p>Peintre depuis X années, Arno Momin propose un travail de qualité au meilleur prix, avec une présentation professionnelle et une attention réelle portée au résultat final.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

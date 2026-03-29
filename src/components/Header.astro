@@ -1,0 +1,505 @@
+---
+const serviceItems = [
+  { href: '/services/peinture-interieure', label: 'Peinture intérieure' },
+  { href: '/services/peinture-exterieure', label: 'Peinture extérieure' },
+  { href: '/services/peinture-boiserie', label: 'Peinture boiserie' },
+  { href: '/services/peinture-ascenseur', label: 'Peinture d’ascenseur' },
+  { href: '/services/revetement-mural', label: 'Revêtement mural' },
+  { href: '/services/parquet-flottant', label: 'Pose de parquet flottant' },
+];
+---
+
+<header class="site-header">
+  <div class="container header-shell">
+    <div class="header-inner" data-header>
+      <a class="brand" href="/" aria-label="Moment D.Art accueil">
+        <img src="/images/logo-premium-transparent.png" alt="Logo Moment D.Art" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+
+      <nav id="site-menu" class="site-nav" data-menu>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+
+          <li class="has-dropdown" data-dropdown>
+            <button type="button" class="nav-trigger" aria-expanded="false" data-dropdown-trigger>
+              <span>Services</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M5.25 7.5 10 12.25 14.75 7.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div class="dropdown" data-dropdown-panel>
+              <a class="dropdown-overview" href="/services">Voir tous les services</a>
+              {serviceItems.map((item) => (
+                <a href={item.href}>{item.label}</a>
+              ))}
+            </div>
+          </li>
+
+          <li><a href="/realisations">Réalisations</a></li>
+          <li><a href="/devis">Devis</a></li>
+          <li><a href="/#methode">Méthode</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-primary quote-btn" href="/devis">Demander un devis</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const menu = document.querySelector('[data-menu]');
+  const dropdown = document.querySelector('[data-dropdown]');
+  const dropdownTrigger = document.querySelector('[data-dropdown-trigger]');
+
+  const updateHeaderScrollState = () => {
+    if (!header) return;
+    if (window.scrollY > 30) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  };
+
+  const closeMobileMenu = () => {
+    if (!header || window.innerWidth > 980) return;
+    header.classList.remove('menu-open');
+    dropdown?.classList.remove('open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    dropdownTrigger?.setAttribute('aria-expanded', 'false');
+  };
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = header?.classList.toggle('menu-open');
+    menuToggle?.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+
+  dropdownTrigger?.addEventListener('click', () => {
+    if (window.innerWidth > 980) return;
+    const isOpen = dropdown?.classList.toggle('open');
+    dropdownTrigger?.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 980) {
+      header?.classList.remove('menu-open');
+      dropdown?.classList.remove('open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  window.addEventListener('scroll', updateHeaderScrollState, { passive: true });
+  updateHeaderScrollState();
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 0 0;
+  }
+
+  .header-shell {
+    position: relative;
+  }
+
+  .header-inner {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.9rem 1.15rem;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid transparent;
+    backdrop-filter: blur(0px);
+    box-shadow: none;
+    transition:
+      background 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      backdrop-filter 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .header-inner.is-scrolled {
+    background: rgba(247, 243, 236, 0.94);
+    border: 1px solid rgba(255,255,255,0.72);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 14px 34px rgba(23,22,20,0.07);
+  }
+
+  .brand {
+    position: relative;
+    z-index: 2;
+  }
+
+  .brand img {
+    width: 100%;
+    max-width: 500px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .site-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  .site-nav a,
+  .nav-trigger {
+    color: #7A5C3E;
+    font-weight: 600;
+    position: relative;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .site-nav a::after,
+  .nav-trigger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.38rem;
+    width: 100%;
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 65%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible,
+  .nav-trigger:hover,
+  .nav-trigger:focus-visible {
+    color: #3E2C1C;
+  }
+
+  .site-nav a:hover::after,
+  .site-nav a:focus-visible::after,
+  .nav-trigger:hover::after,
+  .nav-trigger:focus-visible::after,
+  .has-dropdown:hover .nav-trigger::after,
+  .has-dropdown:focus-within .nav-trigger::after {
+    transform: scaleX(1);
+  }
+
+  .nav-trigger svg {
+    width: 0.95rem;
+    flex: 0 0 auto;
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
+
+  .has-dropdown:hover .nav-trigger svg,
+  .has-dropdown:focus-within .nav-trigger svg,
+  .has-dropdown.open .nav-trigger svg {
+    transform: rotate(180deg);
+  }
+
+  .has-dropdown {
+    position: relative;
+    padding-bottom: 1.35rem;
+    margin-bottom: -1.35rem;
+  }
+
+  .has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 18px;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 320px;
+    padding: 0.8rem;
+    display: grid;
+    gap: 0.35rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    background: rgba(246, 242, 235, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(23, 22, 20, 0.12);
+    backdrop-filter: blur(18px);
+  }
+
+  .dropdown a {
+    padding: 0.78rem 0.9rem;
+    border-radius: 14px;
+    color: var(--muted);
+  }
+
+  .dropdown a:hover,
+  .dropdown a:focus-visible {
+    background: rgba(255, 255, 255, 0.66);
+    color: var(--text);
+  }
+
+  .dropdown-overview {
+    color: var(--text) !important;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 0.15rem;
+  }
+
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown,
+  .has-dropdown.open .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .quote-btn {
+    white-space: nowrap;
+  }
+
+  .menu-toggle,
+  .sr-only {
+    display: none;
+  }
+
+  @media (max-width: 1100px) {
+    .header-inner {
+      grid-template-columns: 220px minmax(0, 1fr) auto;
+    }
+
+    .site-nav ul {
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .site-header {
+      padding: 0.75rem 0 0;
+    }
+
+    .header-inner {
+      grid-template-columns: 1fr auto;
+      border-radius: 28px;
+      align-items: start;
+      padding: 1rem;
+      background: rgba(247, 243, 236, 0.94);
+      border: 1px solid rgba(255,255,255,0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 14px 34px rgba(23,22,20,0.07);
+    }
+
+    .header-inner.is-scrolled {
+      background: rgba(247, 243, 236, 0.97);
+      border: 1px solid rgba(255,255,255,0.76);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 14px 34px rgba(23,22,20,0.08);
+    }
+
+    .brand img {
+      max-width: 205px;
+    }
+
+    .quote-btn {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.28rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0 0.85rem;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 1.5px;
+      background: #000000;
+      border-radius: 999px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .menu-toggle .sr-only {
+      display: inline;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    .header-inner.menu-open .menu-toggle span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .header-inner.menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header-inner.menu-open .menu-toggle span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .site-nav {
+      grid-column: 1 / -1;
+      width: 100%;
+      display: none;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 0.7rem;
+    }
+
+    .header-inner.menu-open .site-nav {
+      display: block;
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.25rem;
+      width: 100%;
+    }
+
+    .site-nav li {
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-nav a,
+    .nav-trigger {
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      color: #000000;
+    }
+
+    .nav-trigger span {
+      flex: 1 1 auto;
+      text-align: left;
+    }
+
+    .nav-trigger svg {
+      width: 1rem;
+      margin-left: 0.75rem;
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+
+    .has-dropdown.open .nav-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .site-nav a::after,
+    .nav-trigger::after {
+      display: none;
+    }
+
+    .has-dropdown {
+      width: 100%;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .has-dropdown::after {
+      display: none;
+    }
+
+    .dropdown {
+      position: static;
+      inset: auto;
+      transform: none !important;
+      opacity: 1;
+      pointer-events: auto;
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0.35rem 0 0.35rem 0;
+      display: none;
+      gap: 0.35rem;
+      box-shadow: none;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      backdrop-filter: none;
+    }
+
+    .has-dropdown.open .dropdown {
+      display: grid;
+    }
+
+    .dropdown a {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0.75rem 0.85rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: #000000;
+      border-radius: 12px;
+    }
+
+    .dropdown a:hover,
+    .dropdown a:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      color: #000000;
+    }
+
+    .dropdown-overview {
+      border-bottom: 0;
+      margin-bottom: 0;
+      color: #000000 !important;
+    }
+  }
+</style>

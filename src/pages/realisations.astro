@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+import Footer from '../components/Footer.astro';
+const projects = [
+  {
+    meta: 'Appartement premium · Neupré',
+    title: 'Rénovation intérieure et remise en lumière',
+    description: 'Travail sur les murs, plafonds et volumes pour obtenir un rendu plus clair, plus net et plus statutaire.',
+    beforeImage: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    meta: 'Maison contemporaine · Province de Liège',
+    title: 'Reprise des surfaces et cohérence d’ensemble',
+    description: 'Une approche haut standing qui travaille autant le support que la perception finale du lieu.',
+    beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    meta: 'Projet professionnel · Espace d’accueil',
+    title: 'Valorisation d’un espace recevant du public',
+    description: 'Finitions propres, ambiance plus premium et meilleur impact visuel dès l’entrée dans le lieu.',
+    beforeImage: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1400&q=80',
+  },
+];
+---
+<BaseLayout title="Réalisations — Moment D.Art">
+  <Header />
+  <section class="page-hero">
+    <div class="container">
+      <div class="card" style="padding:1.5rem;">
+        <span class="eyebrow">Réalisations</span>
+        <h1>Des transformations présentées avec sobriété.</h1>
+        <p class="lead">Cette page est pensée pour accueillir les vraies réalisations d’Arno Momin avec avant / après, photos de détails, typologie du bien, lieu et périmètre d’intervention.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section"><div class="container"><div style="display:grid; gap:1rem;">{projects.map((project) => <BeforeAfterSlider {...project} />)}</div></div></section>
+  <Footer />
+</BaseLayout>

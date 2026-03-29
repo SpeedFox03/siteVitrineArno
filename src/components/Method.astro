@@ -1,0 +1,142 @@
+<section class="section" id="methode" data-method-section>
+  <div class="container">
+    <div class="section-header method-reveal-head" data-method-reveal>
+      <span class="eyebrow">Méthode</span>
+      <h2>Une organisation pensée pour rassurer vos projets.</h2>
+    </div>
+
+    <div class="grid-steps">
+      <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.12s;">
+        <span class="number">01</span>
+        <h3>Visite et échange</h3>
+        <p>Compréhension du lieu, de l’usage, du niveau de finition attendu et des contraintes techniques.</p>
+      </article>
+
+      <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.24s;">
+        <span class="number">02</span>
+        <h3>Devis et projection</h3>
+        <p>Chiffrage clair, conseils de teintes et possibilité de projection visuelle à partir d’une photo du lieu.</p>
+      </article>
+
+      <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.36s;">
+        <span class="number">03</span>
+        <h3>Préparation soignée</h3>
+        <p>Protection, reprises, réparations et mise en état des supports avant toute mise en peinture.</p>
+      </article>
+
+      <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.48s;">
+        <span class="number">04</span>
+        <h3>Exécution et réception</h3>
+        <p>Application précise, contrôle du rendu et livraison propre, alignée avec le standing du projet.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .step {
+    padding: 1.4rem;
+    display: grid;
+    gap: 0.8rem;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  .step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(23, 22, 20, 0.08);
+    border-color: rgba(176, 141, 87, 0.28);
+  }
+
+  .method-reveal-head,
+  .method-reveal-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .method-reveal-head.is-visible,
+  .method-reveal-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .method-reveal-head {
+    --reveal-delay: 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .method-reveal-head,
+    .method-reveal-card {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .step {
+      transition: none;
+    }
+
+    .step:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .grid-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .grid-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const methodSection = document.querySelector('[data-method-section]');
+
+  if (methodSection && typeof window !== 'undefined') {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = methodSection.querySelectorAll('[data-method-reveal]');
+
+    if (prefersReducedMotion) {
+      items.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                items.forEach((item) => item.classList.add('is-visible'));
+              }, 250);
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: '0px 0px -8% 0px',
+        }
+      );
+
+      observer.observe(methodSection);
+    }
+  }
+</script>

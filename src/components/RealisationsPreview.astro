@@ -1,0 +1,139 @@
+---
+import BeforeAfterSlider from './BeforeAfterSlider.astro';
+
+const projects = [
+  {
+    meta: 'Appartement rénové · Neupré',
+    title: 'Peinture intérieure et harmonisation des volumes',
+    description: 'Présentation avant / après d’un espace remis à neuf avec un rendu plus lumineux, plus net et plus statutaire.',
+    beforeImage: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    meta: 'Maison contemporaine · Province de Liège',
+    title: 'Reprise globale et finitions premium',
+    description: 'Une mise en scène sobre du résultat pour appuyer l’image haut standing et la qualité d’exécution.',
+    beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1400&q=80',
+  },
+];
+---
+
+<section class="section" id="realisations-home" data-realisations-section>
+  <div class="container">
+    <div class="section-header realisations-reveal-head" data-realisations-reveal>
+      <span class="eyebrow">Réalisations</span>
+      <h2>Le avant / après reste la preuve centrale du savoir-faire.</h2>
+      <p class="lead">
+        Sur un positionnement premium, le avant / après doit rester élégant, fluide et concret.
+        Il montre immédiatement la transformation d’un lieu.
+      </p>
+    </div>
+
+    <div class="showcases">
+      {projects.map((project, index) => (
+        <div
+          class="showcase-item realisations-reveal-card"
+          data-realisations-reveal
+          style={`--reveal-delay: ${0.16 * (index + 1)}s;`}
+        >
+          <BeforeAfterSlider {...project} />
+        </div>
+      ))}
+    </div>
+
+    <div class="more-link realisations-reveal-link" data-realisations-reveal style="--reveal-delay: 0.42s;">
+      <a class="btn btn-secondary" href="/realisations">Voir toutes les réalisations</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcases {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .showcase-item {
+    min-width: 0;
+  }
+
+  .more-link {
+    margin-top: 1.2rem;
+  }
+
+  /* Animations */
+  .realisations-reveal-head,
+  .realisations-reveal-card,
+  .realisations-reveal-link {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .realisations-reveal-head.is-visible,
+  .realisations-reveal-card.is-visible,
+  .realisations-reveal-link.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .realisations-reveal-head {
+    --reveal-delay: 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .realisations-reveal-head,
+    .realisations-reveal-card,
+    .realisations-reveal-link {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .showcases {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const realisationsSection = document.querySelector('[data-realisations-section]');
+
+  if (realisationsSection && typeof window !== 'undefined') {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = realisationsSection.querySelectorAll('[data-realisations-reveal]');
+
+    if (prefersReducedMotion) {
+      items.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                items.forEach((item) => item.classList.add('is-visible'));
+              }, 250);
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: '0px 0px -8% 0px',
+        }
+      );
+
+      observer.observe(realisationsSection);
+    }
+  }
+</script>

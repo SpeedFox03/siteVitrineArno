@@ -74,7 +74,7 @@
   .hero-metrics {
     grid-area: metrics;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     padding-top: 0.2rem;
   }
@@ -134,10 +134,10 @@
 
   .video-frame {
     position: relative;
-    width: 150%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     border-radius: 26px;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
     background: #d7cec1;
     border: 1px solid rgba(23, 22, 20, 0.06);
     box-shadow: 0 18px 40px rgba(23, 22, 20, 0.08);
@@ -215,6 +215,12 @@
     }
   }
 
+  @media (max-width: 1100px) {
+    .hero-grid {
+      gap: 1.25rem;
+    }
+  }
+
   @media (max-width: 980px) {
     .hero-grid {
       grid-template-columns: 1fr;
@@ -223,18 +229,62 @@
         "media"
         "metrics"
         "infos";
+      gap: 1.2rem;
       padding-top: 1.2rem;
     }
-  }
 
-  @media (max-width: 720px) {
-    .hero-metrics,
-    .hero-info-cards {
-      grid-template-columns: 1fr;
+    .hero-copy {
+      gap: 1.25rem;
     }
 
     .video-frame {
       border-radius: 22px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hero-grid {
+      gap: 1rem;
+    }
+
+    .hero-metrics,
+    .hero-info-cards {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+
+    .metric-card,
+    .info-card {
+      padding: 0.95rem 0.95rem 0.9rem;
+      border-radius: 18px;
+    }
+
+    .video-frame {
+      border-radius: 20px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero-copy {
+      gap: 1rem;
+    }
+
+    .eyebrow {
+      font-size: 0.68rem;
+      gap: 0.45rem;
+      letter-spacing: 0.12em;
+    }
+
+    .eyebrow::before {
+      width: 20px;
+    }
+
+    .hero-grid {
+      padding-top: 0.9rem;
+    }
+
+    .video-frame {
+      border-radius: 18px;
     }
   }
 </style>

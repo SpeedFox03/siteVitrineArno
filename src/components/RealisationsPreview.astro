@@ -49,22 +49,46 @@ const projects = [
 </section>
 
 <style>
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(122, 92, 62, 0.42);
+  }
+
   .showcases {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   .showcase-item {
     min-width: 0;
+    height: 100%;
+    display: flex;
+  }
+
+  .showcase-item :global(.showcase) {
+    width: 100%;
+    height: 100%;
   }
 
   .more-link {
     margin-top: 1.2rem;
   }
 
-  /* Animations */
   .realisations-reveal-head,
   .realisations-reveal-card,
   .realisations-reveal-link {
@@ -121,7 +145,7 @@ const projects = [
             if (entry.isIntersecting) {
               setTimeout(() => {
                 items.forEach((item) => item.classList.add('is-visible'));
-              }, 250);
+              }, 180);
 
               observer.unobserve(entry.target);
             }

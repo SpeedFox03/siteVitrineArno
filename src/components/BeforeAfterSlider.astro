@@ -53,6 +53,22 @@ const {
     gap: 1rem;
     height: 100%;
     background: var(--surface-strong);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .showcase::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.03) 40%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  .showcase:hover::before {
+    opacity: 1;
   }
 
   .showcase-head {
@@ -92,6 +108,14 @@ const {
     border: 1px solid rgba(23,22,20,0.08);
   }
 
+  .ba-slider::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18,13,8,0.04), transparent 30%, rgba(18,13,8,0.12));
+    pointer-events: none;
+  }
+
   .ba-slider img {
     width: 100%;
     height: 100%;
@@ -123,17 +147,19 @@ const {
     display: flex;
     justify-content: space-between;
     pointer-events: none;
+    z-index: 2;
   }
 
   .labels span {
-    background: rgba(255,255,255,0.82);
+    background: rgba(255,255,255,0.78);
     color: var(--text);
-    padding: 0.45rem 0.7rem;
+    padding: 0.45rem 0.72rem;
     border-radius: 999px;
     font-size: 0.78rem;
     font-weight: 700;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(23,22,20,0.06);
+    box-shadow: 0 8px 18px rgba(23,22,20,0.07);
   }
 
   .ba-slider input[type='range'] {
@@ -144,6 +170,7 @@ const {
     opacity: 0;
     cursor: ew-resize;
     margin: 0;
+    z-index: 3;
   }
 
   .divider {
@@ -152,6 +179,7 @@ const {
     bottom: 0;
     width: 0;
     pointer-events: none;
+    z-index: 2;
   }
 
   .divider::before {
@@ -170,11 +198,11 @@ const {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 56px;
-    height: 56px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.88);
-    box-shadow: 0 14px 28px rgba(23,22,20,0.12);
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 16px 30px rgba(23,22,20,0.14);
     border: 1px solid rgba(23,22,20,0.08);
   }
 

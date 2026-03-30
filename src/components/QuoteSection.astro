@@ -29,6 +29,24 @@
 </section>
 
 <style>
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(122, 92, 62, 0.42);
+  }
+
   .cta {
     padding: 1.8rem;
     display: grid;
@@ -36,6 +54,17 @@
     gap: 1rem;
     align-items: center;
     background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,233,223,0.86));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.03) 45%, transparent 70%);
+    opacity: 0.7;
+    pointer-events: none;
   }
 
   .cta-actions {
@@ -43,6 +72,8 @@
     flex-wrap: wrap;
     gap: 0.8rem;
     justify-content: flex-end;
+    position: relative;
+    z-index: 1;
   }
 
   strong {
@@ -69,9 +100,10 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    position: relative;
+    z-index: 1;
   }
 
-  /* Animations */
   .quote-reveal-shell,
   .quote-reveal-copy,
   .quote-reveal-actions {
@@ -128,7 +160,7 @@
             if (entry.isIntersecting) {
               setTimeout(() => {
                 items.forEach((item) => item.classList.add('is-visible'));
-              }, 250);
+              }, 180);
 
               observer.unobserve(entry.target);
             }

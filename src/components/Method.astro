@@ -34,6 +34,24 @@
 </section>
 
 <style>
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(122, 92, 62, 0.42);
+  }
+
   .grid-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -44,16 +62,32 @@
     padding: 1.4rem;
     display: grid;
     gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
     transition:
       transform 0.35s ease,
       box-shadow 0.35s ease,
       border-color 0.35s ease;
   }
 
+  .step::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.04) 35%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
   .step:hover {
     transform: translateY(-4px);
     box-shadow: 0 18px 30px rgba(23, 22, 20, 0.08);
     border-color: rgba(176, 141, 87, 0.28);
+  }
+
+  .step:hover::before {
+    opacity: 1;
   }
 
   .method-reveal-head,
@@ -93,6 +127,10 @@
       transform: none;
       box-shadow: none;
     }
+
+    .step::before {
+      display: none;
+    }
   }
 
   @media (max-width: 980px) {
@@ -124,7 +162,7 @@
             if (entry.isIntersecting) {
               setTimeout(() => {
                 items.forEach((item) => item.classList.add('is-visible'));
-              }, 250);
+              }, 180);
 
               observer.unobserve(entry.target);
             }

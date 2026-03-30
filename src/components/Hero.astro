@@ -7,18 +7,19 @@
         Arno Momin vous accompagne sur des chantiers de peinture et de finition avec une approche sobre, précise et haut de gamme :
         peinture intérieure, extérieure, boiseries, ascenseurs, revêtements muraux et pose de parquet flottant.
       </p>
+
       <div class="btn-row">
         <a class="btn btn-primary" href="/realisations">Voir les réalisations</a>
         <a class="btn btn-secondary" href="/services/peinture-interieure">Découvrir les services</a>
       </div>
 
       <div class="hero-metrics">
-        <article class="hero-reveal-up delay-1">
+        <article class="hero-reveal-up delay-1 metric-card">
           <span class="number">01</span>
           <p>Interventions sur appartements, maisons et projets professionnels avec un niveau de finition exigeant.</p>
         </article>
 
-        <article class="hero-reveal-up delay-2">
+        <article class="hero-reveal-up delay-2 metric-card">
           <span class="number">02</span>
           <p>Accompagnement complet : conseils, préparation, exécution et rendu final maîtrisé.</p>
         </article>
@@ -30,11 +31,8 @@
         <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80">
           <source src="/videos/intro.mp4" type="video/mp4" />
         </video>
-        <div class="video-overlay">
-          <span>Intro premium</span>
-          <p>Remplacez simplement <strong>/public/videos/intro.mp4</strong> par une courte vidéo montrant Arno Momin au travail, avec des fondus élégants et une mise en scène haut standing.</p>
-        </div>
       </div>
+
       <div class="identity-row">
         <div class="brand-mark">
           <img src="/images/logo-premium-transparent.png" alt="Logo Moment D.Art" />
@@ -63,6 +61,24 @@
     gap: 1.5rem;
   }
 
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(122, 92, 62, 0.42);
+  }
+
   .hero-metrics {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -77,10 +93,28 @@
     gap: 0.65rem;
   }
 
+  .metric-card {
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(247,243,236,0.4));
+    border: 1px solid rgba(23,22,20,0.06);
+  }
+
   .hero-panel {
     padding: 1rem;
     display: grid;
     gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.03) 40%, transparent 65%);
+    opacity: 0.65;
+    pointer-events: none;
   }
 
   .video-frame {
@@ -91,32 +125,20 @@
     background: #d7cec1;
   }
 
+  .video-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(16,12,8,0.04), transparent 28%, rgba(16,12,8,0.28)),
+      linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%);
+    pointer-events: none;
+  }
+
   .video-frame video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .video-overlay {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 1.25rem;
-    background: linear-gradient(180deg, transparent, rgba(36,29,23,0.82));
-    color: #f7f3ec;
-  }
-
-  .video-overlay span,
-  .identity-copy span {
-    display: inline-block;
-    margin-bottom: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-
-  .video-overlay p {
-    color: rgba(247,243,236,0.82);
   }
 
   .identity-row {
@@ -125,6 +147,8 @@
     gap: 1rem;
     align-items: center;
     padding: 0.5rem;
+    position: relative;
+    z-index: 1;
   }
 
   .brand-mark {
@@ -139,7 +163,16 @@
     object-fit: contain;
   }
 
-  /* Animations Hero */
+  .identity-copy span {
+    display: inline-block;
+    margin-bottom: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
   .hero-reveal-left,
   .hero-reveal-right,
   .hero-reveal-up {
@@ -166,45 +199,22 @@
     animation-name: heroRevealUp;
   }
 
-  .delay-1 {
-    animation-delay: 0.55s;
-  }
-
-  .delay-2 {
-    animation-delay: 0.72s;
-  }
+  .delay-1 { animation-delay: 0.55s; }
+  .delay-2 { animation-delay: 0.72s; }
 
   @keyframes heroRevealLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-32px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes heroRevealRight {
-    from {
-      opacity: 0;
-      transform: translateX(32px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(32px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes heroRevealUp {
-    from {
-      opacity: 0;
-      transform: translateY(28px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @media (prefers-reduced-motion: reduce) {

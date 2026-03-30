@@ -35,6 +35,24 @@ const services = [
 </section>
 
 <style>
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(122, 92, 62, 0.42);
+  }
+
   .service-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -45,16 +63,32 @@ const services = [
     padding: 1.4rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(247,243,236,0.72));
     border: 1px solid rgba(255,255,255,0.7);
+    position: relative;
+    overflow: hidden;
     transition:
       transform 0.35s ease,
       box-shadow 0.35s ease,
       border-color 0.35s ease;
   }
 
+  .service::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.04) 35%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
   .service:hover {
     transform: translateY(-4px);
     box-shadow: 0 18px 30px rgba(23,22,20,0.08);
     border-color: rgba(176, 141, 87, 0.28);
+  }
+
+  .service:hover::before {
+    opacity: 1;
   }
 
   .service-index {
@@ -107,6 +141,10 @@ const services = [
       transform: none;
       box-shadow: none;
     }
+
+    .service::before {
+      display: none;
+    }
   }
 
   @media (max-width: 900px) {
@@ -129,13 +167,13 @@ const services = [
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            items.forEach((item) => item.classList.add('is-visible'));
-          }, 250); // ⏱️ délai de 0.5s
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                items.forEach((item) => item.classList.add('is-visible'));
+              }, 180);
 
-          observer.unobserve(entry.target);
-        }
+              observer.unobserve(entry.target);
+            }
           });
         },
         {

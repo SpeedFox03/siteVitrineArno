@@ -1,16 +1,20 @@
 <section class="hero section" id="top">
   <div class="container hero-grid">
+    
     <div class="hero-copy hero-reveal-left">
       <span class="eyebrow">Peinture haut de gamme · Résidentiel & professionnel</span>
+      
       <h1>Des finitions premium pour des projets ambitieux.</h1>
+      
       <p class="lead">
-        Arno Momin vous accompagne sur des chantiers de peinture et de finition avec une approche sobre, précise et haut de gamme :
-        peinture intérieure, extérieure, industrielle et époxy, revêtements de sol et muraux, boiseries et ferronneries.
+        <strong>Moment D. Art</strong> vous accompagne sur des chantiers de <strong>peinture</strong> et de <strong>finition</strong> avec une approche <strong>sobre</strong>, <strong>précise</strong> et <strong>haut de gamme</strong> :
+        <strong>peinture intérieure</strong>, <strong>peinture extérieure</strong>, <strong>peinture industrielle et époxy</strong>,
+        <strong>revêtements de sol</strong> et <strong>muraux</strong>, <strong>boiseries</strong> et <strong>ferronneries</strong>.
       </p>
 
       <div class="btn-row">
         <a class="btn btn-primary" href="/realisations">Voir les réalisations</a>
-        <a class="btn btn-secondary" href="/services/peinture-interieure">Découvrir les services</a>
+        <a class="btn btn-secondary" href="/services">Découvrir les services</a>
       </div>
     </div>
 
@@ -22,29 +26,6 @@
       </div>
     </div>
 
-    <div class="hero-metrics">
-      <article class="hero-reveal-up delay-1 metric-card">
-        <span class="number">01</span>
-        <p>Interventions sur appartements, maisons et projets professionnels avec un niveau de finition exigeant.</p>
-      </article>
-
-      <article class="hero-reveal-up delay-2 metric-card">
-        <span class="number">02</span>
-        <p>Accompagnement complet : conseils, préparation, exécution et rendu final maîtrisé.</p>
-      </article>
-    </div>
-
-    <div class="hero-info-cards">
-      <article class="hero-reveal-up delay-1 info-card">
-        <span>Présentation</span>
-        <p>Arno Momin accompagne des projets résidentiels et professionnels avec une attention particulière portée à la finition et à la qualité d’exécution.</p>
-      </article>
-
-      <article class="hero-reveal-up delay-2 info-card">
-        <span>Localisation</span>
-        <p>Rue des Moges · 4120 Neupré<br />Plus de <strong>10 ans</strong> d’expérience.</p>
-      </article>
-    </div>
   </div>
 </section>
 
@@ -52,11 +33,9 @@
   .hero-grid {
     display: grid;
     grid-template-columns: 1.02fr 0.98fr;
-    grid-template-areas:
-      "copy media"
-      "metrics infos";
+    grid-template-areas: "copy media";
     gap: 1.5rem;
-    align-items: start;
+    align-items: center;
   }
 
   .hero-copy {
@@ -69,22 +48,6 @@
 
   .hero-media {
     grid-area: media;
-  }
-
-  .hero-metrics {
-    grid-area: metrics;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    padding-top: 0.2rem;
-  }
-
-  .hero-info-cards {
-    grid-area: infos;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    padding-top: 0.2rem;
   }
 
   .eyebrow {
@@ -103,33 +66,6 @@
     width: 28px;
     height: 1px;
     background: rgba(122, 92, 62, 0.42);
-  }
-
-  .hero-metrics article {
-    display: grid;
-    gap: 0.65rem;
-  }
-
-  .metric-card,
-  .info-card {
-    padding: 1rem 1rem 0.95rem;
-    border-radius: 20px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(247,243,236,0.4));
-    border: 1px solid rgba(23,22,20,0.06);
-  }
-
-  .info-card span {
-    display: inline-block;
-    margin-bottom: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #7A5C3E;
-  }
-
-  .info-card p {
-    margin: 0;
   }
 
   .video-frame {
@@ -162,8 +98,7 @@
   }
 
   .hero-reveal-left,
-  .hero-reveal-right,
-  .hero-reveal-up {
+  .hero-reveal-right {
     opacity: 0;
     animation-duration: 1s;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
@@ -182,14 +117,6 @@
     animation-delay: 0.24s;
   }
 
-  .hero-reveal-up {
-    transform: translateY(28px);
-    animation-name: heroRevealUp;
-  }
-
-  .delay-1 { animation-delay: 0.55s; }
-  .delay-2 { animation-delay: 0.72s; }
-
   @keyframes heroRevealLeft {
     from { opacity: 0; transform: translateX(-32px); }
     to { opacity: 1; transform: translateX(0); }
@@ -200,15 +127,9 @@
     to { opacity: 1; transform: translateX(0); }
   }
 
-  @keyframes heroRevealUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .hero-reveal-left,
-    .hero-reveal-right,
-    .hero-reveal-up {
+    .hero-reveal-right {
       opacity: 1;
       transform: none;
       animation: none;
@@ -220,14 +141,7 @@
       grid-template-columns: 1fr;
       grid-template-areas:
         "copy"
-        "media"
-        "metrics"
-        "infos";
-    }
-
-    .hero-metrics,
-    .hero-info-cards {
-      grid-template-columns: 1fr;
+        "media";
     }
   }
 </style>

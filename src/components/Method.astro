@@ -7,25 +7,25 @@
 
     <div class="grid-steps">
       <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.12s;">
-        <span class="number">01</span>
+        <span class="number">I</span>
         <h3>Visite et échange</h3>
         <p>Compréhension du lieu, de l’usage, du niveau de finition attendu et des contraintes techniques.</p>
       </article>
 
-      <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.24s;">
-        <span class="number">02</span>
+      <article class="card step method-reveal-card is-offset" data-method-reveal style="--reveal-delay: 0.24s;">
+        <span class="number">II</span>
         <h3>Devis et projection</h3>
         <p>Chiffrage clair, conseils de teintes et possibilité de projection visuelle à partir d’une photo du lieu.</p>
       </article>
 
       <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.36s;">
-        <span class="number">03</span>
+        <span class="number">III</span>
         <h3>Préparation soignée</h3>
         <p>Protection, reprises, réparations et mise en état des supports avant toute mise en peinture.</p>
       </article>
 
-      <article class="card step method-reveal-card" data-method-reveal style="--reveal-delay: 0.48s;">
-        <span class="number">04</span>
+      <article class="card step method-reveal-card is-offset" data-method-reveal style="--reveal-delay: 0.48s;">
+        <span class="number">IV</span>
         <h3>Exécution et réception</h3>
         <p>Application précise, contrôle du rendu et livraison propre, alignée avec le standing du projet.</p>
       </article>
@@ -56,6 +56,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    align-items: start;
+  }
+
+  .step.is-offset {
+    margin-top: 50%;
   }
 
   .step {

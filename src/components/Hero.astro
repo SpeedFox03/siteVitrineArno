@@ -1,18 +1,17 @@
 <section class="hero section" id="top">
   <div class="container hero-grid">
-    
     <div class="hero-copy hero-reveal-left">
       <span class="eyebrow">Peinture haut de gamme · Résidentiel & professionnel</span>
-      
+
       <h1>Des finitions premium pour des projets ambitieux.</h1>
-      
+
       <p class="lead">
         <strong>Moment D. Art</strong> vous accompagne sur des chantiers de <strong>peinture</strong> et de <strong>finition</strong> avec une approche <strong>sobre</strong>, <strong>précise</strong> et <strong>haut de gamme</strong> :
         <strong>peinture intérieure</strong>, <strong>peinture extérieure</strong>, <strong>peinture industrielle et époxy</strong>,
         <strong>revêtements de sol</strong> et <strong>muraux</strong>, <strong>boiseries</strong> et <strong>ferronneries</strong>.
       </p>
 
-      <div class="btn-row">
+      <div class="btn-row hero-actions">
         <a class="btn btn-primary" href="/realisations">Voir les réalisations</a>
         <a class="btn btn-secondary" href="/services">Découvrir les services</a>
       </div>
@@ -25,7 +24,6 @@
         </video>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -142,6 +140,73 @@
       grid-template-areas:
         "copy"
         "media";
+      gap: 1.25rem;
+    }
+
+    .hero-copy {
+      gap: 1.2rem;
+    }
+
+    .video-frame {
+      border-radius: 22px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      padding-top: 2.4rem;
+    }
+
+    .hero-copy {
+      gap: 1rem;
+    }
+
+    .hero-copy h1 {
+      max-width: 11ch;
+    }
+
+    .hero-copy .lead {
+      font-size: 1rem;
+      line-height: 1.68;
+      max-width: 100%;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+
+  @media (max-width: 480px) {
+    .hero {
+      padding-top: 2rem;
+    }
+
+    .hero-grid {
+      gap: 1rem;
+    }
+
+    .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+    }
+
+    .eyebrow::before {
+      width: 22px;
+    }
+
+    .hero-copy .lead {
+      font-size: 0.98rem;
+    }
+
+    .video-frame {
+      border-radius: 18px;
     }
   }
 </style>

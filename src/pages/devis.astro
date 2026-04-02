@@ -5,18 +5,19 @@ import Footer from '../components/Footer.astro';
 ---
 <BaseLayout title="Devis — Moment D.Art">
   <Header />
+
   <section class="page-hero">
     <div class="container">
       <div class="card grid-2">
         <div>
           <span class="eyebrow">Devis</span>
           <h1>Une demande claire, avec possibilité de projection avant travaux.</h1>
-          <p class="lead">Pour certains projets, une simple photo de la pièce ou du bâtiment peut servir de base pour visualiser le résultat final avant la réalisation. Cela permet de mieux choisir une ambiance, une teinte ou une direction de finition.</p>
-          <div class="btn-row" style="margin-top:1rem;">
-            <a class="btn btn-primary" href="mailto:contact@momentdart.be">Envoyer une demande</a>
-            <a class="btn btn-secondary" href="/realisations">Voir les réalisations</a>
-          </div>
+          <p class="lead">
+            Pour certains projets, une simple photo de la pièce ou du bâtiment peut servir de base pour visualiser le résultat final avant la réalisation.
+            Cela permet de mieux choisir une ambiance, une teinte ou une direction de finition.
+          </p>
         </div>
+
         <div class="card" style="padding:1.5rem; background:rgba(255,255,255,0.55);">
           <h3>Informations à prévoir</h3>
           <div class="info-list">
@@ -28,19 +29,404 @@ import Footer from '../components/Footer.astro';
       </div>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
-      <div class="grid-2">
-        <div>
-          <h2>Pourquoi intégrer cette possibilité ?</h2>
-          <p class="lead">Sur des projets premium, la projection du rendu final rassure le client et améliore la prise de décision. Elle aide à se projeter avant le lancement du chantier.</p>
-        </div>
-        <div class="card" style="padding:1.5rem;">
-          <h3>Message de confiance</h3>
-          <p>Peintre depuis X années, Arno Momin propose un travail de qualité au meilleur prix, avec une présentation professionnelle et une attention réelle portée au résultat final.</p>
-        </div>
+      <div class="form-tabs" role="tablist" aria-label="Type de demande">
+        <button class="tab-button is-active" type="button" data-tab-trigger="prive" aria-selected="true">Privé</button>
+        <button class="tab-button" type="button" data-tab-trigger="pro" aria-selected="false">Professionnel</button>
+      </div>
+
+      <div class="form-panels">
+        <form class="quote-form card is-active" data-tab-panel="prive" data-quote-form data-form-type="prive" novalidate>
+          <input type="hidden" name="formType" value="prive" />
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" required maxlength="80" />
+              <p class="field-error" data-error-for="prenom"></p>
+            </div>
+
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" placeholder="Votre nom" required maxlength="80" />
+              <p class="field-error" data-error-for="nom"></p>
+            </div>
+
+            <div class="field">
+              <label for="email-prive">E-mail</label>
+              <input id="email-prive" name="email" type="email" placeholder="vous@exemple.be" required maxlength="160" />
+              <p class="field-error" data-error-for="email"></p>
+            </div>
+
+            <div class="field">
+              <label for="adresse-prive">Adresse</label>
+              <input id="adresse-prive" name="adresse" type="text" placeholder="Adresse du chantier" required maxlength="200" />
+              <p class="field-error" data-error-for="adresse"></p>
+            </div>
+
+            <div class="field field-full">
+              <label for="intitule-prive">Intitulé de la demande</label>
+              <input id="intitule-prive" name="intitule" type="text" placeholder="Ex. : peinture intérieure maison 3 façades" required maxlength="140" />
+              <p class="field-error" data-error-for="intitule"></p>
+            </div>
+
+            <div class="field field-full">
+              <label for="details-prive">Détails de la demande</label>
+              <textarea
+                id="details-prive"
+                name="details"
+                rows="7"
+                placeholder="Décrivez votre projet : surfaces concernées, type de finition, délai souhaité, contexte du chantier, etc."
+                required
+                maxlength="4000"
+              ></textarea>
+              <p class="field-error" data-error-for="details"></p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+          </div>
+
+          <p class="form-status" data-form-status></p>
+        </form>
+
+        <form class="quote-form card" data-tab-panel="pro" data-quote-form data-form-type="pro" novalidate>
+          <input type="hidden" name="formType" value="pro" />
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="societe">Nom de société</label>
+              <input id="societe" name="societe" type="text" placeholder="Nom de la société" required maxlength="140" />
+              <p class="field-error" data-error-for="societe"></p>
+            </div>
+
+            <div class="field">
+              <label for="tva">Numéro de TVA</label>
+              <input id="tva" name="tva" type="text" placeholder="BE0123.456.789" required maxlength="32" />
+              <p class="field-error" data-error-for="tva"></p>
+            </div>
+
+            <div class="field">
+              <label for="email-pro">E-mail</label>
+              <input id="email-pro" name="email" type="email" placeholder="contact@societe.be" required maxlength="160" />
+              <p class="field-error" data-error-for="email"></p>
+            </div>
+
+            <div class="field">
+              <label for="adresse-pro">Adresse</label>
+              <input id="adresse-pro" name="adresse" type="text" placeholder="Adresse du chantier ou du siège" required maxlength="200" />
+              <p class="field-error" data-error-for="adresse"></p>
+            </div>
+
+            <div class="field field-full">
+              <label for="intitule-pro">Intitulé de la demande</label>
+              <input id="intitule-pro" name="intitule" type="text" placeholder="Ex. : remise en peinture bureaux / atelier / façade" required maxlength="140" />
+              <p class="field-error" data-error-for="intitule"></p>
+            </div>
+
+            <div class="field field-full">
+              <label for="details-pro">Détails de la demande</label>
+              <textarea
+                id="details-pro"
+                name="details"
+                rows="7"
+                placeholder="Décrivez votre projet : activité, surfaces concernées, contraintes techniques, planning souhaité, niveau de finition attendu, etc."
+                required
+                maxlength="4000"
+              ></textarea>
+              <p class="field-error" data-error-for="details"></p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+          </div>
+
+          <p class="form-status" data-form-status></p>
+        </form>
       </div>
     </div>
   </section>
+
   <Footer />
 </BaseLayout>
+
+<style>
+  .form-tabs {
+    display: inline-flex;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.58);
+    border: 1px solid rgba(36, 29, 23, 0.08);
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-weight: 700;
+    padding: 0.8rem 1.15rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  }
+
+  .tab-button.is-active {
+    background: #7A5C3E;
+    color: #fff;
+  }
+
+  .form-panels {
+    position: relative;
+  }
+
+  .quote-form {
+    display: none;
+    padding: 1.6rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(247,243,236,0.72));
+    border: 1px solid rgba(255,255,255,0.75);
+  }
+
+  .quote-form.is-active {
+    display: block;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .field-full {
+    grid-column: 1 / -1;
+  }
+
+  .field label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    border: 1px solid rgba(36, 29, 23, 0.12);
+    background: rgba(255,255,255,0.72);
+    border-radius: 16px;
+    padding: 0.95rem 1rem;
+    font: inherit;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: rgba(122, 92, 62, 0.42);
+    box-shadow: 0 0 0 4px rgba(177, 138, 104, 0.10);
+    background: #fff;
+  }
+
+  .field.is-invalid input,
+  .field.is-invalid textarea {
+    border-color: #c53d3d;
+    box-shadow: 0 0 0 4px rgba(197, 61, 61, 0.08);
+    background: #fff;
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 180px;
+  }
+
+  .field-error {
+    margin: 0;
+    min-height: 1.25rem;
+    font-size: 0.82rem;
+    color: #b12626;
+    font-weight: 700;
+  }
+
+  .field-error:not(:empty) {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(177, 38, 38, 0.10);
+    border: 1px solid rgba(177, 38, 38, 0.14);
+  }
+
+  .form-actions {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .form-status {
+    margin-top: 1rem;
+    min-height: 1.25rem;
+    font-weight: 700;
+  }
+
+  .form-status.is-error {
+    color: #b12626;
+  }
+
+  .form-status.is-success {
+    color: #2f6b3c;
+  }
+
+  .hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const tabButtons = document.querySelectorAll('[data-tab-trigger]');
+  const tabPanels = document.querySelectorAll('[data-tab-panel]');
+
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.getAttribute('data-tab-trigger');
+
+      tabButtons.forEach((btn) => {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+
+      tabPanels.forEach((panel) => {
+        panel.classList.remove('is-active');
+      });
+
+      button.classList.add('is-active');
+      button.setAttribute('aria-selected', 'true');
+      document.querySelector(`[data-tab-panel="${target}"]`)?.classList.add('is-active');
+    });
+  });
+
+  const forms = document.querySelectorAll('[data-quote-form]');
+
+  const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const isValidVat = (value) => /^[A-Za-z]{2}?[0-9.\s-]{8,20}$/.test(value.trim());
+
+  forms.forEach((form) => {
+    const status = form.querySelector('[data-form-status]');
+
+    const clearErrors = () => {
+      form.querySelectorAll('.field').forEach((field) => field.classList.remove('is-invalid'));
+      form.querySelectorAll('[data-error-for]').forEach((el) => { el.textContent = ''; });
+      status.textContent = '';
+      status.classList.remove('is-error', 'is-success');
+    };
+
+    const setError = (name, message) => {
+      const input = form.querySelector(`[name="${name}"]`);
+      const field = input?.closest('.field');
+      const error = form.querySelector(`[data-error-for="${name}"]`);
+
+      field?.classList.add('is-invalid');
+      if (error) error.textContent = message;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearErrors();
+
+      const data = new FormData(form);
+      const type = form.getAttribute('data-form-type');
+
+      const get = (name) => String(data.get(name) || '').trim();
+
+      let hasError = false;
+
+      if (type === 'prive') {
+        if (!get('prenom')) { setError('prenom', 'Champ requis'); hasError = true; }
+        if (!get('nom')) { setError('nom', 'Champ requis'); hasError = true; }
+      }
+
+      if (type === 'pro') {
+        if (!get('societe')) { setError('societe', 'Champ requis'); hasError = true; }
+        if (!get('tva')) {
+          setError('tva', 'Champ requis');
+          hasError = true;
+        } else if (!isValidVat(get('tva'))) {
+          setError('tva', 'Numéro de TVA invalide');
+          hasError = true;
+        }
+      }
+
+      if (!get('email')) {
+        setError('email', 'Champ requis');
+        hasError = true;
+      } else if (!isValidEmail(get('email'))) {
+        setError('email', 'Adresse e-mail invalide');
+        hasError = true;
+      }
+
+      if (!get('adresse')) { setError('adresse', 'Champ requis'); hasError = true; }
+      if (!get('intitule')) { setError('intitule', 'Champ requis'); hasError = true; }
+      if (!get('details')) { setError('details', 'Champ requis'); hasError = true; }
+
+      if (hasError) {
+        status.textContent = 'Veuillez corriger les champs indiqués.';
+        status.classList.add('is-error');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/devis', {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          if (result?.errors) {
+            Object.entries(result.errors).forEach(([name, message]) => {
+              setError(name, String(message));
+            });
+          }
+
+          status.textContent = result?.message || 'Une erreur est survenue.';
+          status.classList.add('is-error');
+          return;
+        }
+
+        form.reset();
+        status.textContent = result?.message || 'Votre demande a bien été envoyée.';
+        status.classList.add('is-success');
+      } catch {
+        status.textContent = 'Impossible d’envoyer la demande pour le moment.';
+        status.classList.add('is-error');
+      }
+    });
+  });
+</script>

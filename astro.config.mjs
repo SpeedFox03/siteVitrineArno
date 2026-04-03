@@ -1,9 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  output: 'server',
-  server: {
-    host: true,
-    port: 4321,
-  },
+  site: 'https://speedfox03.github.io',
+  base: '/siteVitrineArno',
+  output: 'static', // 👈 IMPORTANT
 });

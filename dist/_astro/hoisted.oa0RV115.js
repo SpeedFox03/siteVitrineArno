@@ -1,0 +1,1 @@
+import"./hoisted.Clxdt7Ho.js";document.querySelectorAll("[data-ba-slider]").forEach(e=>{const t=e.querySelector("input"),l=e.querySelector(".overlay"),c=e.querySelector(".divider"),r=()=>{const o=Number(t.value);l.style.clipPath=`inset(0 ${100-o}% 0 0)`,c.style.left=`${o}%`};t.addEventListener("input",r),r()});

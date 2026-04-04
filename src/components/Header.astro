@@ -2,19 +2,19 @@
 import { logoSvg } from '../utils/icons';
 
 const serviceItems = [
-  { href: '/services/peinture-interieure', label: 'Peinture intérieure' },
-  { href: '/services/peinture-exterieure', label: 'Peinture extérieure' },
-  { href: '/services/peinture-industrielle-et-epoxy', label: 'Peinture industrielle et époxy' },
-  { href: '/services/revetement-de-sol', label: 'Revêtement de sol' },
-  { href: '/services/revetement-mural', label: 'Revêtement mural' },
-  { href: '/services/boiserie-et-ferronneries', label: 'Boiserie et ferronneries' },
+  { href: `${import.meta.env.BASE_URL}services/peinture-interieure`, label: 'Peinture intérieure' },
+  { href: `${import.meta.env.BASE_URL}services/peinture-exterieure`, label: 'Peinture extérieure' },
+  { href: `${import.meta.env.BASE_URL}services/peinture-industrielle-et-epoxy`, label: 'Peinture industrielle et époxy' },
+  { href: `${import.meta.env.BASE_URL}services/revetement-de-sol`, label: 'Revêtement de sol' },
+  { href: `${import.meta.env.BASE_URL}services/revetement-mural`, label: 'Revêtement mural' },
+  { href: `${import.meta.env.BASE_URL}services/boiserie-et-ferronneries`, label: 'Boiserie et ferronneries' },
 ];
 ---
 
 <header class="site-header">
   <div class="container header-shell">
     <div class="header-inner" data-header>
-      <a class="brand" href="/" aria-label="Moment D.Art accueil" set:html={logoSvg}></a>
+      <a class="brand" href={`${import.meta.env.BASE_URL}`} aria-label="Moment D.Art accueil" set:html={logoSvg}></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
         <span></span>
         <span></span>
@@ -24,7 +24,7 @@ const serviceItems = [
 
       <nav id="site-menu" class="site-nav" data-menu>
         <ul>
-          <li><a href="/">Accueil</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}`}>Accueil</a></li>
 
           <li class="has-dropdown" data-dropdown>
             <button type="button" class="nav-trigger" aria-expanded="false" data-dropdown-trigger>
@@ -42,21 +42,21 @@ const serviceItems = [
             </button>
 
             <div class="dropdown" data-dropdown-panel>
-              <a class="dropdown-overview" href="/services">Voir tous les services</a>
+              <a class="dropdown-overview" href={`${import.meta.env.BASE_URL}services`}>Voir tous les services</a>
               {serviceItems.map((item) => (
                 <a href={item.href}>{item.label}</a>
               ))}
             </div>
           </li>
 
-          <li><a href="/realisations">Réalisations</a></li>
-          <li><a href="/devis">Devis</a></li>
-          <li><a href="/#methode">Méthode</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}realisations`}>Réalisations</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}devis`}>Devis</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}#methode`}>Méthode</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}#contact`}>Contact</a></li>
         </ul>
       </nav>
 
-      <a class="btn btn-primary quote-btn" href="/devis">Demander un devis</a>
+      <a class="btn btn-primary quote-btn" href={`${import.meta.env.BASE_URL}devis`}>Demander un devis</a>
     </div>
   </div>
 </header>

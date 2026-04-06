@@ -5,23 +5,38 @@ import ServicesOverview from '../../components/ServicesOverview.astro';
 import QuoteSection from '../../components/QuoteSection.astro';
 import Footer from '../../components/Footer.astro';
 ---
-<BaseLayout title="Services — Moment D.Art" description="Découvrez les services haut de gamme de Moment D.Art : peinture intérieure, peinture extérieure, peinture industrielle et époxy, revêtement de sol, revêtement mural, boiserie et ferronneries.">
+
+<BaseLayout
+  title="Services de nettoyage — Moment D.Art"
+  description="Services de nettoyage et entretien de bâtiments : nettoyage intérieur, extérieur, surfaces techniques, sols, murs et éléments spécifiques."
+>
   <Header />
+
   <section class="page-hero">
     <div class="container">
       <div class="card hero-card">
         <span class="eyebrow">Services</span>
-        <h1>Des prestations pensées pour des projets exigeants.</h1>
-        <p class="lead">Chaque intervention est abordée avec la même exigence de préparation, de finition et de cohérence esthétique, qu’il s’agisse d’un intérieur privé, d’une façade, d’un atelier, d’un sol, d’un mur ou d’éléments en bois et métal.</p>
+        <h1>Des interventions dédiées au nettoyage et à l’entretien des bâtiments.</h1>
+        <p class="lead">
+          Chaque intervention est orientée vers le nettoyage, la remise en état et l’entretien des surfaces,
+          que ce soit pour des espaces privés, des bâtiments professionnels ou des zones techniques.
+        </p>
       </div>
     </div>
   </section>
+
   <ServicesOverview />
   <QuoteSection />
   <Footer />
 </BaseLayout>
 
 <style>
-  .hero-card { padding: 1.7rem; }
-  .hero-card h1 { max-width: 12ch; margin: 0.85rem 0 1rem; }
+  .hero-card {
+    padding: 1.7rem;
+  }
+
+  .hero-card h1 {
+    max-width: 12ch;
+    margin: 0.85rem 0 1rem;
+  }
 </style>

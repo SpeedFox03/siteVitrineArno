@@ -142,11 +142,19 @@
     .grid-steps {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .step.is-offset {
+      margin-top: 0;
+    }
   }
 
   @media (max-width: 720px) {
     .grid-steps {
       grid-template-columns: 1fr;
+    }
+
+    .step.is-offset {
+      margin-top: 0;
     }
   }
 </style>

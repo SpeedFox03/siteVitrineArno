@@ -233,16 +233,16 @@ export const POST: APIRoute = async ({ request }) => {
       '',
       `Nous avons bien reçu votre demande de devis concernant : ${data.intitule}`,
       '',
-      'Arno Momin vous recontactera dans les plus brefs délais.',
+      'Moment D.Art vous recontactera dans les plus brefs délais.',
       '',
-      'Moment D.Art · Arno Momin · Rue des Moges · 4120 Neupré'
+      'Moment D.Art · Rue des Moges · 4120 Neupré'
     ].join('\n');
     const confirmHtml = `
       <p>Bonjour ${escapeHtml(clientName)},</p>
       <p>Nous avons bien reçu votre demande de devis concernant : <strong>${escapeHtml(data.intitule)}</strong>.</p>
-      <p>Arno Momin vous recontactera dans les plus brefs délais.</p>
+      <p>Moment D.Art vous recontactera dans les plus brefs délais.</p>
       <hr style="border:none;border-top:1px solid #e0d9cf;margin:1.5rem 0">
-      <p style="color:#7a6b5e;font-size:0.88rem">Moment D.Art · Arno Momin · Rue des Moges · 4120 Neupré</p>
+      <p style="color:#7a6b5e;font-size:0.88rem">Moment D.Art · Rue des Moges · 4120 Neupré</p>
     `;
 
     await transporter.sendMail({

@@ -1,4 +1,6 @@
 ---
+import ScrollReveal from '../components/ScrollReveal.astro';
+
 const {
   title = 'Moment D.Art — Peinture haut de gamme à Neupré',
   description = "Moment D.Art, entreprise de peinture haut de gamme à Neupré. Peinture intérieure, extérieure, boiserie, ascenseur, revêtement mural et pose de parquet flottant pour projets résidentiels et professionnels premium.",
@@ -89,7 +91,7 @@ const {
 
       h1, h2, h3, h4, p { margin: 0; }
       h1, h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; }
-      h1 { font-size: clamp(3.2rem, 7vw, 6.2rem); line-height: 0.95; letter-spacing: -0.04em; }
+      h1 { font-size: clamp(2.1rem, 4.6vw, 4.1rem); line-height: 0.95; letter-spacing: -0.04em; }
       h2 { font-size: clamp(2.35rem, 5vw, 4.2rem); line-height: 1.02; letter-spacing: -0.04em; margin-top: 1rem; }
       h3 { font-size: 1.25rem; line-height: 1.2; }
       p { color: var(--muted); line-height: 1.75; font-size: 1rem; }
@@ -137,5 +139,6 @@ const {
   </head>
   <body>
     <slot />
+    <ScrollReveal />
   </body>
 </html>

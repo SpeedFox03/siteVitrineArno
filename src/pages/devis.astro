@@ -11,7 +11,7 @@ import Footer from '../components/Footer.astro';
       <div class="card grid-2">
         <div>
           <span class="eyebrow">Devis</span>
-          <h1>Une demande claire, avec possibilité de projection avant travaux.</h1>
+          <h1 class="hero-title">Une demande claire, avec possibilité de projection avant travaux.</h1>
           <p class="lead">
             Pour certains projets, une simple photo de la pièce ou du bâtiment peut servir de base pour visualiser le résultat final avant la réalisation.
             Cela permet de mieux choisir une ambiance, une teinte ou une direction de finition.
@@ -23,7 +23,7 @@ import Footer from '../components/Footer.astro';
           <div class="info-list">
             <div><strong>Votre projet</strong><p>Type de bien, pièces concernées, délai souhaité et type de finition attendu.</p></div>
             <div><strong>Photos</strong><p>Une ou plusieurs vues du lieu permettent de préparer une première projection visuelle du résultat.</p></div>
-            <div><strong>Coordonnées</strong><p>Arno Momin · Rue des Moges · 4120 Neupré.</p></div>
+            <div><strong>Coordonnées</strong><p>Moment D.Art · Rue des Moges · 4120 Neupré.</p></div>
           </div>
         </div>
       </div>
@@ -298,9 +298,39 @@ import Footer from '../components/Footer.astro';
     pointer-events: none !important;
   }
 
+  .hero-title {
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
   @media (max-width: 900px) {
     .form-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .quote-form {
+      padding: 1.1rem;
+    }
+
+    .field textarea {
+      min-height: 120px;
+      max-height: 40vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .field input,
+    .field textarea {
+      padding: 0.82rem 0.85rem;
+      border-radius: 14px;
+    }
+
+    .tab-button {
+      padding: 0.7rem 1rem;
+      font-size: 0.92rem;
     }
   }
 </style>

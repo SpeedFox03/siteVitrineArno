@@ -1,0 +1,392 @@
+---
+---
+
+<section class="section" id="contact" data-contact-section>
+  <div class="container">
+    <div class="contact-shell card">
+      <div class="contact-info" data-contact-reveal style="--reveal-delay: 0s;">
+        <span class="eyebrow">Contact</span>
+        <h2>Une question ?<br>Prenons contact.</h2>
+        <p class="lead">
+          Pour toute demande rapide, question sur un service ou prise de contact informelle, ce formulaire est fait pour ça. Pour un chiffrage complet, utilisez le formulaire de devis.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label">E-mail</span>
+            <a href="mailto:contact@momentdart.be" class="contact-value">contact@momentdart.be</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Zone d'intervention</span>
+            <span class="contact-value">Neupré · Province de Liège</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap" data-contact-reveal style="--reveal-delay: 0.18s;">
+        <form class="contact-form" data-contact-form novalidate>
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="field">
+            <label for="contact-nom">Nom</label>
+            <input id="contact-nom" name="nom" type="text" placeholder="Votre nom" required maxlength="120" />
+            <p class="field-error" data-error-for="nom"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-email">E-mail</label>
+            <input id="contact-email" name="email" type="email" placeholder="vous@exemple.be" required maxlength="160" />
+            <p class="field-error" data-error-for="email"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              placeholder="Votre question ou demande..."
+              required
+              maxlength="2000"
+            ></textarea>
+            <p class="field-error" data-error-for="message"></p>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+          </div>
+
+          <p class="form-status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-shell {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,233,223,0.86));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.03) 45%, transparent 70%);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .contact-info,
+  .contact-form-wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #7A5C3E;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: rgba(122, 92, 62, 0.42);
+  }
+
+  .contact-info h2 {
+    margin: 0.75rem 0 1rem;
+    line-height: 1.2;
+  }
+
+  .contact-info .lead {
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: 0.96rem;
+    margin: 0;
+  }
+
+  .contact-details {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .contact-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  a.contact-value:hover {
+    color: #7A5C3E;
+    text-decoration: underline;
+  }
+
+  /* Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .field label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    border: 1px solid rgba(36, 29, 23, 0.12);
+    background: rgba(255,255,255,0.72);
+    border-radius: 16px;
+    padding: 0.9rem 1rem;
+    font: inherit;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-sizing: border-box;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border-color: rgba(122, 92, 62, 0.42);
+    box-shadow: 0 0 0 4px rgba(177, 138, 104, 0.10);
+    background: #fff;
+  }
+
+  .field.is-invalid input,
+  .field.is-invalid textarea {
+    border-color: #c53d3d;
+    box-shadow: 0 0 0 4px rgba(197, 61, 61, 0.08);
+  }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .field-error {
+    margin: 0;
+    min-height: 1.2rem;
+    font-size: 0.82rem;
+    color: #b12626;
+    font-weight: 700;
+  }
+
+  .field-error:not(:empty) {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(177, 38, 38, 0.10);
+    border: 1px solid rgba(177, 38, 38, 0.14);
+  }
+
+  .form-actions {
+    margin-top: 0.4rem;
+  }
+
+  .form-status {
+    margin-top: 0.75rem;
+    min-height: 1.2rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .form-status.is-error { color: #b12626; }
+  .form-status.is-success { color: #2f6b3c; }
+
+  .hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Reveal */
+  [data-contact-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  [data-contact-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-contact-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .contact-shell {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-shell {
+      padding: 1.3rem;
+    }
+
+    .field input,
+    .field textarea {
+      padding: 0.82rem 0.85rem;
+      border-radius: 14px;
+    }
+  }
+</style>
+
+<script>
+  const section = document.querySelector('[data-contact-section]');
+
+  if (section && typeof window !== 'undefined') {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = section.querySelectorAll('[data-contact-reveal]');
+
+    if (prefersReducedMotion) {
+      items.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                items.forEach((item) => item.classList.add('is-visible'));
+              }, 120);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
+      );
+      observer.observe(section);
+    }
+  }
+
+  const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
+
+  if (form) {
+    const status = form.querySelector('[data-form-status]') as HTMLElement;
+
+    const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    const clearErrors = () => {
+      form.querySelectorAll('.field').forEach((f) => f.classList.remove('is-invalid'));
+      form.querySelectorAll('[data-error-for]').forEach((el) => { (el as HTMLElement).textContent = ''; });
+      status.textContent = '';
+      status.classList.remove('is-error', 'is-success');
+    };
+
+    const setError = (name: string, message: string) => {
+      const input = form.querySelector<HTMLElement>(`[name="${name}"]`);
+      input?.closest('.field')?.classList.add('is-invalid');
+      const err = form.querySelector(`[data-error-for="${name}"]`);
+      if (err) err.textContent = message;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearErrors();
+
+      const data = new FormData(form);
+      const get = (k: string) => String(data.get(k) || '').trim();
+
+      let hasError = false;
+
+      if (!get('nom')) { setError('nom', 'Champ requis'); hasError = true; }
+      if (!get('email')) {
+        setError('email', 'Champ requis'); hasError = true;
+      } else if (!isValidEmail(get('email'))) {
+        setError('email', 'Adresse e-mail invalide'); hasError = true;
+      }
+      if (!get('message')) { setError('message', 'Champ requis'); hasError = true; }
+
+      if (hasError) {
+        status.textContent = 'Veuillez corriger les champs indiqués.';
+        status.classList.add('is-error');
+        return;
+      }
+
+      try {
+        const params = new URLSearchParams();
+        for (const [key, value] of data.entries()) {
+          if (typeof value === 'string') params.append(key, value);
+        }
+
+        const res = await fetch(`${import.meta.env.BASE_URL}/api/contact`, {
+          method: 'POST',
+          body: params,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) {
+          if (result?.errors) {
+            Object.entries(result.errors as Record<string, string>).forEach(([k, v]) => setError(k, v));
+          }
+          status.textContent = result?.message || 'Une erreur est survenue.';
+          status.classList.add('is-error');
+          return;
+        }
+
+        form.reset();
+        status.textContent = result?.message || 'Votre message a bien été envoyé.';
+        status.classList.add('is-success');
+      } catch {
+        status.textContent = 'Impossible d\'envoyer le message pour le moment.';
+        status.classList.add('is-error');
+      }
+    });
+  }
+</script>

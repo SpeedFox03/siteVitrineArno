@@ -2,42 +2,291 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+import QuoteSection from '../components/QuoteSection.astro';
 import Footer from '../components/Footer.astro';
-const projects = [
+
+const featured = [
   {
     meta: 'Appartement premium · Neupré',
-    title: 'Rénovation intérieure et remise en lumière',
+    title: 'Rénovation intérieure complète',
     description: 'Travail sur les murs, plafonds et volumes pour obtenir un rendu plus clair, plus net et plus statutaire.',
     beforeImage: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
     afterImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
   },
   {
     meta: 'Maison contemporaine · Province de Liège',
-    title: 'Reprise des surfaces et cohérence d’ensemble',
+    title: 'Reprise des surfaces et cohérence d\'ensemble',
     description: 'Une approche haut standing qui travaille autant le support que la perception finale du lieu.',
     beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
     afterImage: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1400&q=80',
   },
-  {
-    meta: 'Projet professionnel · Espace d’accueil',
-    title: 'Valorisation d’un espace recevant du public',
-    description: 'Finitions propres, ambiance plus premium et meilleur impact visuel dès l’entrée dans le lieu.',
-    beforeImage: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1400&q=80',
-  },
+];
+
+const gallery = [
+  { category: 'interieur', label: 'Peinture intérieure', title: 'Salon et cuisine ouverte', location: 'Neupré', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80' },
+  { category: 'exterieur', label: 'Peinture extérieure', title: 'Façade maison quatre façades', location: 'Liège', image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=800&q=80' },
+  { category: 'sol', label: 'Revêtement de sol', title: 'Parquet flottant chêne naturel', location: 'Huy', image: 'https://images.unsplash.com/photo-1562184552-997c461abbe6?auto=format&fit=crop&w=800&q=80' },
+  { category: 'mural', label: 'Revêtement mural', title: 'Papier peint panoramique salon', location: 'Waremme', image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80' },
+  { category: 'boiserie', label: 'Boiserie & ferronneries', title: 'Escalier et rampe relaqués', location: 'Neupré', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80' },
+  { category: 'industriel', label: 'Époxy & industriel', title: 'Sol époxy atelier mécanique', location: 'Liège', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
+  { category: 'interieur', label: 'Peinture intérieure', title: 'Chambre parentale et dressing', location: 'Neupré', image: 'https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=800&q=80' },
+  { category: 'interieur', label: 'Peinture intérieure', title: 'Couloir et cage d\'escalier', location: 'Liège', image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=800&q=80' },
+  { category: 'exterieur', label: 'Peinture extérieure', title: 'Annexe et abri de jardin', location: 'Huy', image: 'https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=800&q=80' },
+  { category: 'mural', label: 'Revêtement mural', title: 'Tête de lit papier intissé', location: 'Neupré', image: 'https://images.unsplash.com/photo-1560185127-6a600b9f8461?auto=format&fit=crop&w=800&q=80' },
+  { category: 'sol', label: 'Revêtement de sol', title: 'Vinyle LVT cuisine et séjour', location: 'Waremme', image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80' },
+  { category: 'boiserie', label: 'Boiserie & ferronneries', title: 'Portes et plinthes laquées blanc', location: 'Liège', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80' },
+];
+
+const filters = [
+  { key: 'tous', label: 'Tous' },
+  { key: 'interieur', label: 'Intérieur' },
+  { key: 'exterieur', label: 'Extérieur' },
+  { key: 'sol', label: 'Sol' },
+  { key: 'mural', label: 'Mural' },
+  { key: 'boiserie', label: 'Boiserie' },
+  { key: 'industriel', label: 'Industriel' },
 ];
 ---
-<BaseLayout title="Réalisations — Moment D.Art">
+
+<BaseLayout
+  title="Réalisations — Moment D.Art"
+  description="Découvrez les chantiers réalisés par Moment D.Art à Neupré et en province de Liège. Peinture intérieure, extérieure, revêtements, boiseries — avant et après."
+>
   <Header />
+
   <section class="page-hero">
     <div class="container">
-      <div class="card" style="padding:1.5rem;">
+      <div class="card" style="padding:2rem;">
         <span class="eyebrow">Réalisations</span>
         <h1>Avant / après : la preuve par les chantiers.</h1>
-        <p class="lead">Cette page est pensée pour accueillir les vraies réalisations d’Arno Momin avec avant / après, photos de détails, typologie du bien, lieu et périmètre d’intervention.</p>
+        <p class="lead" style="max-width:62ch;">Chaque projet est unique. Ces réalisations illustrent l'étendue des interventions de Moment D.Art — de la rénovation intérieure complète au détail de finition qui change tout.</p>
       </div>
     </div>
   </section>
-  <section class="section"><div class="container"><div style="display:grid; gap:1rem;">{projects.map((project) => <BeforeAfterSlider {...project} />)}</div></div></section>
+
+  <section class="section section-featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Avant / après</span>
+        <h2>Projets en vedette</h2>
+      </div>
+      <div class="featured-grid">
+        {featured.map((p) => <BeforeAfterSlider {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt section-gallery">
+    <div class="container">
+      <div class="gallery-head">
+        <div>
+          <span class="eyebrow">Galerie</span>
+          <h2>Toutes les réalisations</h2>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filtrer par type de service">
+          {filters.map((f) => (
+            <button
+              type="button"
+              class={`filter-btn${f.key === 'tous' ? ' active' : ''}`}
+              data-filter={f.key}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="gallery-grid">
+        {gallery.map((p) => (
+          <article class="gallery-card card" data-category={p.category}>
+            <div class="gallery-img-wrap">
+              <img src={p.image} alt={p.title} loading="lazy" class="gallery-img" />
+              <span class="category-pill">{p.label}</span>
+            </div>
+            <div class="gallery-info">
+              <p class="gallery-location">{p.location}</p>
+              <h3 class="gallery-title">{p.title}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p class="gallery-note">Photos placeholder — à remplacer par les vraies réalisations de Moment D.Art.</p>
+    </div>
+  </section>
+
+  <QuoteSection />
   <Footer />
 </BaseLayout>
+
+<style>
+  .page-hero h1 {
+    margin: 0.9rem 0 1.1rem;
+  }
+
+  .featured-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gallery-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-head h2 {
+    margin-bottom: 0;
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.55rem 1.1rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    font-family: inherit;
+  }
+
+  .filter-btn:hover {
+    background: rgba(255,255,255,0.55);
+    color: var(--text);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--line-strong));
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    color: #faf7f2;
+    border-color: var(--accent);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .gallery-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    transition: transform 0.28s ease;
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .gallery-img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gallery-card:hover .gallery-img {
+    transform: scale(1.04);
+  }
+
+  .category-pill {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(8px);
+    color: var(--accent-strong);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(23,22,20,0.06);
+  }
+
+  .gallery-info {
+    padding: 1rem 1.1rem 1.2rem;
+  }
+
+  .gallery-location {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .gallery-title {
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+  }
+
+  .gallery-note {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--muted-2);
+    text-align: center;
+  }
+
+  .gallery-card[data-hidden] {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-head { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 560px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .filter-bar { gap: 0.4rem; }
+    .filter-btn { font-size: 0.8rem; padding: 0.48rem 0.9rem; }
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.gallery-card');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      cards.forEach((card) => {
+        if (filter === 'tous' || card.dataset.category === filter) {
+          card.removeAttribute('data-hidden');
+        } else {
+          card.setAttribute('data-hidden', '');
+        }
+      });
+    });
+  });
+</script>

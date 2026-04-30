@@ -1,0 +1,134 @@
+---
+const testimonials = [
+  {
+    quote: "Moment D.Art a transformé notre appartement du sol au plafond. La préparation des supports était impeccable, les finitions d'une précision remarquable. On voyait dès le premier jour qu'on avait affaire à quelqu'un qui prend son métier très au sérieux.",
+    name: 'Sophie V.',
+    city: 'Liège',
+    service: 'Peinture intérieure',
+    rating: 5,
+  },
+  {
+    quote: "Chantier de 4 pièces et de l'escalier. Délais respectés, chantier protégé et nettoyé chaque soir. Le résultat est au-dessus de mes attentes — un rendu très haut de gamme pour un prix juste.",
+    name: 'Marc D.',
+    city: 'Neupré',
+    service: 'Rénovation complète',
+    rating: 5,
+  },
+  {
+    quote: "La pose du papier peint dans le salon est parfaite. Les raccords sont invisibles, les angles nets. Moment D.Art a pris le temps de bien préparer le support avant de commencer — ça s'est vu sur le résultat final.",
+    name: 'Isabelle K.',
+    city: 'Huy',
+    service: 'Revêtement mural',
+    rating: 5,
+  },
+  {
+    quote: "Façade entièrement reprise, fissures traitées, peinture silicone appliquée en deux couches. Deux ans après, la façade est toujours impeccable. Sérieux, efficace et très bon contact.",
+    name: 'Thomas B.',
+    city: 'Waremme',
+    service: 'Peinture extérieure',
+    rating: 5,
+  },
+  {
+    quote: "Les boiseries et le parquet étaient dans un état déplorable. Moment D.Art les a entièrement remis à neuf — on a l'impression d'être dans une maison neuve. Travail soigné, délais tenus, très belle expérience.",
+    name: 'Carine M.',
+    city: 'Neupré',
+    service: 'Boiseries & parquet',
+    rating: 5,
+  },
+  {
+    quote: "Moment D.Art a réalisé la mise en peinture complète de notre cabinet médical. Intervention rapide et propre, résultat très professionnel. Nos patients ont immédiatement remarqué la différence.",
+    name: 'Laurent F.',
+    city: 'Liège',
+    service: 'Espace professionnel',
+    rating: 5,
+  },
+];
+---
+
+<section class="section" id="temoignages">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <span class="eyebrow">Témoignages</span>
+      <h2>Ce que disent les clients</h2>
+    </div>
+    <div class="grid" data-reveal>
+      {testimonials.map((t) => (
+        <div class="card t-card">
+          <div class="stars" aria-label={`${t.rating} étoiles sur 5`}>
+            {Array.from({ length: t.rating }).map(() => (
+              <svg viewBox="0 0 20 20" aria-hidden="true" width="14" height="14">
+                <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78L10 1z" fill="currentColor"/>
+              </svg>
+            ))}
+          </div>
+          <p class="quote">"{t.quote}"</p>
+          <div class="author">
+            <strong class="author-name">{t.name}</strong>
+            <span class="author-meta">{t.service} · {t.city}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .t-card {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stars {
+    display: flex;
+    gap: 0.2rem;
+    color: var(--accent);
+  }
+
+  .quote {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.22rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .author-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .author-meta {
+    font-size: 0.76rem;
+    color: var(--muted-2);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 1000px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .t-card { padding: 1.3rem; }
+  }
+</style>

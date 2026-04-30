@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import QuoteSection from '../components/QuoteSection.astro';
+import Footer from '../components/Footer.astro';
+
+const stats = [
+  { value: '10+', label: "Ans d'expérience" },
+  { value: '250+', label: 'Chantiers réalisés' },
+  { value: '6', label: 'Services proposés' },
+  { value: '100%', label: 'Clients satisfaits' },
+];
+
+const values = [
+  {
+    title: 'Préparation',
+    text: "40% du résultat final se joue avant le premier coup de pinceau. Rebouchage, ponçage, impression — chaque étape est traitée avec soin pour garantir une surface parfaite.",
+  },
+  {
+    title: 'Précision',
+    text: "Les détails font la différence entre un chantier propre et un chantier haut de gamme. Angles nets, finitions soignées, raccords invisibles — rien n'est laissé au hasard.",
+  },
+  {
+    title: 'Propreté',
+    text: "Le chantier est protégé avant toute intervention et nettoyé chaque soir. Le lieu est rendu impeccable à la livraison — aussi propre qu'à l'arrivée, avec en plus un résultat premium.",
+  },
+  {
+    title: 'Transparence',
+    text: "Un devis clair, des délais respectés, une communication directe. Pas de mauvaises surprises. Vous savez exactement ce qui est fait, quand et comment.",
+  },
+];
+---
+
+<BaseLayout
+  title="À propos — Moment D.Art"
+  description="Arno Momin, peintre haut de gamme à Neupré depuis plus de 10 ans. Découvrez son parcours, sa philosophie et ses valeurs derrière Moment D.Art."
+>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="card hero-card">
+        <div class="hero-text">
+          <span class="eyebrow">À propos</span>
+          <h1>L'artisan derrière Moment D.Art</h1>
+          <p class="lead">
+            Peintre depuis plus de 10 ans, Arno Momin a fondé Moment D.Art avec une conviction simple : un chantier bien préparé et rigoureusement exécuté ne laisse aucune place à la déception.
+          </p>
+        </div>
+        <div class="hero-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80"
+            alt="Arno Momin, peintre Moment D.Art — photo placeholder"
+            class="hero-img"
+          />
+          <div class="img-badge">
+            <span>Photo à remplacer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        {stats.map((s) => (
+          <div class="stat-item">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-bio">
+    <div class="container">
+      <div class="bio-layout">
+        <div class="bio-text">
+          <span class="eyebrow">Parcours</span>
+          <h2>Un métier appris sur le terrain</h2>
+          <p>
+            Formé en Belgique dans le domaine de la peinture décorative, Arno Momin a exercé pendant près d'une décennie au sein d'entreprises généralistes avant de créer Moment D.Art en 2018. Ce parcours lui a permis de travailler sur des chantiers très variés — du studio étudiant à la villa de maître, du café de quartier à la salle de réunion d'entreprise.
+          </p>
+          <p style="margin-top:1.25rem;">
+            Ce qui l'a poussé à se lancer à son compte : la conviction que le haut de gamme n'est pas une question de budget, mais d'attention. Que l'on repeigne une chambre ou rénove une façade complète, le résultat mérite la même exigence.
+          </p>
+          <p style="margin-top:1.25rem;">
+            Aujourd'hui, Moment D.Art intervient sur l'ensemble de la province de Liège pour des travaux résidentiels et professionnels. Chaque chantier démarre par une visite, se construit sur un échange et se conclut sur un résultat dont le client est fier.
+          </p>
+        </div>
+        <div class="bio-aside">
+          <div class="card aside-card">
+            <h3>En pratique</h3>
+            <ul class="info-list" style="margin-top:1rem;">
+              <div>
+                <strong>Basé à</strong>
+                <p>Rue des Moges · 4120 Neupré</p>
+              </div>
+              <div>
+                <strong>Zone d'intervention</strong>
+                <p>Province de Liège, Huy, Waremme, Namur et environs</p>
+              </div>
+              <div>
+                <strong>Types de chantiers</strong>
+                <p>Résidentiel, professionnel, rénovation complète ou ciblée</p>
+              </div>
+              <div>
+                <strong>Contact privilégié</strong>
+                <p>Par email via le formulaire de devis</p>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="values-header">
+        <span class="eyebrow">Philosophie</span>
+        <h2>Ce qui guide chaque chantier</h2>
+      </div>
+      <div class="values-grid">
+        {values.map((v, i) => (
+          <div class="card value-card">
+            <span class="value-number">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QuoteSection />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+    padding: 0;
+    min-height: 480px;
+  }
+
+  .hero-text {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    justify-content: center;
+  }
+
+  .hero-img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(36, 29, 23, 0.62);
+    backdrop-filter: blur(8px);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.72rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .stats-section {
+    padding: 3rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 2.5rem 1rem;
+    background: var(--surface);
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .bio-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .bio-text p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .bio-text h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .aside-card {
+    padding: 1.75rem;
+  }
+
+  .aside-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .info-list strong {
+    display: block;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-strong);
+    margin-bottom: 0.25rem;
+  }
+
+  .info-list div {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .info-list div:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .values-header {
+    margin-bottom: 2rem;
+  }
+
+  .values-header h2 {
+    margin-bottom: 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .value-card {
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .value-number {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.55;
+  }
+
+  .value-card h3 {
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  .value-card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  @media (max-width: 1000px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 860px) {
+    .hero-card { grid-template-columns: 1fr; }
+    .hero-img-wrap { min-height: 300px; }
+    .bio-layout { grid-template-columns: 1fr; }
+    .hero-text { padding: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item { padding: 1.6rem 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-text { padding: 1.5rem; }
+    .value-card { padding: 1.3rem 1.2rem; }
+    .aside-card { padding: 1.3rem; }
+  }
+</style>

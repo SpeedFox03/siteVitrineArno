@@ -1,0 +1,161 @@
+---
+const faqs = [
+  {
+    q: "Comment se passe la prise de contact et le devis ?",
+    a: "Tout démarre par une demande via le formulaire du site ou par email. Moment D.Art prend contact sous 48h pour convenir d'une visite sur place, gratuite et sans engagement. C'est lors de cette visite que l'état des supports est évalué, que les teintes et finitions sont définies ensemble, et qu'un devis clair et détaillé est établi.",
+  },
+  {
+    q: "Quelle est la zone d'intervention ?",
+    a: "Moment D.Art intervient principalement à Neupré et dans l'ensemble de la province de Liège. Des déplacements vers Huy, Waremme et Namur sont également possibles selon la nature du chantier. N'hésitez pas à mentionner votre commune dans le formulaire de devis.",
+  },
+  {
+    q: "Combien de temps dure un chantier type ?",
+    a: "La durée varie selon l'ampleur des travaux. Une pièce standard prend généralement 1 à 2 jours. Une rénovation complète d'appartement (4 à 5 pièces) s'étale sur 4 à 7 jours. Les délais sont toujours communiqués clairement avant le démarrage du chantier et respectés.",
+  },
+  {
+    q: "Faut-il être présent pendant les travaux ?",
+    a: "Non. L'intervention se fait en totale autonomie une fois le chantier lancé. Une clé peut être confiée pour les accès. Les meubles et sols sont systématiquement protégés avant toute intervention, et le chantier est nettoyé chaque soir.",
+  },
+  {
+    q: "Comment choisir entre une finition mate, velours ou satinée ?",
+    a: "Le choix dépend de l'usage de la pièce et de l'effet recherché. Le mat absorbe la lumière et camoufle les imperfections — idéal en chambre. Le velours est polyvalent et facile à entretenir (séjours, couloirs). Le satin est très résistant aux frottements et à l'humidité, recommandé pour cuisines et salles de bain. Moment D.Art guide systématiquement ses clients dans ce choix lors de la visite.",
+  },
+  {
+    q: "Travaillez-vous aussi pour les professionnels ?",
+    a: "Oui. Moment D.Art réalise des chantiers pour des espaces professionnels (bureaux, cabinets, commerces, restaurants, espaces d'accueil) ainsi que des travaux industriels et époxy pour ateliers et locaux techniques. Les interventions sont planifiées pour minimiser la gêne sur l'activité.",
+  },
+  {
+    q: "Peut-on contacter Moment D.Art directement par email ?",
+    a: "Oui, le contact par email est privilégié. Vous pouvez utiliser le formulaire de devis ou de contact sur le site, et vous recevrez une réponse sous 24 à 48h ouvrables. Pour les demandes urgentes, une mention dans le message permet de prioriser le traitement.",
+  },
+  {
+    q: "Comment préparer mon intérieur avant votre arrivée ?",
+    a: "Idéalement, dégager les meubles encombrants des pièces à traiter. Tout le reste — protection des sols et meubles restants, rebouchage, ponçage, impression — est pris en charge par Moment D.Art. Aucune préparation technique n'est requise de votre côté.",
+  },
+];
+---
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-intro" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions fréquentes</h2>
+        <p class="lead">Tout ce que vous voulez savoir avant de faire appel à Moment D.Art.</p>
+        <a class="btn btn-secondary" href={`${import.meta.env.BASE_URL}/devis`} style="margin-top:1.5rem;">
+          Une autre question ? Écrivez-nous
+        </a>
+      </div>
+      <div class="faq-list" data-reveal>
+        {faqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              <span>{item.q}</span>
+              <svg class="faq-icon" viewBox="0 0 20 20" aria-hidden="true" width="18" height="18">
+                <path d="M5 7.5L10 12.5L15 7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <p class="faq-a">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.65fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .faq-intro {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .faq-intro h2 {
+    margin-bottom: 1rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    font-size: 0.96rem;
+    color: var(--text);
+    transition: color 0.2s ease;
+    user-select: none;
+  }
+
+  .faq-q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q:hover {
+    color: var(--accent-strong);
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    color: var(--accent);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-a {
+    padding-bottom: 1.35rem;
+    font-size: 0.95rem;
+    line-height: 1.78;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+
+  @media (max-width: 900px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .faq-intro {
+      position: static;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .faq-q {
+      padding: 1rem 0;
+      font-size: 0.93rem;
+    }
+
+    .faq-a {
+      max-width: 100%;
+    }
+  }
+</style>

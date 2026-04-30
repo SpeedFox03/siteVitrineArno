@@ -2,21 +2,170 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import QuoteSection from '../../components/QuoteSection.astro';
+import ServicesNav from '../../components/ServicesNav.astro';
 ---
-<BaseLayout title="Peinture industrielle et époxy — Moment D.Art">
+<BaseLayout
+  title="Peinture industrielle et époxy — Moment D.Art"
+  description="Peinture industrielle et systèmes époxy pour ateliers, garages, locaux professionnels et surfaces techniques à Neupré et province de Liège. Résistance, propreté, durabilité."
+>
   <Header />
+
   <section class="page-hero">
     <div class="container">
-      <div class="card grid-2">
+      <div class="card grid-2 hero-card">
         <div>
           <span class="eyebrow">Service</span>
-          <h1>Peinture industrielle et époxy</h1>
-          <p class="lead">Traitements techniques pour locaux professionnels, surfaces sollicitées et environnements nécessitant une finition résistante, propre et durable.</p>
+          <h1>Peinture industrielle & époxy</h1>
+          <p class="lead">
+            Traitements techniques pour locaux professionnels, surfaces sollicitées et environnements nécessitant une finition résistante, propre et durable dans le temps.
+          </p>
         </div>
-        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80" alt="Peinture industrielle et époxy" style="border-radius:22px; width:100%; height:100%; object-fit:cover; min-height:320px;" />
+        <img
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80"
+          alt="Sol époxy dans un espace industriel"
+          style="border-radius:22px; width:100%; height:100%; object-fit:cover; min-height:320px;"
+        />
       </div>
     </div>
   </section>
-  <section class="section"><div class="container"><div class="grid-2"><div><h2>Des solutions pensées pour la résistance</h2><p class="lead">La peinture industrielle et les systèmes époxy conviennent aux espaces techniques, ateliers, circulations, garages et zones où la tenue dans le temps est essentielle.</p></div><div class="card" style="padding:1.5rem;"><h3>Applications</h3><p>Sols, murs, supports techniques et éléments soumis à l’usure avec une approche adaptée aux contraintes du lieu et à l’usage quotidien.</p></div></div></div></section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Contexte</span>
+          <h2>Pour quels espaces ?</h2>
+          <p class="lead">
+            Les peintures industrielles et systèmes époxy s'imposent partout où la résistance prime : ateliers, garages, locaux techniques, circulations intenses, zones humides ou espaces de stockage.
+          </p>
+          <p style="margin-top: 1rem;">
+            Ces systèmes sont également très utilisés dans les espaces professionnels haut de gamme — showrooms, cabinets, restaurants — pour un rendu minimaliste, propre et facile à entretenir.
+          </p>
+        </div>
+        <div class="card detail-card">
+          <h3>Ce qu'Arno fait concrètement</h3>
+          <ul class="detail-list">
+            <li>Analyse du support et du niveau d'usure attendu</li>
+            <li>Préparation mécanique (ponçage, grenaillage si nécessaire)</li>
+            <li>Traitement des fissures et des zones abîmées</li>
+            <li>Application d'un primaire d'accrochage adapté</li>
+            <li>Système époxy bi-composant ou peinture industrielle en 2 couches</li>
+            <li>Finition lisse, antidérapante ou satinée selon l'usage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Applications</span>
+      <h2>Systèmes adaptés à chaque usage</h2>
+      <div class="finishes-grid">
+        <div class="card finish-card">
+          <h3>Sols époxy</h3>
+          <p>Résistant aux chocs, aux produits chimiques et au passage intensif. Facile à nettoyer, rendu impeccable.</p>
+        </div>
+        <div class="card finish-card">
+          <h3>Murs industriels</h3>
+          <p>Peintures acryliques ou alkyde haute résistance pour ateliers, entrepôts et locaux techniques.</p>
+        </div>
+        <div class="card finish-card">
+          <h3>Marquages au sol</h3>
+          <p>Délimitation de zones, allées de circulation, signalétique de sécurité dans les espaces professionnels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServicesNav current="Peinture industrielle & époxy" />
+  <QuoteSection />
   <Footer />
 </BaseLayout>
+
+<style>
+  .hero-card > div:first-child {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 55%, white);
+  }
+
+  .detail-card { padding: 1.5rem; }
+  .detail-card h3 { margin-bottom: 1rem; }
+
+  .detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .detail-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .detail-list li:first-child { border-top: none; padding-top: 0; }
+
+  .detail-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .section-alt {
+    background: rgba(177, 138, 104, 0.04);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .finishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .finish-card { padding: 1.4rem; }
+  .finish-card h3 { margin-bottom: 0.6rem; color: var(--accent-strong); }
+
+  @media (max-width: 900px) {
+    .finishes-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .hero-card { grid-template-columns: 1fr; }
+  }
+</style>

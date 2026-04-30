@@ -2,5 +2,170 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import QuoteSection from '../../components/QuoteSection.astro';
+import ServicesNav from '../../components/ServicesNav.astro';
 ---
-<BaseLayout title="Revêtement de sol — Moment D.Art"><Header /><section class="page-hero"><div class="container"><div class="card grid-2"><div><span class="eyebrow">Service</span><h1>Revêtement de sol</h1><p class="lead">Une solution élégante et fonctionnelle pour compléter une rénovation et donner au lieu une sensation plus chaleureuse, nette et premium.</p></div><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1400&q=80" alt="Revêtement de sol" style="border-radius:22px; width:100%; height:100%; object-fit:cover; min-height:320px;" /></div></div></section><section class="section"><div class="container"><div class="grid-2"><div><h2>Un sol cohérent avec la rénovation</h2><p class="lead">Le revêtement de sol vient compléter un projet global en apportant chaleur, confort visuel et cohérence avec la nouvelle palette du lieu.</p></div><div class="card" style="padding:1.5rem;"><h3>Résultat recherché</h3><p>Un rendu propre, contemporain et harmonieux, adapté aux intérieurs soignés comme aux espaces professionnels à forte valeur perçue.</p></div></div></div></section><Footer /></BaseLayout>
+<BaseLayout
+  title="Revêtement de sol — Moment D.Art"
+  description="Pose de revêtements de sol à Neupré et en province de Liège. Parquet flottant, vinyle, stratifié : finition premium pour intérieurs résidentiels et professionnels."
+>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="card grid-2 hero-card">
+        <div>
+          <span class="eyebrow">Service</span>
+          <h1>Revêtement de sol</h1>
+          <p class="lead">
+            Habillage et rénovation des sols pour apporter résistance, confort visuel et cohérence avec l'ensemble du projet de rénovation.
+          </p>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1562184552-997c461abbe6?auto=format&fit=crop&w=1400&q=80"
+          alt="Revêtement de sol parquet"
+          style="border-radius:22px; width:100%; height:100%; object-fit:cover; min-height:320px;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Contexte</span>
+          <h2>Pourquoi refaire ses sols ?</h2>
+          <p class="lead">
+            Le sol est la première surface qu'on perçoit en entrant dans une pièce. Un sol abîmé, daté ou incohérent avec la palette de couleurs tire l'ensemble du projet vers le bas — même si les murs sont impeccables.
+          </p>
+          <p style="margin-top: 1rem;">
+            Idéal en fin de rénovation pour unifier l'espace, ou en remplacement ciblé pour redonner de la valeur à un bien avant vente ou location.
+          </p>
+        </div>
+        <div class="card detail-card">
+          <h3>Ce qu'Arno fait concrètement</h3>
+          <ul class="detail-list">
+            <li>Vérification de la planéité du support</li>
+            <li>Ragréage si nécessaire pour un niveau parfait</li>
+            <li>Pose de sous-couche acoustique et isolante</li>
+            <li>Pose du revêtement choisi (parquet, vinyle, stratifié)</li>
+            <li>Pose des plinthes et finitions de seuils</li>
+            <li>Nettoyage et contrôle du rendu en fin de chantier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Matériaux</span>
+      <h2>Quel revêtement choisir ?</h2>
+      <div class="finishes-grid">
+        <div class="card finish-card">
+          <h3>Parquet flottant</h3>
+          <p>Chaleureux et élégant, idéal pour les séjours et chambres. Large choix de teintes, de chêne naturel au gris fumé.</p>
+        </div>
+        <div class="card finish-card">
+          <h3>Vinyle LVT</h3>
+          <p>100 % waterproof, résistant aux chocs et facile d'entretien. Parfait pour cuisines, salles de bain et espaces humides.</p>
+        </div>
+        <div class="card finish-card">
+          <h3>Stratifié</h3>
+          <p>Rapport qualité/prix excellent, large gamme de décors. Adapté aux espaces à fort passage comme les couloirs et bureaux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServicesNav current="Revêtement de sol" />
+  <QuoteSection />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero-card > div:first-child {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 55%, white);
+  }
+
+  .detail-card { padding: 1.5rem; }
+  .detail-card h3 { margin-bottom: 1rem; }
+
+  .detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .detail-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .detail-list li:first-child { border-top: none; padding-top: 0; }
+
+  .detail-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .section-alt {
+    background: rgba(177, 138, 104, 0.04);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .finishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .finish-card { padding: 1.4rem; }
+  .finish-card h3 { margin-bottom: 0.6rem; color: var(--accent-strong); }
+
+  @media (max-width: 900px) {
+    .finishes-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .hero-card { grid-template-columns: 1fr; }
+  }
+</style>

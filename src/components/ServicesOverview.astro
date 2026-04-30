@@ -172,6 +172,13 @@ const services = [
 
   @media (max-width: 900px) {
     .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .service-grid {
       grid-template-columns: 1fr;
       gap: 0.9rem;
     }

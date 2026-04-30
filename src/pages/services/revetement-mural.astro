@@ -1,4 +1,171 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'; import Header from '../../components/Header.astro'; import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import QuoteSection from '../../components/QuoteSection.astro';
+import ServicesNav from '../../components/ServicesNav.astro';
 ---
-<BaseLayout title="Revêtement mural — Moment D.Art"><Header /><section class="page-hero"><div class="container"><div class="card grid-2"><div><span class="eyebrow">Service</span><h1>Revêtement mural</h1><p class="lead">Pose de revêtements muraux et papiers peints pour apporter matière, profondeur et raffinement à un intérieur.</p></div><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80" alt="Revêtement mural" style="border-radius:22px; width:100%; height:100%; object-fit:cover; min-height:320px;" /></div></div></section><section class="section"><div class="container"><div class="grid-2"><div><h2>Créer une ambiance</h2><p class="lead">Le revêtement mural permet de structurer visuellement un lieu, de souligner un volume ou d’ajouter un caractère plus décoratif sans excès.</p></div><div class="card" style="padding:1.5rem;"><h3>Usages</h3><p>Chambres, halls, pièces de réception, murs d’accent et intérieurs premium à la recherche d’un rendu distinctif.</p></div></div></div></section><Footer /></BaseLayout>
+<BaseLayout
+  title="Revêtement mural — Moment D.Art"
+  description="Pose de papiers peints, revêtements muraux et textures décoratives à Neupré et en province de Liège. Finitions élégantes pour intérieurs haut de gamme."
+>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="card grid-2 hero-card">
+        <div>
+          <span class="eyebrow">Service</span>
+          <h1>Revêtement mural</h1>
+          <p class="lead">
+            Pose de papiers peints, revêtements vinyliques et textures murales pour apporter matière, profondeur et raffinement à un intérieur.
+          </p>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=80"
+          alt="Revêtement mural papier peint haut de gamme"
+          style="border-radius:22px; width:100%; height:100%; object-fit:cover; min-height:320px;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Contexte</span>
+          <h2>Quand opter pour un revêtement mural ?</h2>
+          <p class="lead">
+            Quand la peinture seule ne suffit plus à créer le niveau de sophistication voulu. Un revêtement mural ajoute de la matière, de la texture et une dimension décorative qui distingue immédiatement un intérieur.
+          </p>
+          <p style="margin-top: 1rem;">
+            Très efficace sur un mur d'accent dans un séjour, une tête de lit dans une chambre, ou l'entrée d'une maison pour créer une première impression forte.
+          </p>
+        </div>
+        <div class="card detail-card">
+          <h3>Ce qu'Arno fait concrètement</h3>
+          <ul class="detail-list">
+            <li>Préparation et lissage du support</li>
+            <li>Application d'un apprêt de fond selon la surface</li>
+            <li>Encollage du mur ou du papier selon le type de revêtement</li>
+            <li>Pose soignée avec raccords de motifs invisibles</li>
+            <li>Découpe propre aux angles, fenêtres et plinthes</li>
+            <li>Finition des bords et nettoyage des traces de colle</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Matériaux</span>
+      <h2>Types de revêtements posés</h2>
+      <div class="finishes-grid">
+        <div class="card finish-card">
+          <h3>Papier peint vinylique</h3>
+          <p>Résistant, lessivable et disponible dans une immense variété de décors. Idéal pour les pièces de vie et couloirs.</p>
+        </div>
+        <div class="card finish-card">
+          <h3>Papier peint intissé</h3>
+          <p>Pose et dépose facilitées, rendu premium. Parfait pour chambres et espaces à fort caractère décoratif.</p>
+        </div>
+        <div class="card finish-card">
+          <h3>Revêtements texturés</h3>
+          <p>Toile de verre, fibres naturelles, liège : matières qui apportent relief et chaleur à une surface plane.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServicesNav current="Revêtement mural" />
+  <QuoteSection />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero-card > div:first-child {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 55%, white);
+  }
+
+  .detail-card { padding: 1.5rem; }
+  .detail-card h3 { margin-bottom: 1rem; }
+
+  .detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .detail-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .detail-list li:first-child { border-top: none; padding-top: 0; }
+
+  .detail-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .section-alt {
+    background: rgba(177, 138, 104, 0.04);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .finishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .finish-card { padding: 1.4rem; }
+  .finish-card h3 { margin-bottom: 0.6rem; color: var(--accent-strong); }
+
+  @media (max-width: 900px) {
+    .finishes-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .hero-card { grid-template-columns: 1fr; }
+  }
+</style>

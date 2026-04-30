@@ -8,13 +8,15 @@ const base = import.meta.env.BASE_URL;
     <div class="footer-brand">
       <a class="brand" href={`${import.meta.env.BASE_URL}`} aria-label="Moment D.Art accueil" set:html={logoSvg}></a>
       <p>Moment D.Art · Arno Momin · Rue des Moges · 4120 Neupré</p>
+      <p class="footer-zone"><strong>Zone d'intervention :</strong> Neupré, Liège, Huy, Waremme, Namur et environs</p>
     </div>
 
     <div class="footer-links">
       <a href={`${import.meta.env.BASE_URL}`}>Accueil</a>
-      <a href={`${import.meta.env.BASE_URL}/services`}}>Services</a>
-      <a href={`${import.meta.env.BASE_URL}/realisations`}}>Réalisations</a>
-      <a href={`${import.meta.env.BASE_URL}/devis`}}>Devis</a>
+      <a href={`${import.meta.env.BASE_URL}/services`}>Services</a>
+      <a href={`${import.meta.env.BASE_URL}/realisations`}>Réalisations</a>
+      <a href={`${import.meta.env.BASE_URL}/devis`}>Devis</a>
+      <a href={`${import.meta.env.BASE_URL}/mentions-legales`}>Mentions légales</a>
     </div>
   </div>
 </footer>
@@ -50,9 +52,15 @@ const base = import.meta.env.BASE_URL;
     max-width: 36rem;
   }
 
-  .footer-logo {
-    width: 240px;
-    margin-bottom: 1rem;
+  .footer-brand p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-zone {
+    font-size: 0.82rem !important;
+    color: var(--muted-2);
+    margin-top: 0.25rem !important;
   }
 
   .footer-links {

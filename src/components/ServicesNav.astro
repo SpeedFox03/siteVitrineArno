@@ -1,0 +1,103 @@
+---
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const services = [
+  { href: `${base}/services/peinture-interieure`, label: 'Peinture intérieure' },
+  { href: `${base}/services/peinture-exterieure`, label: 'Peinture extérieure' },
+  { href: `${base}/services/peinture-industrielle-et-epoxy`, label: 'Peinture industrielle & époxy' },
+  { href: `${base}/services/revetement-de-sol`, label: 'Revêtement de sol' },
+  { href: `${base}/services/revetement-mural`, label: 'Revêtement mural' },
+  { href: `${base}/services/boiserie-et-ferronneries`, label: 'Boiserie & ferronneries' },
+];
+
+const others = services.filter(s => s.label !== current);
+---
+
+<section class="section services-nav-section">
+  <div class="container">
+    <span class="eyebrow">Autres services</span>
+    <div class="nav-grid">
+      {others.map(service => (
+        <a href={service.href} class="nav-card card">
+          <span>{service.label}</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 10h12M11 5l5 5-5 5"/>
+          </svg>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-nav-section {
+    padding-top: 0;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 55%, white);
+  }
+
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .nav-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(23, 22, 20, 0.07);
+    border-color: rgba(176, 141, 87, 0.3);
+    color: var(--accent-strong);
+  }
+
+  .nav-card svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    color: var(--accent);
+    transition: transform 0.25s ease;
+  }
+
+  .nav-card:hover svg {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 600px) {
+    .nav-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

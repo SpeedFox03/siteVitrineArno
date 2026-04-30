@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="Mentions légales — Moment D.Art"
+  description="Mentions légales et politique de confidentialité de Moment D.Art, entreprise de peinture à Neupré."
+>
+  <Header />
+
+  <section class="section">
+    <div class="container content">
+      <span class="eyebrow">Informations légales</span>
+      <h1>Mentions légales</h1>
+
+      <h2>Éditeur du site</h2>
+      <p>
+        <strong>Moment D.Art</strong><br />
+        Arno Momin<br />
+        Rue des Moges<br />
+        4120 Neupré, Belgique<br />
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>Ce site est hébergé par GitHub Pages / Vercel. Pour toute question relative à l'hébergement, vous pouvez contacter l'hébergeur directement.</p>
+
+      <h2>Collecte de données personnelles</h2>
+      <p>
+        Le formulaire de demande de devis collecte les données suivantes : nom, prénom (ou raison sociale), adresse e-mail, adresse du chantier, et description du projet.
+        Ces données sont utilisées uniquement pour répondre à votre demande et ne sont pas transmises à des tiers.
+      </p>
+      <p>
+        Conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679), vous disposez d'un droit d'accès, de rectification et de suppression de vos données.
+        Pour exercer ce droit, contactez-nous à l'adresse indiquée ci-dessus.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>Ce site n'utilise pas de cookies de tracking ou publicitaires.</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble du contenu de ce site (textes, visuels, logo) est la propriété de Moment D.Art et est protégé par le droit d'auteur.
+        Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.
+      </p>
+
+      <h2>Responsabilité</h2>
+      <p>
+        Moment D.Art s'efforce d'assurer l'exactitude des informations présentes sur ce site mais ne peut garantir leur exhaustivité.
+        Moment D.Art ne saurait être tenu responsable des dommages résultant de l'utilisation de ce site.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: 720px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 55%, white);
+  }
+
+  h1 {
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+</style>

@@ -2,36 +2,12 @@
 import { serviceIconsList } from '../utils/icons';
 
 const services = [
-  { 
-    href: `${import.meta.env.BASE_URL}/services/nettoyage-interieur`,
-    title: 'Nettoyage intérieur', 
-    text: 'Nettoyage de murs, plafonds et espaces de vie.' 
-  },
-  { 
-    href: `${import.meta.env.BASE_URL}/services/nettoyage-exterieur`,
-    title: 'Nettoyage extérieur', 
-    text: 'Entretien de façades et surfaces extérieures.' 
-  },
-  { 
-    href: `${import.meta.env.BASE_URL}/services/nettoyage-technique`,
-    title: 'Nettoyage technique', 
-    text: 'Interventions sur surfaces techniques et zones professionnelles.' 
-  },
-  { 
-    href: `${import.meta.env.BASE_URL}/services/nettoyage-sol`,
-    title: 'Nettoyage de sol', 
-    text: 'Entretien et remise en état des sols.' 
-  },
-  { 
-    href: `${import.meta.env.BASE_URL}/services/nettoyage-mural`,
-    title: 'Nettoyage mural', 
-    text: 'Traitement et nettoyage de surfaces murales.' 
-  },
-  { 
-    href: `${import.meta.env.BASE_URL}/services/nettoyage-bois-metal`,
-    title: 'Entretien bois et métal', 
-    text: 'Nettoyage et entretien des supports spécifiques.' 
-  },
+  { href: `${import.meta.env.BASE_URL}/services/peinture-interieure`, title: 'Peinture intérieure', text: 'Murs, plafonds, cages d’escalier et espaces de vie traités avec précision pour un rendu net, lumineux et durable.' },
+  { href: `${import.meta.env.BASE_URL}/services/peinture-exterieure`, title: 'Peinture extérieure', text: 'Façades, annexes et éléments extérieurs protégés avec des produits adaptés et une finition durable.' },
+  { href: `${import.meta.env.BASE_URL}/services/peinture-industrielle-et-epoxy`, title: 'Peinture industrielle et époxy', text: 'Solutions techniques pour ateliers, locaux professionnels, supports sollicités et finitions nécessitant une forte résistance.' },
+  { href: `${import.meta.env.BASE_URL}/services/revetement-de-sol`, title: 'Revêtement de sol', text: 'Habillage et rénovation des sols pour apporter résistance, confort visuel et cohérence avec l’ensemble du projet.' },
+  { href: `${import.meta.env.BASE_URL}/services/revetement-mural`, title: 'Revêtement mural', text: 'Pose de papiers peints, textures murales et finitions décoratives élégantes.' },
+  { href: `${import.meta.env.BASE_URL}/services/boiserie-et-ferronneries`, title: 'Boiserie et ferronneries', text: 'Portes, châssis, boiseries et éléments métalliques remis en valeur dans un esprit soigné et haut de gamme.' },
 ];
 ---
 
@@ -39,10 +15,8 @@ const services = [
   <div class="container">
     <div class="section-header services-reveal-head" data-services-reveal>
       <span class="eyebrow">Services</span>
-      <h2>Une offre complète, pensée pour l’entretien des bâtiments.</h2>
-      <p class="lead">
-        Chaque prestation correspond à un besoin spécifique de nettoyage, d’entretien ou de remise en état.
-      </p>
+      <h2>Une offre complète, pensée pour des lieux exigeants.</h2>
+      <p class="lead">Chaque prestation possède sa propre page de service pour détailler les usages, les finitions et les typologies de projets concernés.</p>
     </div>
 
     <div class="service-grid">
@@ -139,7 +113,6 @@ const services = [
     fill: currentColor;
     opacity: 0.9;
   }
-
   .service:hover .service-icon {
     transform: translateY(-1px) scale(1.02);
     border-color: rgba(176, 141, 87, 0.24);
@@ -152,6 +125,114 @@ const services = [
 
   .service h3 {
     margin-bottom: 0.75rem;
+  }
+
+  .services-reveal-head,
+  .service-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .services-reveal-head.is-visible,
+  .service-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .services-reveal-head {
+    --reveal-delay: 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-reveal-head,
+    .service-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .service {
+      transition: none;
+    }
+
+    .service:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .service::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .service {
+      padding: 1.15rem;
+      border-radius: 22px;
+    }
+
+    .service-icon {
+      width: 2.7rem;
+      height: 2.7rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .service-icon svg :global(svg) {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .service h3 {
+      margin-bottom: 0.55rem;
+      font-size: 1.12rem;
+    }
+
+    .service p {
+      line-height: 1.65;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .service-grid {
+      gap: 0.8rem;
+    }
+
+    .service {
+      padding: 1rem;
+      border-radius: 20px;
+    }
+
+    .service-icon {
+      width: 2.45rem;
+      height: 2.45rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-icon svg :global(svg) {
+      width: 1.08rem;
+      height: 1.08rem;
+    }
+
+    .service h3 {
+      margin-bottom: 0.45rem;
+      font-size: 1.04rem;
+      line-height: 1.2;
+    }
+
+    .service p {
+      font-size: 0.96rem;
+      line-height: 1.62;
+    }
   }
 </style>
 

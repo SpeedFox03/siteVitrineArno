@@ -358,14 +358,11 @@
       }
 
       try {
-        const params = new URLSearchParams();
-        for (const [key, value] of data.entries()) {
-          if (typeof value === 'string') params.append(key, value);
-        }
+        const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-        const res = await fetch(`${import.meta.env.BASE_URL}/api/contact`, {
+        const res = await fetch(`${base}/api/contact`, {
           method: 'POST',
-          body: params,
+          body: data,
           headers: { 'Accept': 'application/json' }
         });
 

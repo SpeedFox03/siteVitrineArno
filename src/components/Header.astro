@@ -4,10 +4,15 @@ import { logoSvg } from '../utils/icons';
 const serviceItems = [
   { href: `${import.meta.env.BASE_URL}/services/peinture-interieure`, label: 'Peinture intérieure' },
   { href: `${import.meta.env.BASE_URL}/services/peinture-exterieure`, label: 'Peinture extérieure' },
-  { href: `${import.meta.env.BASE_URL}/services/peinture-industrielle-et-epoxy`, label: 'Peinture industrielle et époxy' },
+  { href: `${import.meta.env.BASE_URL}/services/enduits-decoratifs`, label: 'Enduits décoratifs' },
   { href: `${import.meta.env.BASE_URL}/services/revetement-de-sol`, label: 'Revêtement de sol' },
   { href: `${import.meta.env.BASE_URL}/services/revetement-mural`, label: 'Revêtement mural' },
   { href: `${import.meta.env.BASE_URL}/services/boiserie-et-ferronneries`, label: 'Boiserie et ferronneries' },
+];
+
+const realisationItems = [
+  { href: `${import.meta.env.BASE_URL}/realisations#avant-apres`, label: 'Avant / après' },
+  { href: `${import.meta.env.BASE_URL}/realisations#galerie`, label: 'Galerie' },
 ];
 ---
 
@@ -49,7 +54,28 @@ const serviceItems = [
             </div>
           </li>
 
-          <li><a href={`${import.meta.env.BASE_URL}/realisations`}>Réalisations</a></li>
+          <li class="has-dropdown" data-dropdown>
+            <button type="button" class="nav-trigger" aria-expanded="false" data-dropdown-trigger>
+              <span>Réalisations</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M5.25 7.5 10 12.25 14.75 7.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div class="dropdown dropdown-compact" data-dropdown-panel>
+              <a class="dropdown-overview" href={`${import.meta.env.BASE_URL}/realisations`}>Voir toutes les réalisations</a>
+              {realisationItems.map((item) => (
+                <a href={item.href}>{item.label}</a>
+              ))}
+            </div>
+          </li>
           <li><a href={`${import.meta.env.BASE_URL}/a-propos`}>À propos</a></li>
           <li><a href={`${import.meta.env.BASE_URL}/devis`}>Devis</a></li>
           <li><a href={`${import.meta.env.BASE_URL}/#methode`}>Méthode</a></li>
@@ -69,8 +95,7 @@ const serviceItems = [
   const header = document.querySelector('[data-header]');
   const menuToggle = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-menu]');
-  const dropdown = document.querySelector('[data-dropdown]');
-  const dropdownTrigger = document.querySelector('[data-dropdown-trigger]');
+  const dropdowns = document.querySelectorAll('[data-dropdown]');
 
   let lastScrollY = window.scrollY;
 
@@ -100,9 +125,11 @@ const serviceItems = [
   const closeMobileMenu = () => {
     if (!header || window.innerWidth > 980) return;
     header.classList.remove('menu-open');
-    dropdown?.classList.remove('open');
+    dropdowns.forEach((dropdown) => {
+      dropdown.classList.remove('open');
+      dropdown.querySelector('[data-dropdown-trigger]')?.setAttribute('aria-expanded', 'false');
+    });
     menuToggle?.setAttribute('aria-expanded', 'false');
-    dropdownTrigger?.setAttribute('aria-expanded', 'false');
     siteHeader?.classList.remove('is-hidden');
   };
 
@@ -115,10 +142,14 @@ const serviceItems = [
     }
   });
 
-  dropdownTrigger?.addEventListener('click', () => {
-    if (window.innerWidth > 980) return;
-    const isOpen = dropdown?.classList.toggle('open');
-    dropdownTrigger?.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  dropdowns.forEach((dropdown) => {
+    const dropdownTrigger = dropdown.querySelector('[data-dropdown-trigger]');
+
+    dropdownTrigger?.addEventListener('click', () => {
+      if (window.innerWidth > 980) return;
+      const isOpen = dropdown.classList.toggle('open');
+      dropdownTrigger.setAttribute('aria-expanded', String(Boolean(isOpen)));
+    });
   });
 
   menu?.querySelectorAll('a').forEach((link) => {
@@ -128,9 +159,11 @@ const serviceItems = [
   window.addEventListener('resize', () => {
     if (window.innerWidth > 980) {
       header?.classList.remove('menu-open');
-      dropdown?.classList.remove('open');
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove('open');
+        dropdown.querySelector('[data-dropdown-trigger]')?.setAttribute('aria-expanded', 'false');
+      });
       menuToggle?.setAttribute('aria-expanded', 'false');
-      dropdownTrigger?.setAttribute('aria-expanded', 'false');
     }
 
     siteHeader?.classList.remove('is-hidden');
@@ -301,6 +334,10 @@ const serviceItems = [
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(23, 22, 20, 0.12);
     backdrop-filter: blur(18px);
+  }
+
+  .dropdown-compact {
+    min-width: 260px;
   }
 
   .dropdown a {

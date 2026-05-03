@@ -5,52 +5,70 @@ import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
 import QuoteSection from '../components/QuoteSection.astro';
 import Footer from '../components/Footer.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const featured = [
   {
-    meta: 'Appartement premium · Neupré',
-    title: 'Rénovation intérieure complète',
-    description: 'Travail sur les murs, plafonds et volumes pour obtenir un rendu plus clair, plus net et plus statutaire.',
-    beforeImage: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
+    meta: 'Rénovation complète · Région liégeoise',
+    title: 'Grand volume remis à neuf',
+    description: 'Reprise totale des murs et plafonds d\'un séjour à volumes hauts — poutre apparente relaquée, finitions blanc mat, résultat épuré et lumineux.',
+    beforeImage: `${base}/images/peinture-interieure/volume-poutre-renovation-1.jpg`,
+    afterImage: `${base}/images/peinture-interieure/volume-poutre-renovation-2.jpg`,
   },
   {
-    meta: 'Maison contemporaine · Province de Liège',
-    title: 'Reprise des surfaces et cohérence d\'ensemble',
-    description: 'Une approche haut standing qui travaille autant le support que la perception finale du lieu.',
-    beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1400&q=80',
+    meta: 'Peinture décorative · Chambre',
+    title: 'Mur accent et rénovation chambre',
+    description: 'Transformation d\'une chambre par un travail sur la couleur et le volume — du mur orange existant vers un rendu neutre et contemporain.',
+    beforeImage: `${base}/images/peinture-interieure/chambre-renovation-avant-crop.jpg`,
+    afterImage: `${base}/images/peinture-interieure/chambre-renovation-apres-crop.jpg`,
+  },
+  {
+    meta: 'Rénovation intérieure · Pièce à vivre',
+    title: 'Remise en état complète — murs et finitions',
+    description: 'Pièce entièrement décapée, murs repris de zéro et repeints en teinte neutre sablée — sol refait, résultat propre et habitable.',
+    beforeImage: `${base}/images/peinture-interieure/piece-renovation-avant.jpg`,
+    afterImage: `${base}/images/peinture-interieure/piece-renovation-apres.jpg`,
+  },
+  {
+    meta: 'Traitement moisissures · Mur extérieur',
+    title: 'Traitement moisissures et repeinture',
+    description: 'Mur envahi par les moisissures traité, assaini et repeint — surface propre, protégée contre l\'humidité et les UV.',
+    beforeImage: `${base}/images/peinture-exterieure/moisissures-exterieur-avant.jpg`,
+    afterImage: `${base}/images/peinture-exterieure/moisissures-exterieur-apres.jpg`,
+  },
+  {
+    meta: 'Rénovation plafond · Salle de bain',
+    title: 'Plafond salle de bain — décapage et repeinture',
+    description: 'Plafond humide décapé, traité contre les champignons et repeint en blanc mat — rendu propre, net et durable en milieu humide.',
+    beforeImage: `${base}/images/peinture-interieure/plafond-sdb-avant.jpg`,
+    afterImage: `${base}/images/peinture-interieure/plafond-sdb-apres.jpg`,
   },
 ];
 
 const gallery = [
-  { category: 'interieur', label: 'Peinture intérieure', title: 'Salon et cuisine ouverte', location: 'Neupré', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80' },
-  { category: 'exterieur', label: 'Peinture extérieure', title: 'Façade maison quatre façades', location: 'Liège', image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=800&q=80' },
-  { category: 'sol', label: 'Revêtement de sol', title: 'Parquet flottant chêne naturel', location: 'Huy', image: 'https://images.unsplash.com/photo-1562184552-997c461abbe6?auto=format&fit=crop&w=800&q=80' },
-  { category: 'mural', label: 'Revêtement mural', title: 'Papier peint panoramique salon', location: 'Waremme', image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80' },
-  { category: 'boiserie', label: 'Boiserie & ferronneries', title: 'Escalier et rampe relaqués', location: 'Neupré', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80' },
-  { category: 'industriel', label: 'Époxy & industriel', title: 'Sol époxy atelier mécanique', location: 'Liège', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80' },
-  { category: 'interieur', label: 'Peinture intérieure', title: 'Chambre parentale et dressing', location: 'Neupré', image: 'https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=800&q=80' },
-  { category: 'interieur', label: 'Peinture intérieure', title: 'Couloir et cage d\'escalier', location: 'Liège', image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=800&q=80' },
-  { category: 'exterieur', label: 'Peinture extérieure', title: 'Annexe et abri de jardin', location: 'Huy', image: 'https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=800&q=80' },
-  { category: 'mural', label: 'Revêtement mural', title: 'Tête de lit papier intissé', location: 'Neupré', image: 'https://images.unsplash.com/photo-1560185127-6a600b9f8461?auto=format&fit=crop&w=800&q=80' },
-  { category: 'sol', label: 'Revêtement de sol', title: 'Vinyle LVT cuisine et séjour', location: 'Waremme', image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80' },
-  { category: 'boiserie', label: 'Boiserie & ferronneries', title: 'Portes et plinthes laquées blanc', location: 'Liège', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80' },
+  { category: 'interieur', label: 'Peinture intérieure', title: 'Maison Beaufays — couloir et escalier', location: 'Beaufays', image: `${base}/images/peinture-interieure/peinture-interieure-maison-beaufays.jpg` },
+  { category: 'exterieur', label: 'Peinture extérieure', title: 'Façade briques peintes — maison mitoyenne', location: 'Région liégeoise', image: `${base}/images/peinture-exterieure/facade-briques-blanc.jpg` },
+  { category: 'mural', label: 'Peinture décorative', title: 'Mural géométrique entrée', location: 'Région liégeoise', image: `${base}/images/revetement-mural/peinture-decorative-entree.jpg` },
+  { category: 'mural', label: 'Peinture décorative', title: 'Géométrique vert foncé — chambre', location: 'Région liégeoise', image: `${base}/images/revetement-mural/peinture-geometrique-vert-fonce.jpg` },
+  { category: 'enduits', label: 'Enduits décoratifs', title: 'Entrée texturée — finition décorative', location: 'Région liégeoise', image: `${base}/images/revetement-mural/peinture-decorative-entree.jpg` },
+  { category: 'interieur', label: 'Peinture intérieure', title: 'Grand séjour — volumes hauts et poutre relaquée', location: 'Région liégeoise', image: `${base}/images/peinture-interieure/volume-poutre-renovation-3.jpg` },
+  { category: 'interieur', label: 'Peinture intérieure', title: 'WC après rénovation — finitions blanc mat', location: 'Région liégeoise', image: `${base}/images/peinture-interieure/wc-renovation-blanc.jpg` },
+  { category: 'mural', label: 'Peinture décorative', title: 'Mur accent vert sauge — chambre', location: 'Région liégeoise', image: `${base}/images/peinture-interieure/mur-accent-vert-sauge.jpg` },
+  { category: 'mural', label: 'Peinture décorative', title: 'Géométrique gris-bleu — mansarde', location: 'Région liégeoise', image: `${base}/images/revetement-mural/peinture-geometrique-vert-menthe.jpg` },
 ];
 
 const filters = [
   { key: 'tous', label: 'Tous' },
   { key: 'interieur', label: 'Intérieur' },
   { key: 'exterieur', label: 'Extérieur' },
-  { key: 'sol', label: 'Sol' },
   { key: 'mural', label: 'Mural' },
-  { key: 'boiserie', label: 'Boiserie' },
-  { key: 'industriel', label: 'Industriel' },
+  { key: 'enduits', label: 'Enduits décoratifs' },
 ];
 ---
 
 <BaseLayout
   title="Réalisations — Moment D.Art"
-  description="Découvrez les chantiers réalisés par Moment D.Art à Neupré et en province de Liège. Peinture intérieure, extérieure, revêtements, boiseries — avant et après."
+  description="Découvrez les chantiers réalisés par Moment D.Art à Neupré et en région liégeoise. Peinture intérieure, extérieure, enduits décoratifs, revêtements et boiseries — avant et après."
 >
   <Header />
 
@@ -64,19 +82,23 @@ const filters = [
     </div>
   </section>
 
-  <section class="section section-featured">
+  <section class="section section-featured" id="avant-apres">
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Avant / après</span>
         <h2>Projets en vedette</h2>
       </div>
       <div class="featured-grid">
-        {featured.map((p) => <BeforeAfterSlider {...p} />)}
+        {featured.map((p) => (
+          <div class="featured-item">
+            <BeforeAfterSlider {...p} />
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section section-alt section-gallery">
+  <section class="section section-alt section-gallery" id="galerie">
     <div class="container">
       <div class="gallery-head">
         <div>
@@ -111,7 +133,6 @@ const filters = [
         ))}
       </div>
 
-      <p class="gallery-note">Photos placeholder — à remplacer par les vraies réalisations de Moment D.Art.</p>
     </div>
   </section>
 
@@ -126,7 +147,27 @@ const filters = [
 
   .featured-grid {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    align-items: stretch;
+  }
+
+  .featured-item {
+    min-width: 0;
+    height: 100%;
+    display: flex;
+  }
+
+  .featured-item :global(.showcase) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .featured-grid > .featured-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.5rem);
+    justify-self: center;
+    width: 100%;
   }
 
   .gallery-head {
@@ -258,21 +299,63 @@ const filters = [
     display: none;
   }
 
+  .gallery-card.is-last-visible-centered {
+    grid-column: 2;
+  }
+
   @media (max-width: 900px) {
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .gallery-head { flex-direction: column; align-items: flex-start; }
+
+    .gallery-card.is-last-visible-centered {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 0.5rem);
+      justify-self: center;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+    .featured-grid > .featured-item:last-child:nth-child(odd) {
+      grid-column: auto;
+      max-width: 100%;
+      justify-self: stretch;
+    }
   }
 
   @media (max-width: 560px) {
     .gallery-grid { grid-template-columns: 1fr; }
     .filter-bar { gap: 0.4rem; }
     .filter-btn { font-size: 0.8rem; padding: 0.48rem 0.9rem; }
+
+    .gallery-card.is-last-visible-centered {
+      grid-column: auto;
+      max-width: 100%;
+      justify-self: stretch;
+    }
   }
 </style>
 
 <script>
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const cards = document.querySelectorAll<HTMLElement>('.gallery-card');
+  const galleryGrid = document.querySelector<HTMLElement>('#gallery-grid');
+
+  const updateLastVisibleCard = () => {
+    cards.forEach((card) => card.classList.remove('is-last-visible-centered'));
+
+    if (!galleryGrid) return;
+
+    const visibleCards = Array.from(cards).filter((card) => !card.hasAttribute('data-hidden'));
+    const columns = getComputedStyle(galleryGrid).gridTemplateColumns.split(' ').filter(Boolean).length;
+
+    if (columns > 1 && visibleCards.length % columns === 1) {
+      visibleCards[visibleCards.length - 1]?.classList.add('is-last-visible-centered');
+    }
+  };
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -287,6 +370,11 @@ const filters = [
           card.setAttribute('data-hidden', '');
         }
       });
+
+      updateLastVisibleCard();
     });
   });
+
+  window.addEventListener('resize', updateLastVisibleCard);
+  updateLastVisibleCard();
 </script>

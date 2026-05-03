@@ -1,13 +1,14 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <ServiceLayout
   title="Peinture extérieure — Moment D.Art"
-  description="Peinture extérieure de façades, annexes et éléments de toiture à Neupré et en province de Liège. Protection durable, finition soignée, produits adaptés au climat belge."
+  description="Peinture extérieure de façades, annexes et éléments de toiture à Neupré et en région liégeoise. Protection durable, finition soignée, produits adaptés au climat belge."
   heroTitle="Peinture extérieure"
   heroLead="Façades, annexes et éléments extérieurs protégés et remis en valeur avec des systèmes adaptés aux contraintes climatiques belges."
-  heroImage="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1400&q=80"
-  heroImageAlt="Peinture extérieure de façade"
+  heroImage={`${base}/images/peinture-exterieure/facade-briques-blanc.jpg`}
+  heroImageAlt="Façade briques peintes en blanc — peinture extérieure"
   current="Peinture extérieure"
 >
   <div slot="context" class="grid-2">
@@ -48,7 +49,7 @@ import ServiceLayout from '../../layouts/ServiceLayout.astro';
       </div>
       <div class="card finish-card">
         <h3>Béton & parpaing</h3>
-        <p>Nettoyage, impression spécifique béton, peinture acrylique ou époxy selon l'exposition et l'usage.</p>
+        <p>Nettoyage, impression spécifique béton et peinture acrylique ou minérale selon l'exposition et l'usage.</p>
       </div>
     </div>
   </Fragment>

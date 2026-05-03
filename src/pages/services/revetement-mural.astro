@@ -1,13 +1,14 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <ServiceLayout
   title="Revêtement mural — Moment D.Art"
-  description="Pose de papiers peints, revêtements muraux et textures décoratives à Neupré et en province de Liège. Finitions élégantes pour intérieurs haut de gamme."
+  description="Pose de papiers peints, revêtements muraux et textures décoratives à Neupré et en région liégeoise. Finitions élégantes pour intérieurs haut de gamme."
   heroTitle="Revêtement mural"
   heroLead="Pose de papiers peints, revêtements vinyliques et textures murales pour apporter matière, profondeur et raffinement à un intérieur."
-  heroImage="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=80"
-  heroImageAlt="Revêtement mural papier peint haut de gamme"
+  heroImage={`${base}/images/revetement-mural/peinture-decorative-entree.jpg`}
+  heroImageAlt="Peinture décorative murale entrée"
   current="Revêtement mural"
 >
   <div slot="context" class="grid-2">

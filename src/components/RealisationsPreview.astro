@@ -1,20 +1,22 @@
 ---
 import BeforeAfterSlider from './BeforeAfterSlider.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const projects = [
   {
-    meta: 'Test',
-    title: 'Test avant / après',
-    description: 'Test du slider avec la même image.',
-    beforeImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
+    meta: 'Peinture décorative · Chambre',
+    title: 'Mur accent et rénovation chambre',
+    description: `Transformation d’une chambre par un travail sur la couleur et le volume — du mur orange existant vers un rendu neutre et contemporain.`,
+    beforeImage: `${base}/images/peinture-interieure/chambre-renovation-avant-crop.jpg`,
+    afterImage: `${base}/images/peinture-interieure/chambre-renovation-apres-crop.jpg`,
   },
   {
-    meta: 'Maison contemporaine · Province de Liège',
-    title: 'Reprise globale et finitions premium',
-    description: 'Une mise en scène sobre du résultat pour appuyer l’image haut standing et la qualité d’exécution.',
-    beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1400&q=80',
+    meta: 'Rénovation intérieure · Pièce à vivre',
+    title: 'Remise en état complète — murs et finitions',
+    description: `Pièce entièrement décapée, murs repris de zéro et repeints en teinte neutre sablée — résultat propre et habitable.`,
+    beforeImage: `${base}/images/peinture-interieure/piece-renovation-avant.jpg`,
+    afterImage: `${base}/images/peinture-interieure/piece-renovation-apres.jpg`,
   },
 ];
 ---
@@ -81,6 +83,13 @@ const projects = [
     height: 100%;
   }
 
+  .showcases > .showcase-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.5rem);
+    justify-self: center;
+    width: 100%;
+  }
+
   .more-link {
     margin-top: 1.2rem;
   }
@@ -121,6 +130,12 @@ const projects = [
   @media (max-width: 980px) {
     .showcases {
       grid-template-columns: 1fr;
+    }
+
+    .showcases > .showcase-item:last-child:nth-child(odd) {
+      grid-column: auto;
+      max-width: 100%;
+      justify-self: stretch;
     }
   }
 </style>

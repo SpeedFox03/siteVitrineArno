@@ -33,17 +33,21 @@ const {
 
     <div class="overlay" style="clip-path: inset(0 50% 0 0);">
       <img src={afterImage} alt={`${title} - ${afterLabel}`} class="overlay-image" loading="lazy" />
+      <span class="label label-after">{afterLabel}</span>
     </div>
 
-    <div class="labels">
-      <span>{beforeLabel}</span>
-      <span>{afterLabel}</span>
+    <div class="before-label-layer" style="clip-path: inset(0 0 0 50%);">
+      <span class="label label-before">{beforeLabel}</span>
     </div>
 
     <input aria-label={`Comparer ${beforeLabel} et ${afterLabel}`} type="range" min="0" max="100" value="50" />
 
     <div class="divider" style="left: 50%;">
-      <div class="handle"></div>
+      <div class="handle">
+        <svg class="handle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M8 12H16M8 12L5 9M8 12L5 15M16 12L19 9M16 12L19 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
   </div>
 </article>
@@ -142,6 +146,14 @@ const {
     z-index: 1;
   }
 
+  .before-label-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .overlay::after {
     content: '';
     position: absolute;
@@ -157,27 +169,32 @@ const {
     filter: saturate(0.95) contrast(1.02);
   }
 
-  .labels {
+  .label {
     position: absolute;
-    left: 1rem;
-    right: 1rem;
-    top: 1rem;
-    display: flex;
-    justify-content: space-between;
+    bottom: 1rem;
     pointer-events: none;
     z-index: 2;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.42rem 0.85rem;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(23,22,20,0.08);
+    box-shadow: 0 6px 16px rgba(23,22,20,0.12);
   }
 
-  .labels span {
-    background: rgba(255,255,255,0.78);
-    color: var(--text);
-    padding: 0.45rem 0.72rem;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(23,22,20,0.06);
-    box-shadow: 0 8px 18px rgba(23,22,20,0.07);
+  .label-before {
+    right: 1rem;
+    background: rgba(36,29,23,0.72);
+    color: rgba(255,255,255,0.92);
+  }
+
+  .label-after {
+    left: 1rem;
+    background: var(--accent);
+    color: #faf7f2;
   }
 
   .ba-slider input[type='range'] {
@@ -216,33 +233,21 @@ const {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 58px;
-    height: 58px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 16px 30px rgba(23,22,20,0.14);
-    border: 1px solid rgba(23,22,20,0.08);
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(23,22,20,0.22), 0 1px 4px rgba(23,22,20,0.10);
+    border: 1.5px solid rgba(23,22,20,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .handle::before,
-  .handle::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 9px;
-    height: 9px;
-    border-top: 1.5px solid var(--text);
-    border-right: 1.5px solid var(--text);
-  }
-
-  .handle::before {
-    left: 17px;
-    transform: translateY(-50%) rotate(-135deg);
-  }
-
-  .handle::after {
-    right: 17px;
-    transform: translateY(-50%) rotate(45deg);
+  .handle-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--text);
   }
 
   @media (max-width: 860px) {
@@ -260,34 +265,17 @@ const {
       border-radius: 20px;
     }
 
-    .labels {
-      left: 0.8rem;
-      right: 0.8rem;
-      top: 0.8rem;
+    .label {
+      font-size: 0.68rem;
+      padding: 0.38rem 0.7rem;
     }
 
-    .labels span {
-      padding: 0.38rem 0.62rem;
-      font-size: 0.72rem;
-    }
+    .label-before { right: 0.8rem; }
+    .label-after  { left: 0.8rem; }
 
     .handle {
-      width: 48px;
-      height: 48px;
-    }
-
-    .handle::before,
-    .handle::after {
-      width: 8px;
-      height: 8px;
-    }
-
-    .handle::before {
-      left: 14px;
-    }
-
-    .handle::after {
-      right: 14px;
+      width: 46px;
+      height: 46px;
     }
   }
 
@@ -313,29 +301,25 @@ const {
       aspect-ratio: 4 / 3;
     }
 
-    .labels {
-      left: 0.7rem;
-      right: 0.7rem;
-      top: 0.7rem;
+    .label {
+      font-size: 0.62rem;
+      padding: 0.32rem 0.6rem;
+      bottom: 0.7rem;
     }
 
-    .labels span {
-      padding: 0.34rem 0.56rem;
-      font-size: 0.68rem;
-    }
+    .label-before { right: 0.7rem; }
+    .label-after  { left: 0.7rem; }
 
     .handle {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
     }
 
-    .handle::before {
-      left: 13px;
+    .handle-icon {
+      width: 18px;
+      height: 18px;
     }
 
-    .handle::after {
-      right: 13px;
-    }
   }
 </style>
 
@@ -343,11 +327,13 @@ const {
   document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
     const input = slider.querySelector('input');
     const overlay = slider.querySelector('.overlay');
+    const beforeLabelLayer = slider.querySelector('.before-label-layer');
     const divider = slider.querySelector('.divider');
 
     const update = () => {
       const value = Number(input.value);
       overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+      beforeLabelLayer.style.clipPath = `inset(0 0 0 ${value}%)`;
       divider.style.left = `${value}%`;
     };
 

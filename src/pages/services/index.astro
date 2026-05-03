@@ -5,14 +5,16 @@ import ServicesOverview from '../../components/ServicesOverview.astro';
 import QuoteSection from '../../components/QuoteSection.astro';
 import Footer from '../../components/Footer.astro';
 ---
-<BaseLayout title="Services — Moment D.Art" description="Découvrez les services haut de gamme de Moment D.Art : peinture intérieure, peinture extérieure, peinture industrielle et époxy, revêtement de sol, revêtement mural, boiserie et ferronneries.">
+<BaseLayout title="Services — Moment D.Art" description="Découvrez les services haut de gamme de Moment D.Art : peinture intérieure, peinture extérieure, enduits décoratifs, revêtement de sol, revêtement mural, boiserie et ferronneries.">
   <Header />
   <section class="page-hero">
     <div class="container">
       <div class="card hero-card">
-        <span class="eyebrow">Services</span>
-        <h1>Des prestations pensées pour des projets exigeants.</h1>
-        <p class="lead">Chaque intervention est abordée avec la même exigence de préparation, de finition et de cohérence esthétique, qu’il s’agisse d’un intérieur privé, d’une façade, d’un atelier, d’un sol, d’un mur ou d’éléments en bois et métal.</p>
+        <div class="hero-title">
+          <span class="eyebrow">Services</span>
+          <h1>Des prestations pensées pour des projets exigeants.</h1>
+        </div>
+        <p class="lead">Chaque intervention est abordée avec la même exigence de préparation, de finition et de cohérence esthétique, qu’il s’agisse d’un intérieur privé, d’une façade, d’un enduit décoratif, d’un sol, d’un mur ou d’éléments en bois et métal.</p>
       </div>
     </div>
   </section>
@@ -22,6 +24,57 @@ import Footer from '../../components/Footer.astro';
 </BaseLayout>
 
 <style>
-  .hero-card { padding: 1.7rem; }
-  .hero-card h1 { max-width: 12ch; margin: 0.85rem 0 1rem; }
+  .hero-card {
+    padding: 1.7rem;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) 1px minmax(0, 1.05fr);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .hero-card::before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    min-height: 8rem;
+    background: rgba(177, 138, 104, 0.32);
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .hero-title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-card h1 { max-width: 12ch; margin: 0.85rem 0 0; }
+
+  .hero-card .lead {
+    grid-column: 3;
+    grid-row: 1;
+    margin: 0;
+    justify-self: end;
+  }
+
+  @media (max-width: 760px) {
+    .hero-card {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+    }
+
+    .hero-card::before {
+      display: none;
+    }
+
+    .hero-title,
+    .hero-card .lead {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .hero-card .lead {
+      justify-self: start;
+    }
+  }
 </style>

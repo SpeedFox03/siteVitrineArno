@@ -1,24 +1,14 @@
 ---
 import BeforeAfterSlider from './BeforeAfterSlider.astro';
+import { avantApresProjects } from '../data/avantApres';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const projects = [
-  {
-    meta: 'Peinture décorative · Chambre',
-    title: 'Mur accent et rénovation chambre',
-    description: `Transformation d’une chambre par un travail sur la couleur et le volume — du mur orange existant vers un rendu neutre et contemporain.`,
-    beforeImage: `${base}/images/peinture-interieure/chambre-renovation-avant-crop.jpg`,
-    afterImage: `${base}/images/peinture-interieure/chambre-renovation-apres-crop.jpg`,
-  },
-  {
-    meta: 'Rénovation intérieure · Pièce à vivre',
-    title: 'Remise en état complète — murs et finitions',
-    description: `Pièce entièrement décapée, murs repris de zéro et repeints en teinte neutre sablée — résultat propre et habitable.`,
-    beforeImage: `${base}/images/peinture-interieure/piece-renovation-avant.jpg`,
-    afterImage: `${base}/images/peinture-interieure/piece-renovation-apres.jpg`,
-  },
-];
+const projects = [avantApresProjects[3], avantApresProjects[5]].map((project) => ({
+  ...project,
+  beforeImage: `${base}${project.beforeImage}`,
+  afterImage: `${base}${project.afterImage}`,
+}));
 ---
 
 <section class="section" id="realisations-home" data-realisations-section>

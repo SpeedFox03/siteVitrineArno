@@ -1,0 +1,276 @@
+---
+import type { Projet } from '../data/projets';
+import { serviceLabels } from '../data/projets';
+
+interface Props {
+  projet: Projet;
+  base?: string;
+}
+
+const { projet, base = '' } = Astro.props;
+const hasMultiple = projet.photos.length > 1;
+const photos = projet.photos.map(p => `${base}${p}`);
+---
+
+<article class="projet-card" data-projet-card data-category={projet.categorie}>
+  <a href={`${base}/galerie/${projet.slug}`} class="card-link" aria-label={`${projet.titre} — ${projet.localisation}`}>
+    <div class="card-media">
+      {photos.map((src, i) => (
+        <img
+          src={src}
+          alt={`${projet.titre} à ${projet.localisation}${projet.photos.length > 1 ? ` — photo ${i + 1}` : ''}`}
+          class={`photo-slide${i === 0 ? ' is-active' : ''}`}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          draggable="false"
+        />
+      ))}
+
+      <div class="card-overlay">
+        <span class="category-badge">{serviceLabels[projet.categorie]}</span>
+        {hasMultiple && (
+          <span class="photo-count">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+              <path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            {projet.photos.length}
+          </span>
+        )}
+      </div>
+
+      <div class="card-hover-cta">
+        <span>Voir le projet</span>
+      </div>
+
+      {hasMultiple && (
+        <div class="dots" aria-hidden="true">
+          {photos.map((_, i) => (
+            <span class={`dot${i === 0 ? ' is-active' : ''}`} />
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="card-info">
+      <h3 class="card-title">{projet.titre}</h3>
+      <p class="card-location">
+        <svg width="11" height="13" viewBox="0 0 11 13" fill="none" aria-hidden="true">
+          <path d="M5.5 0C3.015 0 1 2.015 1 4.5c0 3.375 4.5 8.5 4.5 8.5S10 7.875 10 4.5C10 2.015 7.985 0 5.5 0zm0 6.125A1.625 1.625 0 1 1 5.5 2.875a1.625 1.625 0 0 1 0 3.25z" fill="currentColor"/>
+        </svg>
+        {projet.localisation}
+        {projet.annee && <span class="year">{projet.annee}</span>}
+      </p>
+    </div>
+  </a>
+</article>
+
+<style>
+  .projet-card {
+    border-radius: var(--radius-lg);
+    background: var(--surface-strong);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    will-change: transform;
+  }
+
+  .projet-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+  }
+
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* ── Media ── */
+  .card-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bg-soft);
+  }
+
+  .photo-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.75s ease;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .photo-slide.is-active {
+    opacity: 1;
+  }
+
+  /* ── Overlay ── */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18,13,8,0.28) 0%, transparent 40%, transparent 60%, rgba(18,13,8,0.18) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.85rem;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .category-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    color: var(--accent-strong);
+    border: 1px solid rgba(255,255,255,0.5);
+    white-space: nowrap;
+  }
+
+  .photo-count {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    background: rgba(18,13,8,0.45);
+    backdrop-filter: blur(8px);
+    padding: 0.32rem 0.62rem;
+    border-radius: 999px;
+  }
+
+  /* ── Hover CTA ── */
+  .card-hover-cta {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 2;
+  }
+
+  .card-hover-cta span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(18,13,8,0.28);
+  }
+
+  .projet-card:hover .card-hover-cta {
+    opacity: 1;
+  }
+
+  /* ── Dots ── */
+  .dots {
+    position: absolute;
+    bottom: 0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 3;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .dot.is-active {
+    background: #fff;
+    transform: scale(1.3);
+  }
+
+  /* ── Info ── */
+  .card-info {
+    padding: 1rem 1.1rem 1.15rem;
+  }
+
+  .card-title {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+  }
+
+  .card-location {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .card-location svg {
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .year {
+    margin-left: auto;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted-2);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-projet-card]').forEach((card) => {
+    const slides = card.querySelectorAll<HTMLElement>('.photo-slide');
+    const dots = card.querySelectorAll<HTMLElement>('.dot');
+    if (slides.length <= 1) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    const goTo = (n: number) => {
+      slides[current].classList.remove('is-active');
+      dots[current]?.classList.remove('is-active');
+      current = ((n % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current]?.classList.add('is-active');
+    };
+
+    const start = () => {
+      if (timer) return;
+      timer = setInterval(() => goTo(current + 1), 3200);
+    };
+
+    const stop = () => {
+      if (timer) { clearInterval(timer); timer = null; }
+    };
+
+    card.addEventListener('mouseenter', stop);
+    card.addEventListener('mouseleave', start);
+
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting ? start() : stop()),
+      { threshold: 0.3 }
+    );
+    io.observe(card);
+  });
+</script>

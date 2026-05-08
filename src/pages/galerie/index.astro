@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProjetCard from '../../components/ProjetCard.astro';
+import { projets, serviceLabels } from '../../data/projets';
+import type { ServiceSlug } from '../../data/projets';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const categories = [...new Set(projets.map(p => p.categorie))] as ServiceSlug[];
+---
+
+<BaseLayout
+  title="Galerie — Moment D.Art"
+  description="Découvrez nos réalisations en peinture intérieure, extérieure, enduits décoratifs, revêtements et boiseries. Projets réalisés à Neupré et en région liégeoise."
+>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="card" style="padding:2rem;">
+        <span class="eyebrow">Galerie</span>
+        <h1>Chaque chantier raconte une histoire.</h1>
+        <p class="lead" style="max-width:58ch;">Des intérieurs transformés, des extérieurs ravivés, des matières sublimées — voici les projets récents de Moment D.Art, classés par type d'intervention.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="filter-bar-wrapper" id="filter-bar">
+    <div class="container">
+      <div class="filter-bar" role="tablist" aria-label="Filtrer par catégorie">
+        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+          Tous <span class="count">{projets.length}</span>
+        </button>
+        {categories.map(cat => {
+          const count = projets.filter(p => p.categorie === cat).length;
+          return (
+            <button class="filter-btn" data-filter={cat} role="tab" aria-selected="false">
+              {serviceLabels[cat]} <span class="count">{count}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+
+  <section class="section galerie-section">
+    <div class="container">
+      <div class="projets-grid" id="projets-grid">
+        {projets.map(projet => (
+          <div class="grid-item" data-item-category={projet.categorie}>
+            <ProjetCard projet={projet} base={base} />
+          </div>
+        ))}
+      </div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <p>Aucun projet dans cette catégorie pour le moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero h1 {
+    margin: 0.9rem 0 1.1rem;
+  }
+
+  /* ── Filter bar ── */
+  .filter-bar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(246, 242, 235, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    padding: 0.75rem 0;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    padding: 0.48rem 1rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--line-strong);
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .filter-btn.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(177,138,104,0.32);
+  }
+
+  .count {
+    font-size: 0.68rem;
+    font-weight: 700;
+    opacity: 0.7;
+  }
+
+  .filter-btn.is-active .count { opacity: 0.85; }
+
+  /* ── Grid ── */
+  .galerie-section {
+    padding-top: 2.5rem;
+  }
+
+  .projets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .grid-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .grid-item.is-hiding {
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none;
+  }
+
+  .grid-item.is-hidden {
+    display: none;
+  }
+
+  .grid-item.is-showing {
+    animation: fadeIn 0.35s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 960px) {
+    .projets-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .projets-grid { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.grid-item');
+  const emptyState = document.getElementById('empty-state') as HTMLElement;
+
+  let activeFilter = 'all';
+
+  const applyFilter = (filter: string) => {
+    activeFilter = filter;
+
+    // Update buttons
+    btns.forEach(btn => {
+      const isActive = btn.dataset.filter === filter;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-selected', String(isActive));
+    });
+
+    // Categorize items
+    const toHide: HTMLElement[] = [];
+    const toShow: HTMLElement[] = [];
+
+    items.forEach(item => {
+      const cat = item.dataset.itemCategory ?? '';
+      const matches = filter === 'all' || cat === filter;
+      if (matches) toShow.push(item);
+      else toHide.push(item);
+    });
+
+    // Hide non-matching
+    toHide.forEach(item => {
+      if (item.classList.contains('is-hidden')) return;
+      item.classList.add('is-hiding');
+      item.addEventListener('transitionend', () => {
+        item.classList.remove('is-hiding');
+        item.classList.add('is-hidden');
+      }, { once: true });
+    });
+
+    // Show matching
+    toShow.forEach(item => {
+      item.classList.remove('is-hidden', 'is-hiding');
+      item.classList.add('is-showing');
+      item.addEventListener('animationend', () => {
+        item.classList.remove('is-showing');
+      }, { once: true });
+    });
+
+    // Empty state
+    const visibleCount = toShow.length;
+    emptyState.hidden = visibleCount > 0;
+  };
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'all';
+      if (filter !== activeFilter) applyFilter(filter);
+    });
+  });
+</script>

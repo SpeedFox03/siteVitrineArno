@@ -7,20 +7,37 @@ interface Props {
   afterLabel?: string;
   beforeImage: string;
   afterImage: string;
+  frame?: 'landscape' | 'portrait';
+  axis?: 'horizontal' | 'vertical';
+  blurSides?: boolean;
 }
 
+const props = Astro.props;
 const {
   title,
-  description,
   meta,
   beforeLabel = 'Avant',
   afterLabel = 'Après',
   beforeImage,
   afterImage,
-} = Astro.props;
+} = props;
+
+const frame = props.frame ?? 'landscape';
+const blurSides = props.blurSides ?? true;
+const axis = props.axis ?? (frame === 'portrait' ? 'vertical' : 'horizontal');
+const overlayClip = axis === 'vertical'
+  ? 'clip-path: inset(0 0 50% 0);'
+  : 'clip-path: inset(0 50% 0 0);';
+const beforeLabelClip = axis === 'vertical'
+  ? 'clip-path: inset(50% 0 0 0);'
+  : 'clip-path: inset(0 0 0 50%);';
+const dividerPosition = axis === 'vertical' ? 'top: 50%;' : 'left: 50%;';
+const sliderStyle = (frame === 'portrait' && blurSides)
+  ? `--blur-before: url("${beforeImage}"); --blur-after: url("${afterImage}");`
+  : undefined;
 ---
 
-<article class="showcase card">
+<article class={`showcase card frame-${frame} axis-${axis}`}>
   <div class="showcase-head">
     <div>
       <p class="meta">{meta}</p>
@@ -28,21 +45,21 @@ const {
     </div>
   </div>
 
-  <div class="ba-slider" data-ba-slider>
+  <div class="ba-slider" data-ba-slider data-axis={axis} style={sliderStyle}>
     <img src={beforeImage} alt={`${title} - ${beforeLabel}`} class="base-image" loading="lazy" />
 
-    <div class="overlay" style="clip-path: inset(0 50% 0 0);">
+    <div class="overlay" style={overlayClip}>
       <img src={afterImage} alt={`${title} - ${afterLabel}`} class="overlay-image" loading="lazy" />
       <span class="label label-after">{afterLabel}</span>
     </div>
 
-    <div class="before-label-layer" style="clip-path: inset(0 0 0 50%);">
+    <div class="before-label-layer" style={beforeLabelClip}>
       <span class="label label-before">{beforeLabel}</span>
     </div>
 
-    <input aria-label={`Comparer ${beforeLabel} et ${afterLabel}`} type="range" min="0" max="100" value="50" />
+    <input aria-label={`Comparer ${beforeLabel} et ${afterLabel}`} aria-orientation={axis === 'vertical' ? 'vertical' : 'horizontal'} type="range" min="0" max="100" value="50" />
 
-    <div class="divider" style="left: 50%;">
+    <div class="divider" style={dividerPosition}>
       <div class="handle">
         <svg class="handle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M8 12H16M8 12L5 9M8 12L5 15M16 12L19 9M16 12L19 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -107,6 +124,7 @@ const {
     position: relative;
     border-radius: 24px;
     overflow: hidden;
+    isolation: isolate;
     aspect-ratio: 16 / 10;
     width: 100%;
     background: #ece4d8;
@@ -118,6 +136,34 @@ const {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(18,13,8,0.04), transparent 30%, rgba(18,13,8,0.12));
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* Blurred background for portrait images in landscape frame */
+  .frame-portrait .ba-slider::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--blur-before);
+    background-size: cover;
+    background-position: center;
+    filter: blur(22px);
+    transform: scale(1.12);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .frame-portrait .overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--blur-after);
+    background-size: cover;
+    background-position: center;
+    filter: blur(22px);
+    transform: scale(1.12);
+    z-index: 0;
     pointer-events: none;
   }
 
@@ -133,6 +179,13 @@ const {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 1;
+  }
+
+  /* Portrait images fill height, blur fills sides */
+  .frame-portrait .base-image,
+  .frame-portrait .overlay-image {
+    object-fit: contain;
   }
 
   .base-image {
@@ -143,26 +196,37 @@ const {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
   }
 
   .before-label-layer {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
   }
 
   .overlay::after {
     content: '';
     position: absolute;
+    background: rgba(255,255,255,0.85);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .axis-horizontal .overlay::after {
     top: 0;
     bottom: 0;
     right: 0;
     width: 1px;
-    background: rgba(255,255,255,0.85);
-    pointer-events: none;
+  }
+
+  .axis-vertical .overlay::after {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
   }
 
   .overlay-image {
@@ -197,42 +261,72 @@ const {
     color: #faf7f2;
   }
 
+  .axis-vertical .label-after {
+    top: 1rem;
+    bottom: auto;
+  }
+
   .ba-slider input[type='range'] {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
-    cursor: ew-resize;
     margin: 0;
     z-index: 3;
+    touch-action: none;
+  }
+
+  .axis-horizontal .ba-slider input[type='range'] {
+    cursor: ew-resize;
+  }
+
+  .axis-vertical .ba-slider input[type='range'] {
+    writing-mode: vertical-lr;
+    cursor: ns-resize;
   }
 
   .divider {
     position: absolute;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .axis-horizontal .divider {
     top: 0;
     bottom: 0;
     width: 0;
-    pointer-events: none;
-    z-index: 2;
+  }
+
+  .axis-vertical .divider {
+    left: 0;
+    right: 0;
+    height: 0;
   }
 
   .divider::before {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 1px;
     background: rgba(255,255,255,0.95);
     box-shadow: 0 0 0 1px rgba(23,22,20,0.08);
   }
 
+  .axis-horizontal .divider::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+  }
+
+  .axis-vertical .divider::before {
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+  }
+
   .handle {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -244,10 +338,26 @@ const {
     justify-content: center;
   }
 
+  .axis-horizontal .handle {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .axis-vertical .handle {
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+  }
+
   .handle-icon {
     width: 22px;
     height: 22px;
     color: var(--text);
+  }
+
+  .axis-vertical .handle-icon {
+    transform: rotate(90deg);
   }
 
   @media (max-width: 860px) {
@@ -325,19 +435,59 @@ const {
 
 <script>
   document.querySelectorAll('[data-ba-slider]').forEach((slider) => {
-    const input = slider.querySelector('input');
-    const overlay = slider.querySelector('.overlay');
-    const beforeLabelLayer = slider.querySelector('.before-label-layer');
-    const divider = slider.querySelector('.divider');
+    const input = slider.querySelector<HTMLInputElement>('input');
+    const overlay = slider.querySelector<HTMLElement>('.overlay');
+    const beforeLabelLayer = slider.querySelector<HTMLElement>('.before-label-layer');
+    const divider = slider.querySelector<HTMLElement>('.divider');
+    const axis = slider.getAttribute('data-axis') === 'vertical' ? 'vertical' : 'horizontal';
 
-    const update = () => {
-      const value = Number(input.value);
-      overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-      beforeLabelLayer.style.clipPath = `inset(0 0 0 ${value}%)`;
-      divider.style.left = `${value}%`;
+    if (!input || !overlay || !beforeLabelLayer || !divider) return;
+
+    const clamp = (value: number) => Math.min(100, Math.max(0, value));
+
+    const apply = (value: number) => {
+      const v = clamp(value);
+      input.value = String(v);
+      if (axis === 'vertical') {
+        overlay.style.clipPath = `inset(0 0 ${100 - v}% 0)`;
+        beforeLabelLayer.style.clipPath = `inset(${v}% 0 0 0)`;
+        (divider as HTMLElement).style.top = `${v}%`;
+      } else {
+        overlay.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+        beforeLabelLayer.style.clipPath = `inset(0 0 0 ${v}%)`;
+        (divider as HTMLElement).style.left = `${v}%`;
+      }
     };
 
-    input.addEventListener('input', update);
-    update();
+    const valueFromPointer = (event: PointerEvent) => {
+      const rect = (slider as HTMLElement).getBoundingClientRect();
+      const raw = axis === 'vertical'
+        ? ((event.clientY - rect.top) / rect.height) * 100
+        : ((event.clientX - rect.left) / rect.width) * 100;
+      return Math.round(clamp(raw));
+    };
+
+    let pointerActive = false;
+
+    // Keyboard support via native input (only when not dragging)
+    input.addEventListener('input', () => {
+      if (!pointerActive) apply(Number(input.value));
+    });
+
+    (slider as HTMLElement).addEventListener('pointerdown', (e) => {
+      pointerActive = true;
+      (slider as HTMLElement).setPointerCapture((e as PointerEvent).pointerId);
+      apply(valueFromPointer(e as PointerEvent));
+    });
+
+    (slider as HTMLElement).addEventListener('pointermove', (e) => {
+      if (!pointerActive) return;
+      apply(valueFromPointer(e as PointerEvent));
+    });
+
+    (slider as HTMLElement).addEventListener('pointerup', () => { pointerActive = false; });
+    (slider as HTMLElement).addEventListener('pointercancel', () => { pointerActive = false; });
+
+    apply(50);
   });
 </script>

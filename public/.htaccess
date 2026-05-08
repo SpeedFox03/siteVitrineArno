@@ -1,0 +1,23 @@
+Options -Indexes
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# www → sans www
+RewriteCond %{HTTP_HOST} ^www\.momentdart\.be$ [NC]
+RewriteRule ^ https://momentdart.be%{REQUEST_URI} [L,R=301]
+
+# Servir les fichiers et dossiers existants directement
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Astro static : /page → /page/index.html (sans redirect visible)
+RewriteCond %{REQUEST_FILENAME}/ -d
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+RewriteRule ^(.+[^/])$ $1/ [L,R=301]
+
+# Page 404 personnalisée
+ErrorDocument 404 /404/index.html

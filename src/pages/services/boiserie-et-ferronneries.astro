@@ -1,13 +1,14 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <ServiceLayout
   title="Boiserie et ferronneries — Moment D.Art"
   description="Remise en peinture de boiseries, portes, châssis, garde-corps et éléments métalliques à Neupré et en région liégeoise. Finitions soignées pour intérieurs premium."
   heroTitle="Boiserie & ferronneries"
   heroLead="Portes, châssis, boiseries décoratives, garde-corps et éléments métalliques repris avec précision pour renforcer le standing du lieu."
-  heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=80"
-  heroImageAlt="Boiserie et ferronneries peintes avec soin"
+  heroImage={`${base}/images/avant-apres/01-escalier-bois-apres.jpg`}
+  heroImageAlt="Escalier bois remis au clair — boiseries rénovées"
   current="Boiserie & ferronneries"
 >
   <div slot="context" class="grid-2">

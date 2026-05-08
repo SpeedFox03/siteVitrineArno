@@ -360,7 +360,7 @@
       try {
         const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-        const res = await fetch(`${base}/api/contact`, {
+        const res = await fetch(`${base}/api/contact.php`, {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }

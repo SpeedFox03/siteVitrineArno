@@ -4,7 +4,10 @@ import ScrollReveal from '../components/ScrollReveal.astro';
 const {
   title = 'Moment D.Art — Peinture haut de gamme à Neupré',
   description = "Moment D.Art, entreprise de peinture haut de gamme à Neupré et en région liégeoise. Peinture intérieure, extérieure, enduits décoratifs, revêtements muraux, sols, boiseries et ferronneries pour projets résidentiels et professionnels premium.",
+  ogImage = 'https://momentdart.be/images/avant-apres/06-salon-mur-vert-sauge-apres.jpg',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, 'https://momentdart.be').href;
 ---
 <!doctype html>
 <html lang="fr">
@@ -13,6 +16,26 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo-premium-transparent.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="fr_BE" />
+    <meta property="og:site_name" content="Moment D.Art" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

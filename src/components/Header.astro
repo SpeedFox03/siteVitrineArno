@@ -2,17 +2,17 @@
 import { logoSvg } from '../utils/icons';
 
 const serviceItems = [
-  { href: `${import.meta.env.BASE_URL}/services/peinture-interieure`, label: 'Peinture intérieure' },
-  { href: `${import.meta.env.BASE_URL}/services/peinture-exterieure`, label: 'Peinture extérieure' },
-  { href: `${import.meta.env.BASE_URL}/services/enduits-decoratifs`, label: 'Enduits décoratifs' },
-  { href: `${import.meta.env.BASE_URL}/services/revetement-de-sol`, label: 'Revêtement de sol' },
-  { href: `${import.meta.env.BASE_URL}/services/revetement-mural`, label: 'Revêtement mural' },
-  { href: `${import.meta.env.BASE_URL}/services/boiserie-et-ferronneries`, label: 'Boiserie et ferronneries' },
+  { href: `${import.meta.env.BASE_URL}services/peinture-interieure`, label: 'Peinture intérieure' },
+  { href: `${import.meta.env.BASE_URL}services/peinture-exterieure`, label: 'Peinture extérieure' },
+  { href: `${import.meta.env.BASE_URL}services/enduits-decoratifs`, label: 'Enduits décoratifs' },
+  { href: `${import.meta.env.BASE_URL}services/revetement-de-sol`, label: 'Revêtement de sol' },
+  { href: `${import.meta.env.BASE_URL}services/revetement-mural`, label: 'Revêtement mural' },
+  { href: `${import.meta.env.BASE_URL}services/boiserie-et-ferronneries`, label: 'Boiserie et ferronneries' },
 ];
 
 const realisationItems = [
-  { href: `${import.meta.env.BASE_URL}/realisations#galerie`, label: 'Galerie' },
-  { href: `${import.meta.env.BASE_URL}/realisations#avant-apres`, label: 'Avant / après' },
+  { href: `${import.meta.env.BASE_URL}realisations#galerie`, label: 'Galerie' },
+  { href: `${import.meta.env.BASE_URL}realisations#avant-apres`, label: 'Avant / après' },
 ];
 ---
 
@@ -47,7 +47,7 @@ const realisationItems = [
             </button>
 
             <div class="dropdown" data-dropdown-panel>
-              <a class="dropdown-overview" href={`${import.meta.env.BASE_URL}/services`}>Voir tous les services</a>
+              <a class="dropdown-overview" href={`${import.meta.env.BASE_URL}services`}>Voir tous les services</a>
               {serviceItems.map((item) => (
                 <a href={item.href}>{item.label}</a>
               ))}
@@ -70,20 +70,20 @@ const realisationItems = [
             </button>
 
             <div class="dropdown dropdown-compact" data-dropdown-panel>
-              <a class="dropdown-overview" href={`${import.meta.env.BASE_URL}/realisations`}>Voir toutes les réalisations</a>
+              <a class="dropdown-overview" href={`${import.meta.env.BASE_URL}realisations`}>Voir toutes les réalisations</a>
               {realisationItems.map((item) => (
                 <a href={item.href}>{item.label}</a>
               ))}
             </div>
           </li>
-          <li><a href={`${import.meta.env.BASE_URL}/a-propos`}>À propos</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/devis`}>Devis</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/#methode`}>Méthode</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}/#contact`}>Contact</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}a-propos`}>À propos</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}devis`}>Devis</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}#methode`}>Méthode</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}#contact`}>Contact</a></li>
         </ul>
       </nav>
 
-      <a class="btn btn-primary quote-btn" href={`${import.meta.env.BASE_URL}/devis`}>Demander un devis</a>
+      <a class="btn btn-primary quote-btn" href={`${import.meta.env.BASE_URL}devis`}>Demander un devis</a>
     </div>
   </div>
 </header>

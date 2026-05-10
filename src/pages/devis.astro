@@ -38,7 +38,7 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <div class="form-panels">
-        <form class="quote-form card is-active" data-tab-panel="prive" data-quote-form data-form-type="prive" novalidate>
+        <form id="form-devis-prive" class="quote-form card is-active" data-tab-panel="prive" data-quote-form data-form-type="prive" novalidate>
           <input type="hidden" name="formType" value="prive" />
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
@@ -88,13 +88,17 @@ import Footer from '../components/Footer.astro';
           </div>
 
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+            <button class="btn btn-primary btn-submit" type="submit" data-submit-btn>
+              <span class="btn-label">Envoyer la demande</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
           </div>
 
+          <div class="form-loading-overlay" data-loading-overlay aria-hidden="true"></div>
           <p class="form-status" data-form-status></p>
         </form>
 
-        <form class="quote-form card" data-tab-panel="pro" data-quote-form data-form-type="pro" novalidate>
+        <form id="form-devis-pro" class="quote-form card" data-tab-panel="pro" data-quote-form data-form-type="pro" novalidate>
           <input type="hidden" name="formType" value="pro" />
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
@@ -144,9 +148,13 @@ import Footer from '../components/Footer.astro';
           </div>
 
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+            <button class="btn btn-primary btn-submit" type="submit" data-submit-btn>
+              <span class="btn-label">Envoyer la demande</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
           </div>
 
+          <div class="form-loading-overlay" data-loading-overlay aria-hidden="true"></div>
           <p class="form-status" data-form-status></p>
         </form>
       </div>
@@ -298,6 +306,45 @@ import Footer from '../components/Footer.astro';
     pointer-events: none !important;
   }
 
+  /* Loading state */
+  .quote-form { position: relative; }
+
+  .form-loading-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: rgba(247, 243, 236, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .quote-form.is-loading .form-loading-overlay { display: block; }
+
+  .btn-submit { position: relative; min-width: 180px; overflow: hidden; }
+
+  .btn-label { transition: opacity 0.2s ease; }
+  .btn-spinner {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    animation: spin 0.7s linear infinite;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-submit.is-loading .btn-label { opacity: 0; }
+  .btn-submit.is-loading .btn-spinner { opacity: 1; }
+  .btn-submit.is-loading { pointer-events: none; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   .hero-title {
     font-size: clamp(1.9rem, 3.5vw, 2.8rem);
     margin-top: 1rem;
@@ -363,9 +410,21 @@ import Footer from '../components/Footer.astro';
   const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   const isValidVat = (value: string) => /^[A-Za-z]{2}?[0-9.\s-]{8,20}$/.test(value.trim());
 
+  const pushDL = (payload: Record<string, unknown>) => {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push(payload);
+  };
+
   forms.forEach((form) => {
     const status = form.querySelector<HTMLElement>('[data-form-status]');
-    if (!status) return;
+    const submitBtn = form.querySelector<HTMLButtonElement>('[data-submit-btn]');
+    if (!status || !submitBtn) return;
+
+    const setLoading = (on: boolean) => {
+      submitBtn.classList.toggle('is-loading', on);
+      form.classList.toggle('is-loading', on);
+      submitBtn.disabled = on;
+    };
 
     const clearErrors = () => {
       form.querySelectorAll('.field').forEach((field) => field.classList.remove('is-invalid'));
@@ -378,7 +437,6 @@ import Footer from '../components/Footer.astro';
       const input = form.querySelector(`[name="${name}"]`);
       const field = input?.closest('.field');
       const error = form.querySelector(`[data-error-for="${name}"]`);
-
       field?.classList.add('is-invalid');
       if (error) error.textContent = message;
     };
@@ -389,44 +447,42 @@ import Footer from '../components/Footer.astro';
 
       const data = new FormData(form);
       const type = form.getAttribute('data-form-type');
-
       const get = (name: string) => String(data.get(name) || '').trim();
 
-      let hasError = false;
+      const invalidFields: string[] = [];
 
       if (type === 'prive') {
-        if (!get('prenom')) { setError('prenom', 'Champ requis'); hasError = true; }
-        if (!get('nom')) { setError('nom', 'Champ requis'); hasError = true; }
+        if (!get('prenom')) { setError('prenom', 'Champ requis'); invalidFields.push('prenom'); }
+        if (!get('nom')) { setError('nom', 'Champ requis'); invalidFields.push('nom'); }
       }
 
       if (type === 'pro') {
-        if (!get('societe')) { setError('societe', 'Champ requis'); hasError = true; }
+        if (!get('societe')) { setError('societe', 'Champ requis'); invalidFields.push('societe'); }
         if (!get('tva')) {
-          setError('tva', 'Champ requis');
-          hasError = true;
+          setError('tva', 'Champ requis'); invalidFields.push('tva');
         } else if (!isValidVat(get('tva'))) {
-          setError('tva', 'Numéro de TVA invalide');
-          hasError = true;
+          setError('tva', 'Numéro de TVA invalide'); invalidFields.push('tva');
         }
       }
 
       if (!get('email')) {
-        setError('email', 'Champ requis');
-        hasError = true;
+        setError('email', 'Champ requis'); invalidFields.push('email');
       } else if (!isValidEmail(get('email'))) {
-        setError('email', 'Adresse e-mail invalide');
-        hasError = true;
+        setError('email', 'Adresse e-mail invalide'); invalidFields.push('email');
       }
 
-      if (!get('adresse')) { setError('adresse', 'Champ requis'); hasError = true; }
-      if (!get('intitule')) { setError('intitule', 'Champ requis'); hasError = true; }
-      if (!get('details')) { setError('details', 'Champ requis'); hasError = true; }
+      if (!get('adresse')) { setError('adresse', 'Champ requis'); invalidFields.push('adresse'); }
+      if (!get('intitule')) { setError('intitule', 'Champ requis'); invalidFields.push('intitule'); }
+      if (!get('details')) { setError('details', 'Champ requis'); invalidFields.push('details'); }
 
-      if (hasError) {
+      if (invalidFields.length > 0) {
         status.textContent = 'Veuillez corriger les champs indiqués.';
         status.classList.add('is-error');
+        pushDL({ event: 'form_validation_error', form_id: form.id, form_type: type, invalid_fields: invalidFields });
         return;
       }
+
+      setLoading(true);
 
       try {
         const payload = {
@@ -455,7 +511,6 @@ import Footer from '../components/Footer.astro';
               setError(name, String(message));
             });
           }
-
           status.textContent = result?.message || 'Une erreur est survenue.';
           status.classList.add('is-error');
           return;
@@ -464,9 +519,12 @@ import Footer from '../components/Footer.astro';
         form.reset();
         status.textContent = result?.message || 'Votre demande a bien été envoyée.';
         status.classList.add('is-success');
+        pushDL({ event: 'form_submit', form_id: form.id, form_type: type });
       } catch {
-        status.textContent = 'Impossible d’envoyer la demande pour le moment.';
+        status.textContent = 'Impossible d\'envoyer la demande pour le moment.';
         status.classList.add('is-error');
+      } finally {
+        setLoading(false);
       }
     });
   });

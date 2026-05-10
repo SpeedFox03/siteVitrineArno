@@ -1,0 +1,188 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies" hidden>
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <p class="cookie-title">Cookies & analytics</p>
+      <p class="cookie-desc">
+        Ce site utilise Google Analytics pour mesurer l'audience de façon anonyme.
+        Aucune donnée n'est vendue ni transmise à des tiers.
+        <a href={`${base}/mentions-legales`} class="cookie-link">En savoir plus</a>
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookie-refuse" class="btn-cookie btn-refuse" type="button">Refuser</button>
+      <button id="cookie-accept" class="btn-cookie btn-accept" type="button">Accepter</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 200;
+    max-width: 380px;
+    width: calc(100% - 2rem);
+    background: rgba(247, 243, 236, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    border-radius: 22px;
+    box-shadow:
+      0 20px 60px rgba(36, 29, 23, 0.14),
+      0 4px 16px rgba(36, 29, 23, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transform: translateY(16px);
+    opacity: 0;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
+    pointer-events: none;
+  }
+
+  .cookie-banner[hidden] { display: none !important; }
+
+  .cookie-banner.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cookie-inner {
+    padding: 1.25rem 1.4rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cookie-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7A5C3E;
+    margin: 0 0 0.4rem;
+  }
+
+  .cookie-desc {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: #655b51;
+    margin: 0;
+  }
+
+  .cookie-link {
+    color: #b18a68;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+  }
+
+  .cookie-link:hover { color: #977353; }
+
+  .cookie-actions {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .btn-cookie {
+    flex: 1;
+    padding: 0.72rem 1rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    border: 1.5px solid transparent;
+  }
+
+  .btn-cookie:hover { transform: translateY(-1px); }
+
+  .btn-refuse {
+    background: transparent;
+    border-color: rgba(36, 29, 23, 0.2);
+    color: #655b51;
+  }
+
+  .btn-refuse:hover {
+    border-color: rgba(36, 29, 23, 0.35);
+    background: rgba(255,255,255,0.45);
+  }
+
+  .btn-accept {
+    background: #b18a68;
+    color: #faf7f2;
+    border-color: #b18a68;
+  }
+
+  .btn-accept:hover { background: #977353; border-color: #977353; }
+
+  @media (max-width: 480px) {
+    .cookie-banner {
+      right: 1rem;
+      bottom: 1rem;
+      max-width: calc(100% - 2rem);
+      border-radius: 18px;
+    }
+
+    .cookie-inner { padding: 1.1rem 1.15rem 1.15rem; }
+  }
+</style>
+
+<script>
+  const CONSENT_KEY = 'cookie_consent';
+
+  const banner = document.getElementById('cookie-banner') as HTMLElement;
+  const btnAccept = document.getElementById('cookie-accept') as HTMLButtonElement;
+  const btnRefuse = document.getElementById('cookie-refuse') as HTMLButtonElement;
+
+  const loadGTM = () => {
+    if ((window as any).__gtmLoaded) return;
+    (window as any).__gtmLoaded = true;
+    (function (w: any, d: Document, s: string, l: string, i: string) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      const f = d.getElementsByTagName(s)[0];
+      const j = d.createElement(s) as HTMLScriptElement;
+      const dl = l !== 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode!.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WHDRMPCP');
+  };
+
+  const hideBanner = () => {
+    banner.classList.remove('is-visible');
+    setTimeout(() => { banner.hidden = true; }, 400);
+  };
+
+  const showBanner = () => {
+    banner.hidden = false;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => banner.classList.add('is-visible'));
+    });
+  };
+
+  const existing = localStorage.getItem(CONSENT_KEY);
+
+  if (existing === 'accepted') {
+    // GTM already loaded by the inline script in <head>
+  } else if (existing === null) {
+    // No decision yet — show after a short delay to let the page settle
+    setTimeout(showBanner, 1200);
+  }
+  // 'refused' → banner stays hidden, GTM never loads
+
+  btnAccept.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    loadGTM();
+    hideBanner();
+  });
+
+  btnRefuse.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'refused');
+    hideBanner();
+  });
+</script>

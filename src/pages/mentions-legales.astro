@@ -20,23 +20,45 @@ import Footer from '../components/Footer.astro';
         Arno Momin<br />
         Rue des Moges<br />
         4120 Neupré, Belgique<br />
+        E-mail : <a href="mailto:contact@momentdart.be">contact@momentdart.be</a>
       </p>
 
       <h2>Hébergement</h2>
-      <p>Ce site est hébergé par GitHub Pages / Vercel. Pour toute question relative à l'hébergement, vous pouvez contacter l'hébergeur directement.</p>
+      <p>
+        Ce site est hébergé par <strong>Netlify, Inc.</strong> (512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis).
+        Pour toute question relative à l'hébergement, vous pouvez contacter Netlify directement via <a href="https://www.netlify.com" target="_blank" rel="noopener">netlify.com</a>.
+      </p>
 
       <h2>Collecte de données personnelles</h2>
       <p>
-        Le formulaire de demande de devis collecte les données suivantes : nom, prénom (ou raison sociale), adresse e-mail, adresse du chantier, et description du projet.
-        Ces données sont utilisées uniquement pour répondre à votre demande et ne sont pas transmises à des tiers.
+        Le formulaire de contact et le formulaire de demande de devis collectent les données suivantes : nom, prénom (ou raison sociale),
+        adresse e-mail, adresse du chantier et description du projet. Ces données sont utilisées uniquement pour répondre à votre demande
+        et ne sont pas transmises à des tiers à des fins commerciales.
       </p>
       <p>
-        Conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679), vous disposez d'un droit d'accès, de rectification et de suppression de vos données.
-        Pour exercer ce droit, contactez-nous à l'adresse indiquée ci-dessus.
+        Conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679), vous disposez d'un droit
+        d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, contactez-nous à l'adresse indiquée ci-dessus.
       </p>
 
-      <h2>Cookies</h2>
-      <p>Ce site n'utilise pas de cookies de tracking ou publicitaires.</p>
+      <h2>Cookies & mesure d'audience</h2>
+      <p>
+        Ce site utilise <strong>Google Analytics</strong> (via Google Tag Manager) pour mesurer son audience de façon anonyme :
+        pages visitées, durée des sessions et interactions avec les formulaires. Ces données sont agrégées et ne permettent pas
+        de vous identifier personnellement. Google Analytics peut déposer des cookies sur votre appareil à cette fin.
+      </p>
+      <p>
+        <strong>Votre consentement est demandé</strong> avant toute activation de ces outils. Vous pouvez accepter ou refuser
+        la mesure d'audience via la bannière affichée lors de votre première visite.
+      </p>
+      <p>
+        <strong>Retrait du consentement :</strong> pour réinitialiser votre choix, effacez les données de site de votre navigateur
+        pour le domaine <em>momentdart.be</em> (Paramètres → Confidentialité → Effacer les données de navigation → Données des sites).
+        La bannière réapparaîtra à votre prochaine visite.
+      </p>
+      <p>
+        Pour en savoir plus sur la façon dont Google traite vos données, consultez la
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.
+      </p>
 
       <h2>Propriété intellectuelle</h2>
       <p>
@@ -96,4 +118,12 @@ import Footer from '../components/Footer.astro';
   p {
     margin-bottom: 0.75rem;
   }
+
+  a {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover { color: var(--text); }
 </style>

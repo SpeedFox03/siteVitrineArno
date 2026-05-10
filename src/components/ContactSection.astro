@@ -24,7 +24,7 @@
       </div>
 
       <div class="contact-form-wrap" data-contact-reveal style="--reveal-delay: 0.18s;">
-        <form class="contact-form" data-contact-form novalidate>
+        <form id="form-contact" class="contact-form" data-contact-form novalidate>
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="field">
@@ -53,9 +53,13 @@
           </div>
 
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Envoyer</button>
+            <button class="btn btn-primary btn-submit" type="submit" data-submit-btn>
+              <span class="btn-label">Envoyer</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
           </div>
 
+          <div class="form-loading-overlay" data-loading-overlay aria-hidden="true"></div>
           <p class="form-status" data-form-status></p>
         </form>
       </div>
@@ -242,6 +246,45 @@
     pointer-events: none !important;
   }
 
+  /* Loading state */
+  .contact-form { position: relative; }
+
+  .form-loading-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: rgba(247, 243, 236, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .contact-form.is-loading .form-loading-overlay { display: block; }
+
+  .btn-submit { position: relative; min-width: 130px; overflow: hidden; }
+
+  .btn-label { transition: opacity 0.2s ease; }
+  .btn-spinner {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    animation: spin 0.7s linear infinite;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-submit.is-loading .btn-label { opacity: 0; }
+  .btn-submit.is-loading .btn-spinner { opacity: 1; }
+  .btn-submit.is-loading { pointer-events: none; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   /* Reveal */
   [data-contact-reveal] {
     opacity: 0;
@@ -317,8 +360,20 @@
 
   if (form) {
     const status = form.querySelector('[data-form-status]') as HTMLElement;
+    const submitBtn = form.querySelector<HTMLButtonElement>('[data-submit-btn]')!;
 
     const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    const pushDL = (payload: Record<string, unknown>) => {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push(payload);
+    };
+
+    const setLoading = (on: boolean) => {
+      submitBtn.classList.toggle('is-loading', on);
+      form.classList.toggle('is-loading', on);
+      submitBtn.disabled = on;
+    };
 
     const clearErrors = () => {
       form.querySelectorAll('.field').forEach((f) => f.classList.remove('is-invalid'));
@@ -341,21 +396,24 @@
       const data = new FormData(form);
       const get = (k: string) => String(data.get(k) || '').trim();
 
-      let hasError = false;
+      const invalidFields: string[] = [];
 
-      if (!get('nom')) { setError('nom', 'Champ requis'); hasError = true; }
+      if (!get('nom')) { setError('nom', 'Champ requis'); invalidFields.push('nom'); }
       if (!get('email')) {
-        setError('email', 'Champ requis'); hasError = true;
+        setError('email', 'Champ requis'); invalidFields.push('email');
       } else if (!isValidEmail(get('email'))) {
-        setError('email', 'Adresse e-mail invalide'); hasError = true;
+        setError('email', 'Adresse e-mail invalide'); invalidFields.push('email');
       }
-      if (!get('message')) { setError('message', 'Champ requis'); hasError = true; }
+      if (!get('message')) { setError('message', 'Champ requis'); invalidFields.push('message'); }
 
-      if (hasError) {
+      if (invalidFields.length > 0) {
         status.textContent = 'Veuillez corriger les champs indiqués.';
         status.classList.add('is-error');
+        pushDL({ event: 'form_validation_error', form_id: 'form-contact', invalid_fields: invalidFields });
         return;
       }
+
+      setLoading(true);
 
       try {
         const res = await fetch('/.netlify/functions/contact', {
@@ -378,9 +436,12 @@
         form.reset();
         status.textContent = result?.message || 'Votre message a bien été envoyé.';
         status.classList.add('is-success');
+        pushDL({ event: 'form_submit', form_id: 'form-contact' });
       } catch {
         status.textContent = 'Impossible d\'envoyer le message pour le moment.';
         status.classList.add('is-error');
+      } finally {
+        setLoading(false);
       }
     });
   }

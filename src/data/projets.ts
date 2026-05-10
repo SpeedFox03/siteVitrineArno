@@ -1,18 +1,27 @@
 export type ServiceSlug =
   | 'peinture-interieure'
   | 'peinture-exterieure'
+  | 'peinture-decorative'
   | 'enduits-decoratifs'
   | 'revetement-mural'
   | 'revetement-de-sol'
   | 'boiserie-et-ferronneries';
 
+export type CollectionSlug = 'projets-photo' | 'motifs-deco';
+
 export const serviceLabels: Record<ServiceSlug, string> = {
   'peinture-interieure': 'Peinture intérieure',
   'peinture-exterieure': 'Peinture extérieure',
+  'peinture-decorative': 'Peinture décorative',
   'enduits-decoratifs': 'Enduits décoratifs',
   'revetement-mural': 'Revêtement mural',
   'revetement-de-sol': 'Revêtement de sol',
   'boiserie-et-ferronneries': 'Boiseries & ferronneries',
+};
+
+export const collectionLabels: Record<CollectionSlug, string> = {
+  'projets-photo': 'Projets de photo',
+  'motifs-deco': 'Motifs de déco',
 };
 
 export interface Projet {
@@ -20,28 +29,30 @@ export interface Projet {
   titre: string;
   localisation: string;
   categorie: ServiceSlug;
+  collection: CollectionSlug;
   description?: string;
   annee?: number;
   photos: string[];
 }
 
 export const projets: Projet[] = [
-  // ── Peinture intérieure ──────────────────────────────────────────────────
+  // ── Motifs de déco — Peinture intérieure ────────────────────────────────
   {
     slug: 'remise-en-blanc-neupre',
     titre: 'Remise en blanc complète',
     localisation: 'Neupré',
     categorie: 'peinture-interieure',
+    collection: 'motifs-deco',
     description: 'Remise en blanc intégrale d\'une maison à Neupré. Préparation soignée des supports, enduits et peinture blanche mate sur murs, plafonds et menuiseries pour un résultat net et lumineux.',
     annee: 2024,
     photos: [
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/01.jpg',
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/02.jpg',
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/03.jpg',
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/04.jpg',
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/05.jpg',
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/06.jpg',
-      '/images/projets/peinture-interieure/remise-en-blanc-neupre/07.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/01.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/02.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/03.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/04.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/05.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/06.jpg',
+      '/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/07.jpg',
     ],
   },
   {
@@ -49,17 +60,18 @@ export const projets: Projet[] = [
     titre: 'Mise en peinture complète',
     localisation: 'Waterloo',
     categorie: 'peinture-interieure',
+    collection: 'motifs-deco',
     description: 'Remise en peinture complète d\'une maison à Waterloo. Préparation des supports, enduits de finition, peinture des murs, plafonds et menuiseries dans des teintes chaudes et contemporaines.',
     annee: 2024,
     photos: [
-      '/images/projets/waterloo-peinture/01.jpg',
-      '/images/projets/waterloo-peinture/02.jpg',
-      '/images/projets/waterloo-peinture/03.jpg',
-      '/images/projets/waterloo-peinture/04.jpg',
-      '/images/projets/waterloo-peinture/05.jpg',
-      '/images/projets/waterloo-peinture/06.jpg',
-      '/images/projets/waterloo-peinture/07.jpg',
-      '/images/projets/waterloo-peinture/08.jpg',
+      '/images/motifs-deco/waterloo-peinture/01.jpg',
+      '/images/motifs-deco/waterloo-peinture/02.jpg',
+      '/images/motifs-deco/waterloo-peinture/03.jpg',
+      '/images/motifs-deco/waterloo-peinture/04.jpg',
+      '/images/motifs-deco/waterloo-peinture/05.jpg',
+      '/images/motifs-deco/waterloo-peinture/06.jpg',
+      '/images/motifs-deco/waterloo-peinture/07.jpg',
+      '/images/motifs-deco/waterloo-peinture/08.jpg',
     ],
   },
   {
@@ -67,6 +79,7 @@ export const projets: Projet[] = [
     titre: 'Intérieurs colorés & rafraîchis',
     localisation: 'Région liégeoise',
     categorie: 'peinture-interieure',
+    collection: 'motifs-deco',
     description: 'Sélection de chantiers de peinture intérieure — salons, chambres, couloirs — remis au goût du jour avec des teintes soigneusement choisies.',
     photos: [
       '/images/avant-apres/06-salon-mur-vert-sauge-apres.jpg',
@@ -76,32 +89,57 @@ export const projets: Projet[] = [
       '/images/avant-apres/13-petite-chambre-lambris-apres.jpg',
     ],
   },
-  // ── Enduits décoratifs ───────────────────────────────────────────────────
+  // ── Projets de photo — Peinture décorative ───────────────────────────────
+  {
+    slug: 'peinture-decorative-liege',
+    titre: 'Peinture décorative & finitions',
+    localisation: 'Région liégeoise',
+    categorie: 'peinture-decorative',
+    collection: 'projets-photo',
+    description: 'Réalisations en peinture décorative : effets matière, aplats travaillés, finitions premium sur murs et plafonds pour des intérieurs à l\'identité marquée.',
+    photos: [
+      '/images/projets-photo/peinture-decorative/01.jpg',
+      '/images/projets-photo/peinture-decorative/02.jpg',
+      '/images/projets-photo/peinture-decorative/03.jpg',
+      '/images/projets-photo/peinture-decorative/04.jpg',
+      '/images/projets-photo/peinture-decorative/05.jpg',
+      '/images/projets-photo/peinture-decorative/06.jpg',
+      '/images/projets-photo/peinture-decorative/07.jpg',
+      '/images/projets-photo/peinture-decorative/08.jpg',
+      '/images/avant-apres/14-cheminee-moderne-enduit-apres.jpg',
+    ],
+  },
+  // ── Projets de photo — Enduits décoratifs ────────────────────────────────
   {
     slug: 'enduits-decoratifs-liege',
     titre: 'Enduits décoratifs & finitions',
     localisation: 'Région liégeoise',
     categorie: 'enduits-decoratifs',
+    collection: 'projets-photo',
     description: 'Réalisations en enduits décoratifs : tadelakt, béton ciré, stuc, enduits colorés. Chaque surface devient un élément de décor à part entière.',
     annee: 2024,
     photos: [
-      '/images/projets/enduits-decoratifs/01.jpg',
-      '/images/projets/enduits-decoratifs/02.jpg',
-      '/images/projets/enduits-decoratifs/03.jpg',
-      '/images/projets/enduits-decoratifs/04.jpg',
-      '/images/projets/enduits-decoratifs/05.jpg',
-      '/images/projets/enduits-decoratifs/06.jpg',
-      '/images/projets/enduits-decoratifs/07.jpg',
-      '/images/projets/enduits-decoratifs/08.jpg',
-      '/images/avant-apres/14-cheminee-moderne-enduit-apres.jpg',
+      '/images/projets-photo/enduits-decoratifs/01.jpg',
+      '/images/projets-photo/enduits-decoratifs/02.jpg',
+      '/images/projets-photo/enduits-decoratifs/03.jpg',
+      '/images/projets-photo/enduits-decoratifs/04.jpg',
+      '/images/projets-photo/enduits-decoratifs/05.jpg',
+      '/images/projets-photo/enduits-decoratifs/06.jpg',
+      '/images/projets-photo/enduits-decoratifs/07.jpg',
+      '/images/projets-photo/enduits-decoratifs/08.jpg',
+      '/images/projets-photo/enduits-decoratifs/09.jpg',
+      '/images/projets-photo/enduits-decoratifs/10.jpg',
+      '/images/projets-photo/enduits-decoratifs/11.jpg',
+      '/images/projets-photo/enduits-decoratifs/12.jpg',
     ],
   },
-  // ── Boiseries & ferronneries ─────────────────────────────────────────────
+  // ── Motifs de déco — Boiseries & ferronneries ────────────────────────────
   {
     slug: 'boiseries-menuiseries-renovees',
     titre: 'Boiseries & menuiseries rénovées',
     localisation: 'Région liégeoise',
     categorie: 'boiserie-et-ferronneries',
+    collection: 'motifs-deco',
     description: 'Escaliers, lambris, garde-corps, boiseries murales et menuiseries remis au clair, repeints ou vernis pour un intérieur rajeuni et cohérent.',
     photos: [
       '/images/avant-apres/01-escalier-bois-apres.jpg',

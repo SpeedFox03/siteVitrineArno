@@ -1,5 +1,6 @@
 ---
 import ScrollReveal from '../components/ScrollReveal.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 
 const {
   title = 'Moment D.Art — Peinture haut de gamme à Neupré',
@@ -12,13 +13,19 @@ const canonical = new URL(Astro.url.pathname, 'https://momentdart.be').href;
 <!doctype html>
 <html lang="fr">
   <head>
-    <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WHDRMPCP');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="a3rwBGgKOfaa1Lzf7icnOddXYdQWBXDtj-g5jWG9O64" />
+    <!-- GTM chargé conditionnellement après consentement (voir CookieBanner) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      if (localStorage.getItem('cookie_consent') === 'accepted') {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WHDRMPCP');
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
@@ -69,6 +76,8 @@ const canonical = new URL(Astro.url.pathname, 'https://momentdart.be').href;
 
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
+
+      [id] { scroll-margin-top: 110px; }
 
       body {
         margin: 0;
@@ -170,5 +179,6 @@ const canonical = new URL(Astro.url.pathname, 'https://momentdart.be').href;
   <body>
     <slot />
     <ScrollReveal />
+    <CookieBanner />
   </body>
 </html>

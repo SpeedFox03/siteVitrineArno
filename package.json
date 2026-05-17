@@ -10,7 +10,11 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.7.5",
+    "@types/bcryptjs": "^2.4.6",
     "astro": "^4.16.18",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
     "nodemailer": "^8.0.4",
     "zod": "^3.25.76"
   },

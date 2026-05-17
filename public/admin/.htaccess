@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Bloquer l'accès direct à config.php uniquement
+<Files "config.php">
+  Require all denied
+</Files>

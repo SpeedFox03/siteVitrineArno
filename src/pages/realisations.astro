@@ -17,7 +17,7 @@ const featured = avantApresProjects.map((project) => ({
   afterImage: `${base}${project.afterImage}`,
 }));
 
-const categories = [...new Set(projets.map(p => p.categorie))] as ServiceSlug[];
+const allCategories = Object.keys(serviceLabels) as ServiceSlug[];
 ---
 
 <BaseLayout
@@ -44,27 +44,20 @@ const categories = [...new Set(projets.map(p => p.categorie))] as ServiceSlug[];
       </div>
 
       <div class="filter-bar-wrap">
-        <div class="filter-bar" role="tablist" aria-label="Filtrer par catégorie">
+        <div class="filter-bar" id="realisation-filter-bar" role="tablist" aria-label="Filtrer par catégorie">
           <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
-            Tous <span class="count">{projets.length}</span>
+            Tous <span class="count">—</span>
           </button>
-          {categories.map(cat => {
-            const count = projets.filter(p => p.categorie === cat).length;
-            return (
-              <button class="filter-btn" data-filter={cat} role="tab" aria-selected="false">
-                {serviceLabels[cat]} <span class="count">{count}</span>
-              </button>
-            );
-          })}
+          {allCategories.map((cat: ServiceSlug) => (
+            <button class="filter-btn" data-filter={cat} role="tab" aria-selected="false">
+              {serviceLabels[cat]} <span class="count">0</span>
+            </button>
+          ))}
         </div>
       </div>
 
       <div class="projets-grid" id="projets-grid">
-        {projets.map(projet => (
-          <div class="grid-item" data-item-category={projet.categorie}>
-            <ProjetCard projet={projet} base={base} />
-          </div>
-        ))}
+        <p class="loading-state">Chargement…</p>
       </div>
 
       <div class="empty-state" id="empty-state" hidden>
@@ -72,6 +65,11 @@ const categories = [...new Set(projets.map(p => p.categorie))] as ServiceSlug[];
       </div>
     </div>
   </section>
+
+  <!-- Instance cachée pour forcer l'injection des styles ProjetCard -->
+  <div style="display:none" aria-hidden="true">
+    <ProjetCard projet={projets[0]} base={base} />
+  </div>
 
   <section class="section section-featured" id="avant-apres">
     <div class="container">
@@ -206,6 +204,8 @@ const categories = [...new Set(projets.map(p => p.categorie))] as ServiceSlug[];
     to   { opacity: 1; transform: scale(1); }
   }
 
+  .loading-state { color: var(--muted); text-align: center; padding: 3rem 0; grid-column: 1 / -1; }
+
   .empty-state {
     text-align: center;
     padding: 4rem 0;
@@ -234,53 +234,7 @@ const categories = [...new Set(projets.map(p => p.categorie))] as ServiceSlug[];
   }
 </style>
 
-<script>
-  const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const items = document.querySelectorAll<HTMLElement>('.grid-item');
-  const emptyState = document.getElementById('empty-state') as HTMLElement;
-
-  let activeFilter = 'all';
-
-  const applyFilter = (filter: string) => {
-    activeFilter = filter;
-
-    btns.forEach(btn => {
-      const isActive = btn.dataset.filter === filter;
-      btn.classList.toggle('is-active', isActive);
-      btn.setAttribute('aria-selected', String(isActive));
-    });
-
-    const toHide: HTMLElement[] = [];
-    const toShow: HTMLElement[] = [];
-
-    items.forEach(item => {
-      const matches = filter === 'all' || item.dataset.itemCategory === filter;
-      if (matches) toShow.push(item);
-      else toHide.push(item);
-    });
-
-    toHide.forEach(item => {
-      if (item.classList.contains('is-hidden')) return;
-      item.classList.add('is-hiding');
-      item.addEventListener('transitionend', () => {
-        item.classList.remove('is-hiding');
-        item.classList.add('is-hidden');
-      }, { once: true });
-    });
-
-    toShow.forEach(item => {
-      item.classList.remove('is-hidden', 'is-hiding');
-      item.classList.add('is-showing');
-      item.addEventListener('animationend', () => item.classList.remove('is-showing'), { once: true });
-    });
-
-    emptyState.hidden = toShow.length > 0;
-  };
-
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter ?? 'all';
-      if (filter !== activeFilter) applyFilter(filter);
-    });
-  });
+<script type="module" is:inline>
+  import { initGallery } from '/js/galerie.js';
+  initGallery({ gridId: 'projets-grid', filterBarId: 'realisation-filter-bar', emptyStateId: 'empty-state' });
 </script>

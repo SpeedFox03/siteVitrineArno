@@ -1,0 +1,39 @@
+
+> moment-d-art-site@0.0.1 dev
+> astro dev --host 127.0.0.1 --port 4322
+
+22:45:51 [types] Generated 1ms
+
+ astro  v4.16.19 ready in 116 ms
+
+┃ Local    http://127.0.0.1:4322/
+
+22:45:51 watching for file changes...
+22:46:07 [200] / 11ms
+22:46:21 [200] / 4ms
+22:47:45 [watch] src/components/Header.astro
+22:49:01 [200] / 3ms
+22:53:27 [watch] src/components/Header.astro
+22:53:27 [watch] src/components/Header.astro
+22:53:52 [200] / 2ms
+22:54:39 [200] / 2ms
+22:59:20 [watch] src/components/Header.astro
+23:00:07 [200] / 3ms
+23:02:54 [watch] src/components/Header.astro
+23:03:04 [watch] src/components/Header.astro
+23:09:47 [watch] src/components/Header.astro
+23:11:41 [watch] src/components/Header.astro
+23:11:41 [watch] src/components/Header.astro
+23:13:39 [watch] src/components/Header.astro
+23:15:26 [200] / 3ms
+23:25:51 [watch] src/components/Header.astro
+23:26:51 [200] / 2ms
+23:32:32 [watch] src/components/Header.astro
+23:33:41 [200] / 3ms
+23:34:52 [watch] src/components/Header.astro
+23:38:26 [watch] src/layouts/BaseLayout.astro
+23:39:03 [watch] src/components/Header.astro
+23:40:22 [watch] src/layouts/BaseLayout.astro
+23:40:31 [watch] src/components/Header.astro
+23:41:03 [200] / 3ms
+23:41:26 [watch] src/components/Header.astro

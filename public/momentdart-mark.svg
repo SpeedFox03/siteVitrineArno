@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="140" viewBox="0 0 180 140" role="img" aria-labelledby="title">
+  <title id="title">Logo Moment D.Art</title>
+  <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M10 116h154M55 18v104M110 18v104" stroke="#c8bdae" stroke-width="1.1" opacity=".36"/>
+    <path d="M24 116V28L72 82 110 28v55" stroke="#8c6040" stroke-width="10.5"/>
+    <path d="M113 28c38 0 58 19 58 53 0 33-20 52-58 52" stroke="#d5c4af" stroke-width="10.5"/>
+    <path d="M75 122 116 57 158 122M96 91h39" stroke="#8c6040" stroke-width="10.5"/>
+  </g>
+</svg>

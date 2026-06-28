@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="112" viewBox="0 0 1120 112" preserveAspectRatio="none" shape-rendering="geometricPrecision">
+  <defs>
+    <clipPath id="soft-clip">
+      <rect width="1120" height="112" rx="14"/>
+    </clipPath>
+
+    <linearGradient id="paper-base" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffaf1"/>
+      <stop offset=".48" stop-color="#f5eddf"/>
+      <stop offset="1" stop-color="#ece1d1"/>
+    </linearGradient>
+
+    <linearGradient id="top-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".76"/>
+      <stop offset=".48" stop-color="#ffffff" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="bottom-depth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset=".62" stop-color="#c7b79a" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#9c8f78" stop-opacity=".2"/>
+    </linearGradient>
+
+    <linearGradient id="edge-crease" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".46"/>
+      <stop offset=".46" stop-color="#bcae96" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#867660" stop-opacity=".28"/>
+    </linearGradient>
+
+    <filter id="paper-grain" x="-4%" y="-10%" width="108%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".92" numOctaves="2" seed="23" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 .62 0 0 0 0 .55 0 0 0 0 .44 0 0 0 .14 0"/>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#soft-clip)">
+    <rect width="1120" height="112" rx="14" fill="url(#paper-base)"/>
+
+    <g opacity=".96">
+      <polygon points="0,0 72,0 82,52 0,96" fill="#f5ead9"/>
+      <polygon points="72,0 160,0 160,91 82,52" fill="#fffaf1"/>
+      <polygon points="0,96 82,52 99,112 0,112" fill="#dfd2bc"/>
+      <polygon points="82,52 160,91 160,112 99,112" fill="#f0e5d2"/>
+
+      <polygon points="160,0 232,0 244,48 160,91" fill="#fbf3e6"/>
+      <polygon points="232,0 320,0 320,102 244,48" fill="#eadcc5"/>
+      <polygon points="160,91 244,48 276,112 160,112" fill="#e4d7c1"/>
+      <polygon points="244,48 320,102 320,112 276,112" fill="#fff9ef"/>
+
+      <polygon points="320,0 388,0 402,56 320,94" fill="#e9ddca"/>
+      <polygon points="388,0 480,0 480,86 402,56" fill="#fffaf2"/>
+      <polygon points="320,94 402,56 421,112 320,112" fill="#f4eadb"/>
+      <polygon points="402,56 480,86 480,112 421,112" fill="#ded0b8"/>
+
+      <polygon points="480,0 556,0 528,60 480,98" fill="#fffaf2"/>
+      <polygon points="556,0 640,0 640,96 528,60" fill="#eadcc6"/>
+      <polygon points="480,98 528,60 565,112 480,112" fill="#e9dcc7"/>
+      <polygon points="528,60 640,96 640,112 565,112" fill="#f8efe1"/>
+
+      <polygon points="640,0 706,0 716,50 640,88" fill="#e8dbc6"/>
+      <polygon points="706,0 800,0 800,91 716,50" fill="#fff9ef"/>
+      <polygon points="640,88 716,50 750,112 640,112" fill="#f1e7d6"/>
+      <polygon points="716,50 800,91 800,112 750,112" fill="#e2d4bd"/>
+
+      <polygon points="800,0 882,0 856,56 800,100" fill="#fbf4e7"/>
+      <polygon points="882,0 960,0 960,94 856,56" fill="#eadcc8"/>
+      <polygon points="800,100 856,56 889,112 800,112" fill="#dfd2bd"/>
+      <polygon points="856,56 960,94 960,112 889,112" fill="#fff9ef"/>
+
+      <polygon points="960,0 1030,0 1041,52 960,91" fill="#eee3d2"/>
+      <polygon points="1030,0 1120,0 1120,96 1041,52" fill="#fff8ee"/>
+      <polygon points="960,91 1041,52 1068,112 960,112" fill="#e3d6c0"/>
+      <polygon points="1041,52 1120,96 1120,112 1068,112" fill="#f3e8d6"/>
+    </g>
+
+    <g opacity=".72">
+      <polygon points="0,94 82,52 99,112 0,112" fill="#b8a98d" opacity=".24"/>
+      <polygon points="160,91 244,48 276,112 160,112" fill="#b7a78a" opacity=".21"/>
+      <polygon points="244,48 320,102 320,112 276,112" fill="#d2c2a8" opacity=".25"/>
+      <polygon points="402,56 480,86 480,112 421,112" fill="#ad9c80" opacity=".22"/>
+      <polygon points="480,98 528,60 565,112 480,112" fill="#b6a68a" opacity=".19"/>
+      <polygon points="640,88 716,50 750,112 640,112" fill="#b4a488" opacity=".22"/>
+      <polygon points="716,50 800,91 800,112 750,112" fill="#c9b99f" opacity=".25"/>
+      <polygon points="800,100 856,56 889,112 800,112" fill="#ac9c82" opacity=".23"/>
+      <polygon points="960,91 1041,52 1068,112 960,112" fill="#b7a78b" opacity=".24"/>
+    </g>
+
+    <g opacity=".58">
+      <polygon points="0,108 60,88 99,112 0,112" fill="#8f8069" opacity=".2"/>
+      <polygon points="171,112 244,84 276,112" fill="#92836c" opacity=".18"/>
+      <polygon points="320,108 402,83 421,112 320,112" fill="#95866f" opacity=".18"/>
+      <polygon points="421,112 452,96 480,112" fill="#857862" opacity=".18"/>
+      <polygon points="511,112 565,91 625,112" fill="#9d8f76" opacity=".14"/>
+      <polygon points="640,109 716,82 750,112 640,112" fill="#8f8069" opacity=".19"/>
+      <polygon points="800,108 856,86 889,112 800,112" fill="#8d806a" opacity=".22"/>
+      <polygon points="960,108 1041,85 1068,112 960,112" fill="#93846e" opacity=".19"/>
+      <polygon points="1068,112 1094,89 1120,104 1120,112" fill="#8a7c67" opacity=".16"/>
+    </g>
+
+    <g opacity=".52">
+      <polygon points="72,0 160,0 82,52" fill="#ffffff" opacity=".28"/>
+      <polygon points="160,0 232,0 244,48" fill="#ffffff" opacity=".16"/>
+      <polygon points="388,0 480,0 402,56" fill="#ffffff" opacity=".28"/>
+      <polygon points="480,0 556,0 528,60" fill="#ffffff" opacity=".24"/>
+      <polygon points="706,0 800,0 716,50" fill="#ffffff" opacity=".24"/>
+      <polygon points="882,0 960,0 856,56" fill="#ffffff" opacity=".14"/>
+      <polygon points="1030,0 1120,0 1041,52" fill="#ffffff" opacity=".2"/>
+    </g>
+
+    <g fill="none">
+      <path d="M160 0v112M320 0v112M480 0v112M640 0v112M800 0v112M960 0v112" stroke="url(#edge-crease)" stroke-width="1"/>
+      <path d="M82 52 99 112M244 48 276 112M402 56 421 112M528 60 565 112M716 50 750 112M856 56 889 112M1041 52 1068 112" stroke="#8c7c64" stroke-opacity=".12" stroke-width=".95"/>
+      <path d="M72 0 82 52M232 0 244 48M388 0 402 56M556 0 528 60M706 0 716 50M882 0 856 56M1030 0 1041 52" stroke="#ffffff" stroke-opacity=".42" stroke-width=".9"/>
+    </g>
+
+    <rect width="1120" height="112" fill="url(#bottom-depth)"/>
+    <rect width="1120" height="30" fill="url(#top-light)"/>
+    <rect width="1120" height="112" filter="url(#paper-grain)" opacity=".2"/>
+    <path d="M0 1.5h1120M0 110.5h1120" stroke="#9d8d73" stroke-opacity=".16"/>
+  </g>
+</svg>

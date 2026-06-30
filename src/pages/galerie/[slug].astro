@@ -63,6 +63,7 @@ const photos = projet.photos.map(p => `${base}${p}`);
               src={src}
               alt={`${projet.titre} à ${projet.localisation} — photo ${i + 1}`}
               loading={i < 4 ? 'eager' : 'lazy'}
+              decoding="async"
             />
           </button>
         ))}

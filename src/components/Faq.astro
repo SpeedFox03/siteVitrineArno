@@ -6,7 +6,7 @@ const faqs = [
   },
   {
     q: "Quelle est la zone d'intervention ?",
-    a: "Moment D.Art intervient principalement en région liégeoise, notamment à Neupré, Liège, Sprimont, Embourg et Beaufays. Des déplacements sont aussi possibles vers Waterloo, Uccle, Vilvoorde et le reste de la Wallonie selon la nature du chantier. N'hésitez pas à mentionner votre commune dans le formulaire de devis.",
+    a: "Moment D.Art intervient principalement à Ciney, Namur, Rochefort, Dinant, Hamois et dans tout le Condroz. Depuis notre siège de Neupré, nous restons également actifs en région liégeoise (Liège, Sprimont, Embourg, Beaufays) et sur le reste de la Wallonie selon la nature du chantier. N'hésitez pas à mentionner votre commune dans le formulaire de devis.",
   },
   {
     q: "Combien de temps dure un chantier type ?",
@@ -33,7 +33,24 @@ const faqs = [
     a: "Idéalement, dégager les meubles encombrants des pièces à traiter. Tout le reste — protection des sols et meubles restants, rebouchage, ponçage, impression — est pris en charge par Moment D.Art. Aucune préparation technique n'est requise de votre côté.",
   },
 ];
+
+// Données structurées FAQPage — générées uniquement si des questions existent.
+const faqSchema = faqs.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    }
+  : null;
 ---
+
+{faqSchema && (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+)}
 
 <section class="section" id="faq">
   <div class="container">

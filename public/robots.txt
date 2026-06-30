@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Zones non destinées à l'indexation
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://momentdart.be/sitemap-index.xml

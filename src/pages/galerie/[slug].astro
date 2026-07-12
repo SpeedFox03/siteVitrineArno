@@ -14,6 +14,19 @@ export async function getStaticPaths() {
 const { projet } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const photos = projet.photos.map(p => `${base}${p}`);
+
+// Page service correspondant à la catégorie du projet (la peinture décorative
+// n'a pas de page propre : elle renvoie vers les enduits décoratifs).
+const serviceHrefs: Record<string, string> = {
+  'peinture-interieure': 'services/peinture-interieure',
+  'peinture-exterieure': 'services/peinture-exterieure',
+  'peinture-decorative': 'services/enduits-decoratifs',
+  'enduits-decoratifs': 'services/enduits-decoratifs',
+  'revetement-mural': 'services/revetement-mural',
+  'revetement-de-sol': 'services/revetement-de-sol',
+  'boiserie-et-ferronneries': 'services/boiserie-et-ferronneries',
+};
+const serviceHref = `${base}/${serviceHrefs[projet.categorie]}`;
 ---
 
 <BaseLayout
@@ -67,6 +80,23 @@ const photos = projet.photos.map(p => `${base}${p}`);
             />
           </button>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="projet-cta">
+    <div class="container">
+      <div class="card projet-cta-card">
+        <div>
+          <h2 class="projet-cta-title">Un projet similaire ?</h2>
+          <p class="projet-cta-text">
+            Ce chantier relève de notre service <a href={serviceHref}>{serviceLabels[projet.categorie]}</a> — vous y trouverez le détail de notre approche, des finitions possibles et une FAQ.
+          </p>
+        </div>
+        <div class="projet-cta-actions">
+          <a class="btn btn-primary" href={`${base}/devis`}>Demander un devis</a>
+          <a class="btn btn-secondary" href={serviceHref}>Voir le service</a>
+        </div>
       </div>
     </div>
   </section>
@@ -226,6 +256,43 @@ const photos = projet.photos.map(p => `${base}${p}`);
 
   .photo-item:hover img {
     transform: scale(1.03);
+  }
+
+  /* ── CTA service ── */
+  .projet-cta {
+    padding: 0 0 4rem;
+  }
+
+  .projet-cta-card {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .projet-cta-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .projet-cta-text {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 52ch;
+  }
+
+  .projet-cta-text a {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .projet-cta-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
   /* ── Lightbox ── */

@@ -3,25 +3,26 @@ import ScrollReveal from '../components/ScrollReveal.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 
 const {
-  title = 'Peintre & enduits décoratifs à Ciney et Namur | Moment D.Art',
-  description = "Moment D.Art, entreprise de peinture haut de gamme active à Ciney, Namur, Rochefort et dans le Condroz — également en région liégeoise. Peinture intérieure, extérieure, enduits décoratifs, tadelakt, revêtements muraux, sols, boiseries et ferronneries.",
+  title = 'Peintre à Neupré | Peinture intérieure & enduits décoratifs — Moment D.Art',
+  description = "Moment D.Art, entreprise de peinture haut de gamme basée à Neupré : peinture intérieure et extérieure, enduits décoratifs, tadelakt, revêtements muraux, sols et boiseries. Active à Neupré, Liège, Namur, Ciney et dans le Condroz.",
   ogImage = 'https://momentdart.be/images/avant-apres/06-salon-mur-vert-sauge-apres.jpg',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, 'https://momentdart.be').href;
 
-// Données structurées globales — siège à Neupré, zones réellement desservies (focus Ciney / Namur / Condroz).
+// Données structurées globales — siège à Neupré (base officielle), zones réellement desservies.
 const businessSchema = {
   '@context': 'https://schema.org',
   '@type': 'HousePainter',
   '@id': 'https://momentdart.be/#business',
   name: 'Moment D.Art',
   description:
-    "Entreprise de peinture haut de gamme dont le siège est à Neupré, active à Ciney, Namur, Rochefort et dans le Condroz — également en région liégeoise : peinture intérieure et extérieure, enduits décoratifs, tadelakt, revêtements muraux et de sol, boiseries et ferronneries.",
+    "Entreprise de peinture haut de gamme basée à Neupré, active en région liégeoise ainsi qu'à Namur, Ciney, Dinant et dans le Condroz : peinture intérieure et extérieure, enduits décoratifs, tadelakt, revêtements muraux et de sol, boiseries et ferronneries.",
   url: 'https://momentdart.be',
   image: 'https://momentdart.be/logo.png',
   logo: 'https://momentdart.be/logo.png',
   email: 'contact@momentdart.be',
+  telephone: '+32497282987',
   priceRange: '€€€',
   address: {
     '@type': 'PostalAddress',
@@ -32,16 +33,16 @@ const businessSchema = {
     addressCountry: 'BE',
   },
   areaServed: [
-    'Ciney',
-    'Namur',
-    'Rochefort',
-    'Dinant',
-    'Hamois',
     'Neupré',
     'Liège',
     'Sprimont',
     'Embourg',
     'Beaufays',
+    'Namur',
+    'Ciney',
+    'Dinant',
+    'Hamois',
+    'Rochefort',
   ].map((name) => ({ '@type': 'City', name })),
 };
 ---

@@ -1,0 +1,137 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Couvrez-vous Dinant même ou aussi les villages voisins ?',
+    a: "Les deux. Nous intervenons à Dinant ainsi que dans les villages de la vallée et du plateau : Anseremme, Bouvignes, Falmignoul, Onhaye ou encore Yvoir et Anhée en descendant la Meuse. Précisez votre localité dans le formulaire de devis pour que nous organisions la visite.",
+  },
+  {
+    q: 'Le chantier concerne une seconde résidence : comment gérez-vous les accès ?',
+    a: "C'est une situation courante dans la vallée de la Meuse. Une fois le chantier lancé, nous travaillons en totale autonomie : une clé peut nous être confiée, les lieux sont protégés et nettoyés chaque soir, et vous recevez des nouvelles de l'avancement sans devoir être sur place.",
+  },
+  {
+    q: 'Savez-vous travailler dans du bâti ancien ?',
+    a: "Oui, et c'est le cœur du travail à Dinant : murs anciens à remettre à niveau, enduits à reprendre, menuiseries d'origine à laquer. La préparation des supports — rebouchage, enduisage, ponçage, impression adaptée — occupe souvent plus de temps que la mise en peinture elle-même, et c'est ce qui garantit un résultat durable.",
+  },
+  {
+    q: 'Quels délais prévoir pour un chantier à Dinant ?',
+    a: "Comme pour toutes nos zones du Condroz et de la Haute-Meuse, les visites et interventions sont regroupées : le délai exact dépend du planning en cours et vous est annoncé clairement dès le devis, puis respecté.",
+  },
+  {
+    q: 'Proposez-vous le tadelakt à Dinant ?',
+    a: "Oui. Le tadelakt et les enduits à la chaux conviennent très bien aux maisons en pierre de la région : nous planifions les passes successives dès le devis, comme pour n'importe quel autre chantier.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Dinant | Peinture intérieure & finitions haut de gamme"
+  description="Moment D.Art intervient à Dinant et en Haute-Meuse : peinture intérieure, rénovation de bâti ancien, boiseries, enduits décoratifs et tadelakt. Devis gratuit."
+  zoneName="Dinant"
+  heroTitle="Peintre à Dinant pour vos travaux de peinture et de finition"
+  heroLead="Entre Meuse et Condroz, Moment D.Art intervient à Dinant et dans les villages voisins pour des chantiers de peinture intérieure, de boiseries et d'enduits décoratifs. Une entreprise basée à Neupré, un soin particulier pour le bâti ancien de la vallée."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Dinant et en Haute-Meuse</h2>
+          <p>
+            Le bâti dinantais a une identité forte : maisons en pierre calcaire serrées entre le rocher et la Meuse, immeubles anciens du centre, villas et secondes résidences sur les hauteurs et le long du fleuve. Ces intérieurs ont souvent du vécu — murs irréguliers, anciennes couches de peinture, enduits fatigués — et c'est exactement le type de support où la différence se joue avant la mise en peinture.
+          </p>
+          <p>
+            Notre <a href={`${base}services/peinture-interieure`}>travail de peinture intérieure</a> commence donc toujours par une remise à niveau sérieuse des supports, avant d'appliquer des finitions choisies pour durer. Pour les propriétaires qui ne vivent pas sur place à l'année, le chantier peut se dérouler en autonomie complète, avec un compte rendu régulier.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Besoins fréquents dans la région de Dinant</h3>
+          <ul class="zp-list">
+            <li>Rénovation intérieure de maisons en pierre de la vallée</li>
+            <li>Remise en état de secondes résidences et gîtes</li>
+            <li>Reprise de murs anciens et de plafonds fatigués</li>
+            <li>Laquage de portes, escaliers et menuiseries d'origine</li>
+            <li>Rafraîchissement complet avant vente ou location saisonnière</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Matières & décor</span>
+          <h2>Enduits décoratifs, tadelakt et boiseries à Dinant</h2>
+          <p>
+            La pierre et le bois dominent les intérieurs de la Haute-Meuse, et les finitions minérales s'y marient naturellement : un mur en <a href={`${base}services/enduits-decoratifs`}>enduit à la chaux</a> à côté d'un mur en moellons, un <a href={`${base}services/tadelakt`}>tadelakt</a> dans la salle de bain d'une maison ancienne, un escalier en bois <a href={`${base}services/boiserie-et-ferronneries`}>relaqué</a> qui retrouve sa place centrale dans le hall.
+          </p>
+          <p>
+            Ce sont des techniques qui demandent du temps et de la méthode plus que des effets de style : plusieurs passes, des temps de séchage respectés, un geste régulier. Nous les planifions dès le devis, y compris pour les chantiers éloignés de notre base de Neupré.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi Moment D.Art pour un chantier à Dinant ?</h3>
+          <ul class="zp-list">
+            <li>L'habitude du bâti ancien et de ses supports difficiles</li>
+            <li>Chantiers possibles en autonomie complète (secondes résidences)</li>
+            <li>Tadelakt, chaux et stuc : des finitions rares dans la vallée</li>
+            <li>Devis gratuit et détaillé, délais annoncés puis tenus</li>
+            <li>Un seul artisan responsable du résultat, de bout en bout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Services</span>
+        <h2>Nos services pour vos travaux à Dinant</h2>
+      </div>
+      <div class="zp-services">
+        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
+          <h3>Peinture intérieure</h3>
+          <p>Remise à niveau des supports anciens et finitions durables, pièce par pièce ou maison entière.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/boiserie-et-ferronneries`}>
+          <h3>Portes & boiseries</h3>
+          <p>Escaliers, portes massives et menuiseries d'origine remis en valeur par un laquage soigné.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/enduits-decoratifs`}>
+          <h3>Enduits décoratifs</h3>
+          <p>Chaux, stuc et tadelakt : des matières qui dialoguent avec la pierre de la vallée.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Dinant</h2>
+        <p class="lead">
+          De la vallée de la Meuse au plateau condrusien, nous couvrons l'ensemble de la région.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/ciney`}>Peintre à Ciney</a>
+        <a class="zp-chip" href={`${base}zones-intervention/namur`}>Peintre à Namur</a>
+        <span class="zp-chip">Yvoir</span>
+        <span class="zp-chip">Anhée</span>
+        <span class="zp-chip">Rochefort</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

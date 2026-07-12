@@ -1,5 +1,19 @@
 ---
-const faqs = [
+// FAQ réutilisable : sans props, affiche la FAQ générale (homepage).
+// Avec `items`, affiche une FAQ spécifique (pages zones/services) et génère le FAQPage correspondant.
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  items?: FaqItem[];
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+}
+
+const defaultFaqs = [
   {
     q: "Comment se passe la prise de contact et le devis ?",
     a: "Tout démarre par une demande via le formulaire du site ou par email. Moment D.Art prend contact sous 48h pour convenir d'une visite sur place, gratuite et sans engagement. C'est lors de cette visite que l'état des supports est évalué, que les teintes et finitions sont définies ensemble, et qu'un devis clair et détaillé est établi.",
@@ -34,6 +48,15 @@ const faqs = [
   },
 ];
 
+const {
+  items,
+  eyebrow = 'FAQ',
+  title = 'Questions fréquentes',
+  lead = 'Tout ce que vous voulez savoir avant de faire appel à Moment D.Art.',
+} = Astro.props as Props;
+
+const faqs: FaqItem[] = items ?? defaultFaqs;
+
 // Données structurées FAQPage — générées uniquement si des questions existent.
 const faqSchema = faqs.length > 0
   ? {
@@ -56,9 +79,9 @@ const faqSchema = faqs.length > 0
   <div class="container">
     <div class="faq-layout">
       <div class="faq-intro" data-reveal>
-        <span class="eyebrow">FAQ</span>
-        <h2>Questions fréquentes</h2>
-        <p class="lead">Tout ce que vous voulez savoir avant de faire appel à Moment D.Art.</p>
+        <span class="eyebrow">{eyebrow}</span>
+        <h2>{title}</h2>
+        <p class="lead">{lead}</p>
         <a class="btn btn-secondary" href={`${import.meta.env.BASE_URL}devis`} style="margin-top:1.5rem;">
           Une autre question ? Écrivez-nous
         </a>

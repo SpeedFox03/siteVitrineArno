@@ -75,6 +75,12 @@ export const zones: Zone[] = [
     resume:
       "À la lisière du Condroz et de la Famenne, pour des chantiers regroupés avec la région de Ciney.",
   },
+  {
+    nom: 'Marche-en-Famenne & Marloie',
+    region: 'namur-condroz',
+    resume:
+      "Le pôle de la Famenne. Nous intervenons à Marche-en-Famenne et dans ses villages — Marloie, Waha, Aye — pour des chantiers regroupés avec Rochefort et la région de Ciney.",
+  },
 ];
 
 export const zonesAvecPage = zones.filter((z) => z.slug);

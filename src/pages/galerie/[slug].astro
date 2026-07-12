@@ -74,7 +74,7 @@ const serviceHref = `${base}/${serviceHrefs[projet.categorie]}`;
           >
             <img
               src={src}
-              alt={`${projet.titre} à ${projet.localisation} — photo ${i + 1}`}
+              alt={`${serviceLabels[projet.categorie]} à ${projet.localisation} — ${projet.titre}, photo ${i + 1}`}
               loading={i < 4 ? 'eager' : 'lazy'}
               decoding="async"
             />

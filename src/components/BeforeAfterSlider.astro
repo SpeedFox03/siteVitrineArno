@@ -3,6 +3,7 @@ interface Props {
   title: string;
   description: string;
   meta: string;
+  location?: string;
   beforeLabel?: string;
   afterLabel?: string;
   beforeImage: string;
@@ -16,11 +17,15 @@ const props = Astro.props;
 const {
   title,
   meta,
+  location,
   beforeLabel = 'Avant',
   afterLabel = 'Après',
   beforeImage,
   afterImage,
 } = props;
+
+// Localité réelle du chantier dans les alt (SEO images), sans changer l'affichage.
+const altSuffix = location ? ` (${location})` : '';
 
 const frame = props.frame ?? 'landscape';
 const blurSides = props.blurSides ?? true;
@@ -46,10 +51,10 @@ const sliderStyle = (frame === 'portrait' && blurSides)
   </div>
 
   <div class="ba-slider" data-ba-slider data-axis={axis} style={sliderStyle}>
-    <img src={afterImage} alt={`${title} - ${afterLabel}`} class="base-image" loading="lazy" />
+    <img src={afterImage} alt={`${title}${altSuffix} — ${afterLabel} travaux par Moment D.Art`} class="base-image" loading="lazy" />
 
     <div class="overlay" style={overlayClip}>
-      <img src={beforeImage} alt={`${title} - ${beforeLabel}`} class="overlay-image" loading="lazy" />
+      <img src={beforeImage} alt={`${title}${altSuffix} — ${beforeLabel} travaux`} class="overlay-image" loading="lazy" />
       <span class="label label-before">{beforeLabel}</span>
     </div>
 

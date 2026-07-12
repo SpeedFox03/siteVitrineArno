@@ -1,0 +1,119 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Faq from '../../components/Faq.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const faq = [
+  {
+    q: 'Le tadelakt est-il vraiment étanche pour une douche ?',
+    a: "Correctement appliqué, serré puis traité au savon noir et à la cire, le tadelakt est hydrofuge : c'est l'enduit traditionnel des hammams marocains. Il convient aux douches à l'italienne et aux murs de salle de bain, à condition que le support soit préparé dans les règles et que l'application respecte chaque étape — c'est là que le savoir-faire de l'applicateur fait toute la différence.",
+  },
+  {
+    q: 'Comment entretenir un mur en tadelakt ?',
+    a: "L'entretien est simple : de l'eau et du savon noir, qui nourrit la surface à chaque lavage. On évite les détergents agressifs, les anticalcaires et les éponges abrasives, qui attaquent la couche de cire. Un entretien à la cire ou au savon noir de temps en temps suffit à conserver son aspect satiné pendant des années.",
+  },
+  {
+    q: 'Combien de temps prend un chantier tadelakt ?',
+    a: "Plus qu'une peinture, car la technique impose des passes successives et des temps de prise incompressibles : préparation du support, application, serrage à la pierre, savonnage, cirage. Pour une salle de bain, comptez généralement plusieurs jours répartis sur une à deux semaines. Le planning précis est annoncé dès le devis.",
+  },
+  {
+    q: 'Peut-on poser du tadelakt sur du carrelage existant ?',
+    a: "Dans certains cas, oui, avec un primaire et un enduit de préparation adaptés — cela évite une démolition complète. La faisabilité dépend de l'état et de la planéité du support existant : c'est exactement ce que nous vérifions lors de la visite gratuite avant devis.",
+  },
+  {
+    q: 'Quelles teintes sont possibles en tadelakt ?',
+    a: "Le tadelakt est teinté dans la masse avec des pigments naturels : terres, ocres, teintes minérales douces, mais aussi des tons plus contemporains. Chaque teinte est validée sur échantillon avant application, car la couleur finale évolue au serrage et au cirage.",
+  },
+];
+---
+<ServiceLayout
+  title="Tadelakt en Belgique | Salle de bain & enduits à la chaux — Moment D.Art"
+  description="Artisan applicateur de tadelakt en Belgique : salles de bain, douches à l'italienne, murs et vasques. Moment D.Art intervient depuis Neupré à Liège, Namur, Ciney et dans le Condroz. Devis gratuit."
+  heroTitle="Tadelakt"
+  heroLead="L'enduit à la chaux ciré des hammams marocains, appliqué dans les règles de l'art : une surface continue, sans joints, douce au toucher et naturellement adaptée aux salles de bain et pièces d'eau."
+  heroImage={`${base}/images/projets-photo/enduits-decoratifs/03.jpg`}
+  heroImageAlt="Tadelakt et enduit à la chaux — finition cirée dans une pièce d'eau"
+  current="Tadelakt"
+>
+  <div slot="context" class="grid-2">
+    <div>
+      <span class="eyebrow">Contexte</span>
+      <h2>Pour quels projets ?</h2>
+      <p class="lead">
+        Le tadelakt s'adresse à ceux qui veulent une salle de bain sans carrelage ni joints : une matière minérale continue qui habille murs, douches à l'italienne, vasques et baignoires maçonnées d'une surface satinée, légèrement nuagée, unique à chaque application.
+      </p>
+      <p style="margin-top: 1rem;">
+        C'est une technique artisanale exigeante — chaux de Marrakech ou chaux adaptée, serrage à la pierre, savon noir, cire — que peu d'applicateurs maîtrisent en Belgique. Elle demande du temps et de la méthode, et le résultat ne ressemble à aucun revêtement industriel.
+      </p>
+    </div>
+    <div class="card detail-card">
+      <h3>Ce que nous faisons concrètement</h3>
+      <ul class="detail-list">
+        <li>Étude du support et validation de la teinte sur échantillon</li>
+        <li>Préparation et enduit de fond adaptés aux pièces humides</li>
+        <li>Application de l'enduit à la chaux en passes successives</li>
+        <li>Serrage et polissage à la pierre dure</li>
+        <li>Traitement au savon noir puis cirage de protection</li>
+        <li>Conseils d'entretien remis en fin de chantier</li>
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="cards">
+    <span class="eyebrow">Applications</span>
+    <h2>Où appliquer le tadelakt ?</h2>
+    <div class="finishes-grid">
+      <div class="card finish-card">
+        <h3>Salle de bain & douche</h3>
+        <p>Murs de salle de bain, douches à l'italienne, pourtours de baignoire : l'usage historique du tadelakt, hydrofuge et sans joints à noircir.</p>
+      </div>
+      <div class="card finish-card">
+        <h3>Pièces de vie</h3>
+        <p>Mur d'accent dans un séjour, tête de lit, montée d'escalier : hors pièces d'eau, le tadelakt apporte sa profondeur satinée à n'importe quelle pièce.</p>
+      </div>
+      <div class="card finish-card">
+        <h3>Détails maçonnés</h3>
+        <p>Vasques, tablettes, niches de douche, banquettes : les petits volumes maçonnés prennent tout leur caractère une fois enduits et cirés.</p>
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="extra">
+    <section class="section">
+      <div class="container">
+        <div class="zp-split">
+          <div class="zp-text">
+            <span class="eyebrow">Comprendre</span>
+            <h2>Tadelakt ou carrelage dans une salle de bain ?</h2>
+            <p>
+              Le carrelage reste la solution la plus répandue, mais il impose des joints — qui s'encrassent, noircissent et finissent par demander plus d'entretien que la surface elle-même. Le tadelakt prend le problème à l'envers : une seule matière, continue du sol au plafond si on le souhaite, sans le moindre joint, qui se nettoie à l'eau et au savon noir.
+            </p>
+            <p>
+              Visuellement, la différence est tout aussi nette : là où le carrelage quadrille la pièce, le tadelakt l'enveloppe. Ses nuances légères et son toucher soyeux donnent aux salles de bain une atmosphère de hammam ou de spa, aussi bien dans une maison ancienne que dans une construction contemporaine. Pour un rendu minéral différent, voyez aussi nos <a href={`${base}/services/enduits-decoratifs`}>enduits décoratifs</a> — béton ciré et stuc notamment.
+            </p>
+          </div>
+          <div class="card zp-card">
+            <h3>Tadelakt près de chez vous</h3>
+            <p style="font-size:0.94rem; line-height:1.7;">
+              Moment D.Art applique le tadelakt depuis son siège de Neupré, partout où nous intervenons en Wallonie : consultez nos pages locales pour votre région.
+            </p>
+            <div class="zp-chips" style="margin-top:1rem;">
+              <a class="zp-chip" href={`${base}/zones-intervention/neupre`}>Neupré</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/liege`}>Liège</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/namur`}>Namur</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/ciney`}>Ciney</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/dinant`}>Dinant</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Faq
+      items={faq}
+      eyebrow="FAQ"
+      title="FAQ — Tadelakt"
+      lead="Les questions que l'on nous pose avant de se lancer dans un projet tadelakt."
+    />
+  </Fragment>
+</ServiceLayout>

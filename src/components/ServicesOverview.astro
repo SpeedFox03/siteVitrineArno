@@ -58,9 +58,14 @@ const services = [
   }
 
   .service-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
+  }
+
+  .service {
+    width: calc((100% - 2rem) / 3);
   }
 
   .service {
@@ -174,15 +179,21 @@ const services = [
 
   @media (max-width: 900px) {
     .service-grid {
-      grid-template-columns: repeat(2, 1fr);
       gap: 0.9rem;
+    }
+
+    .service {
+      width: calc((100% - 0.9rem) / 2);
     }
   }
 
   @media (max-width: 600px) {
     .service-grid {
-      grid-template-columns: 1fr;
       gap: 0.9rem;
+    }
+
+    .service {
+      width: 100%;
     }
 
     .service {

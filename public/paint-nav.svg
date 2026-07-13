@@ -75,8 +75,8 @@
     </g>
 
     <g opacity=".16">
-      <path d="M160 0v112M320 0v112M480 0v112M640 0v112M800 0v112M960 0v112" stroke="#8f715a" stroke-width="1"/>
-      <path d="M160 0v112M320 0v112M480 0v112M640 0v112M800 0v112M960 0v112" stroke="#ffffff" stroke-width=".7" transform="translate(1 0)"/>
+      <path d="M140 0v112M280 0v112M420 0v112M560 0v112M700 0v112M840 0v112M980 0v112" stroke="#8f715a" stroke-width="1"/>
+      <path d="M140 0v112M280 0v112M420 0v112M560 0v112M700 0v112M840 0v112M980 0v112" stroke="#ffffff" stroke-width=".7" transform="translate(1 0)"/>
     </g>
 
     <rect width="1120" height="112" filter="url(#stucco-grain)" opacity=".28"/>

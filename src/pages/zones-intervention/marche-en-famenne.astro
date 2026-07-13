@@ -1,0 +1,109 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Couvrez-vous Marloie et les villages de Marche-en-Famenne ?',
+    a: "Oui, toute l'entité : Marche centre, Marloie, Waha, Aye, Hollogne, On et les villages voisins. Marloie, avec sa gare et ses quartiers résidentiels, génère autant de demandes que le centre de Marche — les deux sont traités exactement de la même façon.",
+  },
+  {
+    q: 'Depuis où intervenez-vous à Marche-en-Famenne ?',
+    a: "Depuis notre siège de Neupré, en province de Liège. Marche est l'un des points les plus au sud de notre zone : nous y regroupons les visites et les chantiers avec ceux de Rochefort et de la région de Ciney, et nous annonçons dès le devis un planning réaliste, ensuite tenu.",
+  },
+  {
+    q: 'Travaillez-vous pour les commerces et bureaux de Marche ?',
+    a: "Oui. Marche-en-Famenne est le pôle commercial et administratif de la Famenne : les mises en peinture de commerces, bureaux et cabinets y sont planifiées pour limiter la fermeture — par zones, et en horaires adaptés lorsque le projet le justifie.",
+  },
+  {
+    q: 'Faites-vous les finitions des constructions neuves des nouveaux quartiers ?',
+    a: "Oui. Les lotissements récents de Marche et de Marloie nous amènent des premières mises en peinture complètes : impression des plâtres neufs, teintes choisies pièce par pièce, laquage des portes et plinthes. Un devis détaillé fixe le budget avant le premier coup de pinceau.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Marche-en-Famenne & Marloie | Peinture intérieure"
+  description="Moment D.Art intervient à Marche-en-Famenne, Marloie, Waha et Aye : peinture intérieure, commerces, constructions neuves, boiseries et enduits décoratifs. Devis gratuit."
+  zoneName="Marche-en-Famenne"
+  heroTitle="Peintre à Marche-en-Famenne et Marloie"
+  heroLead="Capitale de la Famenne, Marche-en-Famenne est une ville qui construit et qui rénove. Moment D.Art y intervient depuis son siège de Neupré — de Marloie à Waha — pour des peintures intérieures, boiseries et enduits décoratifs au niveau de finition qui fait sa signature."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Marche-en-Famenne et Marloie</h2>
+          <p>
+            Marche-en-Famenne est l'une des villes wallonnes qui bougent le plus : nouveaux quartiers résidentiels, centre-ville rénové, zonings et services qui attirent des habitants — et donc des chantiers. À Marloie, autour de la gare, le tissu résidentiel se densifie lui aussi. Les demandes qui nous en arrivent vont de la première mise en peinture d'une construction neuve à la rénovation complète d'une maison de ville du centre.
+          </p>
+          <p>
+            Quelle que soit la nature du bien, notre <a href={`${base}services/peinture-interieure`}>méthode de peinture intérieure</a> reste la même : diagnostic des supports lors de la visite, devis détaillé poste par poste, préparation sérieuse, finitions tendues et chantier propre.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Demandes fréquentes à Marche et Marloie</h3>
+          <ul class="zp-list">
+            <li>Première mise en peinture de constructions neuves</li>
+            <li>Rénovation de maisons de ville du centre de Marche</li>
+            <li>Mise en peinture de commerces, bureaux et cabinets</li>
+            <li>Laquage de portes, plinthes et escaliers</li>
+            <li>Rafraîchissement avant vente ou mise en location</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Matières & décor</span>
+          <h2>Enduits décoratifs, tadelakt et boiseries en Famenne</h2>
+          <p>
+            Les finitions décoratives restent rares en Famenne, et c'est précisément ce qui les rend intéressantes : un mur en <a href={`${base}services/enduits-decoratifs`}>stuc ou en enduit à la chaux</a> dans un séjour, un <a href={`${base}services/tadelakt`}>tadelakt</a> dans une salle de bain, des <a href={`${base}services/boiserie-et-ferronneries`}>boiseries relaquées</a> dans une maison de caractère de Waha ou d'Aye. Ces techniques voyagent avec nous : les passes successives sont simplement planifiées dès le devis.
+          </p>
+          <p>
+            Nous le disons clairement : notre siège est à Neupré, pas à Marche. Ce que vous y gagnez, c'est un artisan spécialisé qui se déplace avec ses techniques — et un chantier organisé sérieusement, du premier contact à la réception.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi Moment D.Art à Marche-en-Famenne ?</h3>
+          <ul class="zp-list">
+            <li>Des spécialités introuvables localement : tadelakt, stuc, chaux</li>
+            <li>L'habitude du neuf comme des maisons de caractère</li>
+            <li>Interventions professionnelles planifiées sans fermeture longue</li>
+            <li>Devis gratuit et détaillé, délais annoncés puis tenus</li>
+            <li>Un seul interlocuteur, du devis à la réception</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Marche-en-Famenne</h2>
+        <p class="lead">
+          Nos tournées en Famenne et dans le Condroz couvrent tout le secteur entre Marche, Rochefort et Ciney.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/rochefort`}>Peintre à Rochefort</a>
+        <a class="zp-chip" href={`${base}zones-intervention/ciney`}>Peintre à Ciney</a>
+        <a class="zp-chip" href={`${base}zones-intervention/hamois`}>Peintre à Hamois</a>
+        <span class="zp-chip">Marloie</span>
+        <span class="zp-chip">Waha</span>
+        <span class="zp-chip">Aye</span>
+        <span class="zp-chip">Hotton</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

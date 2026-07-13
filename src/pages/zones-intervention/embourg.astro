@@ -1,0 +1,107 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Intervenez-vous uniquement à Embourg ou dans toute la commune de Chaudfontaine ?',
+    a: "Dans toute la commune : Embourg, Beaufays, Chaudfontaine-Sources et Vaux-sous-Chèvremont. Embourg est à une vingtaine de minutes de notre siège de Neupré, et un avis client publié sur ce site provient d'ailleurs d'une habitante d'Embourg.",
+  },
+  {
+    q: 'Travaillez-vous dans les grandes villas (double hauteur, cages d’escalier) ?',
+    a: "Oui. L'habitat d'Embourg compte beaucoup de villas spacieuses avec halls à double hauteur, grandes cages d'escalier et pièces lumineuses où le moindre défaut de plafond se voit. Nous sommes équipés pour travailler en hauteur proprement, et la préparation des supports y est encore plus déterminante qu'ailleurs.",
+  },
+  {
+    q: 'Le chantier peut-il se dérouler pendant que la maison est occupée ?',
+    a: "Oui, c'est le cas le plus fréquent. Nous travaillons pièce par pièce, protégeons intégralement sols et mobilier, et nettoyons chaque soir. Les produits utilisés en intérieur sont faiblement odorants.",
+  },
+  {
+    q: 'Proposez-vous des finitions décoratives à Embourg ?',
+    a: "Oui : stuc, enduits à la chaux, tadelakt de salle de bain et laquage de boiseries font partie des demandes régulières dans ce type d'habitat, où la finition fait toute la différence. Chaque technique est présentée sur sa page de service, avec échantillons à l'appui lors de la visite.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Embourg | Peinture intérieure & finitions haut de gamme"
+  description="Moment D.Art intervient à Embourg et dans toute la commune de Chaudfontaine : peinture intérieure, villas, boiseries, enduits décoratifs et tadelakt. Devis gratuit."
+  zoneName="Embourg"
+  heroTitle="Peintre à Embourg pour vos peintures et finitions haut de gamme"
+  heroLead="Sur les hauteurs de Chaudfontaine, Embourg concentre un habitat résidentiel où la qualité de finition n'est pas négociable. Moment D.Art y intervient depuis Neupré, à vingt minutes, pour des peintures intérieures, boiseries et enduits décoratifs au rendu impeccable."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure dans l'habitat résidentiel d'Embourg</h2>
+          <p>
+            Villas quatre façades, maisons d'architecte, intérieurs spacieux et très lumineux : à Embourg, la lumière traverse les pièces et révèle tout — un plafond mal enduit, une reprise visible, une laque qui n'est pas tendue. C'est un contexte que nous apprécions, parce qu'il correspond exactement à notre façon de travailler : une préparation des supports poussée, des produits de qualité, et des finitions qui supportent l'examen en lumière rasante.
+          </p>
+          <p>
+            Notre approche complète de la <a href={`${base}services/peinture-interieure`}>peinture intérieure</a> — du choix des teintes à la réception du chantier — s'applique aussi bien à une rénovation complète qu'à la remise en beauté d'une pièce de réception.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Demandes fréquentes à Embourg</h3>
+          <ul class="zp-list">
+            <li>Rénovation complète de villas et maisons d'architecte</li>
+            <li>Peinture de halls à double hauteur et cages d'escalier</li>
+            <li>Mise en teinte sur mesure de pièces de réception</li>
+            <li>Laquage de portes, placards et boiseries</li>
+            <li>Enduits décoratifs sur murs d'accent</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Matières & décor</span>
+          <h2>Enduits décoratifs, tadelakt et boiseries à Embourg</h2>
+          <p>
+            Dans les intérieurs embourgeois, les finitions décoratives trouvent naturellement leur place : un mur en <a href={`${base}services/enduits-decoratifs`}>stuc ou en enduit à la chaux</a> dans un salon, un <a href={`${base}services/tadelakt`}>tadelakt</a> dans la salle de bain principale, des <a href={`${base}services/boiserie-et-ferronneries`}>boiseries et escaliers relaqués</a> qui remettent l'entrée au niveau du reste de la maison.
+          </p>
+          <p>
+            Un avis client publié sur ce site provient d'Embourg : la commune fait partie des zones où nous travaillons réellement, avec la même exigence que sur les chantiers de Neupré.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi Moment D.Art à Embourg ?</h3>
+          <ul class="zp-list">
+            <li>Un niveau de finition pensé pour l'habitat exigeant</li>
+            <li>Proximité du siège : visites et suivis rapides</li>
+            <li>Techniques décoratives rares : tadelakt, stuc, chaux</li>
+            <li>Chantier propre, maison occupée sans souci</li>
+            <li>Devis gratuit, détaillé et sans surprise</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour d'Embourg</h2>
+        <p class="lead">
+          Des bords de Vesdre aux hauteurs boisées, l'agglomération liégeoise est couverte au quotidien.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/beaufays`}>Peintre à Beaufays</a>
+        <a class="zp-chip" href={`${base}zones-intervention/liege`}>Peintre à Liège</a>
+        <a class="zp-chip" href={`${base}zones-intervention/neupre`}>Peintre à Neupré</a>
+        <span class="zp-chip">Chaudfontaine</span>
+        <span class="zp-chip">Vaux-sous-Chèvremont</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

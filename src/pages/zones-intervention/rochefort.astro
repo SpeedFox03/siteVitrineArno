@@ -1,0 +1,108 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Quelles localités couvrez-vous autour de Rochefort ?',
+    a: "Rochefort même, ainsi que Jemelle, Han-sur-Lesse, Eprave, Villers-sur-Lesse et les villages voisins. Ces chantiers sont organisés depuis notre siège de Neupré, souvent regroupés avec ceux de la région de Ciney et de Marche-en-Famenne.",
+  },
+  {
+    q: 'Rénovez-vous des gîtes et locations touristiques ?',
+    a: "Oui, c'est une demande typique de la région de Rochefort et de Han-sur-Lesse. Nous planifions ces chantiers hors saison ou entre deux réservations, travaillons en autonomie complète si vous n'êtes pas sur place, et livrons dans les délais annoncés — un impératif quand des réservations suivent.",
+  },
+  {
+    q: 'La distance depuis Neupré pose-t-elle un problème ?',
+    a: "Non, elle demande juste de l'organisation : les visites sont préparées à partir de vos photos, les interventions regroupées, et les délais annoncés dès le devis sont tenus. La qualité d'exécution, elle, ne dépend pas du kilométrage.",
+  },
+  {
+    q: 'Travaillez-vous la pierre et les murs anciens de la Famenne ?',
+    a: "Oui. Comme dans le Condroz voisin, le bâti de Rochefort mêle pierre calcaire et murs anciens : notre méthode — remise à niveau des supports, enduits adaptés, finitions durables — est faite pour ces maisons-là. Les enduits à la chaux et le tadelakt s'y marient particulièrement bien.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Rochefort | Peinture intérieure & rénovation"
+  description="Moment D.Art intervient à Rochefort, Jemelle et Han-sur-Lesse : peinture intérieure, gîtes et maisons en pierre, boiseries et enduits décoratifs. Devis gratuit."
+  zoneName="Rochefort"
+  heroTitle="Peintre à Rochefort pour vos travaux de peinture et de finition"
+  heroLead="Entre Famenne et Calestienne, Moment D.Art intervient à Rochefort et dans ses villages depuis son siège de Neupré. Peinture intérieure, rénovation de gîtes, boiseries et enduits décoratifs — avec des délais annoncés et tenus."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Rochefort et dans ses villages</h2>
+          <p>
+            La région de Rochefort a une particularité que nous retrouvons sur peu d'autres zones : une forte proportion de gîtes, chambres d'hôtes et secondes résidences, portée par le tourisme de Han-sur-Lesse et de la vallée de la Lesse. Ces biens vivent au rythme des réservations — leurs travaux de peinture doivent être impeccables, rapides et planifiés au bon moment.
+          </p>
+          <p>
+            À côté de cela, les maisons de ville de Rochefort et les fermes des villages appellent un travail plus classique de rénovation : murs anciens à reprendre, plafonds à rafraîchir, <a href={`${base}services/peinture-interieure`}>peintures intérieures</a> à remettre au niveau après des années d'usage.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Chantiers types à Rochefort</h3>
+          <ul class="zp-list">
+            <li>Remise en état de gîtes et locations touristiques</li>
+            <li>Rénovation intérieure de maisons en pierre</li>
+            <li>Rafraîchissement complet entre deux saisons</li>
+            <li>Laquage de portes, escaliers et boiseries</li>
+            <li>Peinture de communs et d'espaces d'accueil</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Notre organisation</span>
+          <h2>Un chantier soigné, même loin de notre base</h2>
+          <p>
+            Rochefort est l'une de nos zones les plus éloignées — nous le disons sans détour. Ce que cela change : les visites sont préparées à partir de vos photos, les interventions regroupées avec celles de Ciney, Hamois et Marche-en-Famenne, et le calendrier est verrouillé dès le devis. Ce que cela ne change pas : la préparation des supports, la qualité des finitions et la propreté du chantier.
+          </p>
+          <p>
+            Pour les propriétaires qui ne vivent pas sur place, le chantier peut se dérouler en autonomie complète — clé confiée, protection systématique des lieux, compte rendu régulier — comme nous le faisons déjà en vallée de Meuse. Nos <a href={`${base}services/enduits-decoratifs`}>enduits décoratifs</a>, le <a href={`${base}services/tadelakt`}>tadelakt</a> et le <a href={`${base}services/boiserie-et-ferronneries`}>laquage de boiseries</a> se déplacent avec nous.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi Moment D.Art à Rochefort ?</h3>
+          <ul class="zp-list">
+            <li>L'habitude des gîtes et biens loués (délais impératifs)</li>
+            <li>Chantiers possibles en autonomie complète</li>
+            <li>Un savoir-faire adapté au bâti ancien de la Famenne</li>
+            <li>Devis gratuit, planning annoncé puis respecté</li>
+            <li>Finitions haut de gamme, où que soit le chantier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Rochefort</h2>
+        <p class="lead">
+          De la Lesse à la Famenne, nos tournées couvrent l'ensemble du secteur.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/marche-en-famenne`}>Peintre à Marche-en-Famenne</a>
+        <a class="zp-chip" href={`${base}zones-intervention/ciney`}>Peintre à Ciney</a>
+        <a class="zp-chip" href={`${base}zones-intervention/dinant`}>Peintre à Dinant</a>
+        <span class="zp-chip">Jemelle</span>
+        <span class="zp-chip">Han-sur-Lesse</span>
+        <span class="zp-chip">Wellin</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

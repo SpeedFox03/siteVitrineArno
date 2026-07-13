@@ -26,18 +26,21 @@ export const zones: Zone[] = [
   },
   {
     nom: 'Sprimont',
+    slug: 'sprimont',
     region: 'liege',
     resume:
       "À un quart d'heure de Neupré. Constructions quatre façades et rénovations : des clients de Sprimont figurent parmi les avis publiés sur ce site.",
   },
   {
     nom: 'Embourg',
+    slug: 'embourg',
     region: 'liege',
     resume:
       "Sur les hauteurs de Chaudfontaine, un habitat résidentiel où nous réalisons peintures intérieures, boiseries et finitions soignées.",
   },
   {
     nom: 'Beaufays',
+    slug: 'beaufays',
     region: 'liege',
     resume:
       "Commune voisine entre Liège et l'Ourthe, où nous intervenons pour des chantiers résidentiels complets ou ciblés.",
@@ -65,18 +68,21 @@ export const zones: Zone[] = [
   },
   {
     nom: 'Hamois',
+    slug: 'hamois',
     region: 'namur-condroz',
     resume:
       "Commune condrusienne entre Ciney et Havelange, desservie lors de nos interventions dans le Condroz.",
   },
   {
     nom: 'Rochefort',
+    slug: 'rochefort',
     region: 'namur-condroz',
     resume:
       "À la lisière du Condroz et de la Famenne, pour des chantiers regroupés avec la région de Ciney.",
   },
   {
-    nom: 'Marche-en-Famenne & Marloie',
+    nom: 'Marche-en-Famenne',
+    slug: 'marche-en-famenne',
     region: 'namur-condroz',
     resume:
       "Le pôle de la Famenne. Nous intervenons à Marche-en-Famenne et dans ses villages — Marloie, Waha, Aye — pour des chantiers regroupés avec Rochefort et la région de Ciney.",

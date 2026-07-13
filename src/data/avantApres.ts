@@ -2,6 +2,9 @@ export interface AvantApresProject {
   meta: string;
   title: string;
   description: string;
+  // Localité réelle du chantier (utilisée dans les alt d'images). Défaut appliqué
+  // par les pages appelantes : « Région liégeoise ». Ne jamais inventer une ville.
+  location?: string;
   beforeImage: string;
   afterImage: string;
   frame?: 'landscape' | 'portrait';

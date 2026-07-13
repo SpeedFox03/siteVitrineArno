@@ -33,6 +33,15 @@ const navItems = [
 </svg>`,
   },
   {
+    label: 'Zones',
+    href: `${baseUrl}zones-intervention`,
+    icon: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+  <path d="M16 26.5s-8.5-7.8-8.5-13.2a8.5 8.5 0 0 1 17 0c0 5.4-8.5 13.2-8.5 13.2Z" />
+  <path d="M16 16.4a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" />
+</svg>`,
+  },
+  {
     label: 'À propos',
     href: `${baseUrl}a-propos`,
     icon: `
@@ -272,7 +281,7 @@ const navItems = [
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     height: 100%;
     list-style: none;
     padding: 0;
@@ -297,6 +306,7 @@ const navItems = [
     z-index: 2;
     width: 1px;
     background: rgba(143, 119, 86, 0.16);
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.4);
   }
 
   .site-nav li::after {
@@ -671,6 +681,7 @@ const navItems = [
     .header-inner.menu-open .site-nav li:nth-child(5) { transition-delay: 0.21s; }
     .header-inner.menu-open .site-nav li:nth-child(6) { transition-delay: 0.26s; }
     .header-inner.menu-open .site-nav li:nth-child(7) { transition-delay: 0.31s; }
+    .header-inner.menu-open .site-nav li:nth-child(8) { transition-delay: 0.36s; }
 
     .site-nav li + li::before {
       display: none;

@@ -1,0 +1,137 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Intervenez-vous dans le centre de Namur ou seulement en périphérie ?',
+    a: "Les deux. Nous acceptons des chantiers dans Namur intra-muros — appartements, maisons de ville, bureaux — comme dans les communes de l'agglomération : Jambes, Bouge, Erpent, Wépion ou encore Profondeville. Mentionnez simplement votre quartier dans le formulaire de devis.",
+  },
+  {
+    q: 'Depuis où intervenez-vous à Namur ?',
+    a: "Notre siège est à Neupré, en province de Liège, à une quarantaine de minutes de Namur par l'autoroute. Nous le disons clairement : nous ne sommes pas une entreprise namuroise, mais Namur fait partie des zones où nous travaillons régulièrement, avec une organisation rodée des visites et des chantiers.",
+  },
+  {
+    q: 'Prenez-vous en charge des immeubles de caractère (moulures, hauts plafonds) ?',
+    a: "Oui, c'est même un type de chantier que nous apprécions. Les maisons de maître namuroises demandent un travail minutieux : plafonds hauts, corniches et moulures, menuiseries anciennes. Notre approche — préparation poussée, finitions tendues, laquage des boiseries — est faite pour ce bâti-là.",
+  },
+  {
+    q: 'Travaillez-vous pour les commerces et bureaux à Namur ?',
+    a: "Oui. Les interventions en espace professionnel sont planifiées pour limiter l'impact sur votre activité : travail par zones, horaires adaptés quand c'est possible, chantier nettoyé chaque soir.",
+  },
+  {
+    q: 'Proposez-vous le tadelakt et les enduits décoratifs à Namur ?',
+    a: "Oui. Enduits à la chaux, stuc et tadelakt font partie de nos spécialités et se déplacent très bien : les passes successives sont planifiées dès le devis, comme pour n'importe quel chantier namurois de peinture classique.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Namur | Peinture intérieure, enduits décoratifs & tadelakt"
+  description="Moment D.Art intervient à Namur et son agglomération : peinture intérieure, maisons de maître, bureaux, enduits décoratifs et tadelakt. Finitions haut de gamme, devis gratuit."
+  zoneName="Namur"
+  heroTitle="Peintre à Namur pour vos peintures intérieures et enduits décoratifs"
+  heroLead="De Jambes à Wépion en passant par le centre historique, Moment D.Art réalise à Namur des chantiers de peinture intérieure, d'enduits décoratifs et de tadelakt. Une entreprise basée à Neupré, un niveau de finition pensé pour les intérieurs exigeants."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Namur et dans l'agglomération</h2>
+          <p>
+            Namur concentre un bâti que l'on croise peu ailleurs en Wallonie : maisons de maître aux plafonds hauts et aux moulures d'époque, appartements rénovés dans le centre, villas récentes sur les hauteurs d'Erpent ou de Bouge. Chacun de ces intérieurs appelle un traitement différent — on ne peint pas une corniche du XIXe comme un plafond en plaques de plâtre.
+          </p>
+          <p>
+            Notre valeur ajoutée est là : une <a href={`${base}services/peinture-interieure`}>peinture intérieure</a> qui commence par la préparation (rebouchage, enduisage, ponçage, impression) et se termine par des finitions réellement tendues, y compris sur les grandes hauteurs et les détails moulurés. Le choix des teintes se fait ensemble, avec si besoin une projection visuelle du résultat avant travaux.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Chantiers types à Namur</h3>
+          <ul class="zp-list">
+            <li>Rénovation complète de maisons de maître et d'appartements</li>
+            <li>Peinture de plafonds hauts, corniches et moulures</li>
+            <li>Mise en peinture de bureaux, cabinets et commerces</li>
+            <li>Remise en état avant vente ou mise en location</li>
+            <li>Laquage de menuiseries et boiseries anciennes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Matières & décor</span>
+          <h2>Enduits décoratifs et tadelakt à Namur</h2>
+          <p>
+            Les <a href={`${base}services/enduits-decoratifs`}>enduits décoratifs</a> — stuc vénitien, enduits à la chaux, effets minéraux — trouvent naturellement leur place dans les intérieurs namurois de caractère : un mur d'accent en stuc dans un salon mouluré, une montée d'escalier à la chaux, une crédence minérale dans une cuisine contemporaine.
+          </p>
+          <p>
+            Dans les salles de bain, le <a href={`${base}services/tadelakt`}>tadelakt</a> remplace avantageusement le carrelage : un enduit à la chaux ciré, continu et sans joints, qui habille murs et douches à l'italienne d'une matière douce et naturellement adaptée à l'humidité. C'est une technique encore rare en région namuroise — et l'une de nos spécialités.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi faire appel à Moment D.Art à Namur ?</h3>
+          <ul class="zp-list">
+            <li>Une exigence de finition pensée pour le bâti de caractère</li>
+            <li>Des techniques peu répandues : tadelakt, stuc, chaux</li>
+            <li>Un interlocuteur unique, du devis à la réception</li>
+            <li>Projection visuelle du résultat possible avant chantier</li>
+            <li>Organisation éprouvée des chantiers hors région liégeoise</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Services</span>
+        <h2>Nos services pour vos travaux à Namur</h2>
+      </div>
+      <div class="zp-services">
+        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
+          <h3>Peinture intérieure</h3>
+          <p>Du studio à la maison de maître : préparation complète et finitions haut de gamme.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/enduits-decoratifs`}>
+          <h3>Enduits décoratifs</h3>
+          <p>Stuc, chaux et effets matière pour des murs qui structurent la pièce.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/tadelakt`}>
+          <h3>Tadelakt</h3>
+          <p>Salles de bain et douches sans joints, en enduit à la chaux ciré.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Namur</h2>
+        <p class="lead">
+          Entre Meuse et Condroz, nous couvrons également les communes qui entourent la capitale wallonne.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/ciney`}>Peintre à Ciney</a>
+        <a class="zp-chip" href={`${base}zones-intervention/dinant`}>Peintre à Dinant</a>
+        <span class="zp-chip">Profondeville</span>
+        <span class="zp-chip">Assesse</span>
+        <span class="zp-chip">Gesves</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

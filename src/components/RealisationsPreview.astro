@@ -6,6 +6,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const projects = [avantApresProjects[3], avantApresProjects[5]].map((project) => ({
   ...project,
+  location: project.location ?? 'Région liégeoise',
   beforeImage: `${base}${project.beforeImage}`,
   afterImage: `${base}${project.afterImage}`,
 }));

@@ -1,0 +1,159 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Intervenez-vous partout sur la commune de Neupré ?',
+    a: "Oui. Le siège de Moment D.Art se trouve rue des Moges, à Neupré même : nous intervenons sur toute la commune — Neupré centre, Neuville-en-Condroz, Rotheux-Rimière, Plainevaux et Ehein — ainsi que dans les communes voisines (Esneux, Seraing, Nandrin).",
+  },
+  {
+    q: 'Acceptez-vous les petits chantiers à Neupré (une pièce, quelques portes) ?',
+    a: "Oui. La proximité du siège nous permet d'intégrer facilement des chantiers courts : la remise en peinture d'une chambre, la rénovation de portes intérieures ou d'un escalier se planifient sans difficulté entre deux chantiers plus importants.",
+  },
+  {
+    q: 'La visite et le devis sont-ils gratuits à Neupré ?',
+    a: "Oui, comme partout où nous intervenons. Après votre demande via le formulaire du site, nous prenons contact sous 48h pour convenir d'une visite gratuite et sans engagement, suivie d'un devis clair et détaillé.",
+  },
+  {
+    q: 'Avez-vous déjà réalisé des chantiers à Neupré ?',
+    a: "Oui. Plusieurs chantiers documentés sur ce site ont été réalisés à Neupré, dont une remise en blanc complète d'une maison visible dans notre galerie, et plusieurs avis clients publiés proviennent d'habitants de la commune.",
+  },
+  {
+    q: 'Travaillez-vous aussi pour les professionnels à Neupré et alentours ?',
+    a: "Oui. Bureaux, cabinets, commerces et espaces d'accueil : les interventions sont planifiées pour limiter la gêne sur votre activité, avec le même niveau d'exigence que pour les chantiers résidentiels.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Neupré | Peinture intérieure, tadelakt & enduits décoratifs"
+  description="Peintre à Neupré, Moment D.Art réalise vos peintures intérieures, boiseries, enduits décoratifs et tadelakt avec des finitions haut de gamme. Devis gratuit."
+  zoneName="Neupré"
+  heroTitle="Peintre à Neupré pour vos peintures et enduits décoratifs"
+  heroLead="Moment D.Art est installé rue des Moges, à Neupré. Peinture intérieure, enduits décoratifs, tadelakt, portes et boiseries : nous accompagnons les habitants de la commune et de ses villages avec des finitions haut de gamme — sans intermédiaire, avec un artisan qui connaît le coin."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Neupré</h2>
+          <p>
+            La peinture intérieure représente l'essentiel de nos chantiers à Neupré : remises en blanc complètes avant une vente ou une location, changements d'ambiance pièce par pièce, rénovation de plafonds abîmés ou mise en couleur d'un séjour. Le bâti de la commune est varié — villas quatre façades des années 70-80, maisons plus récentes des nouveaux quartiers, fermettes rénovées côté Neuville-en-Condroz — et chaque support demande une préparation adaptée avant la moindre couche de finition.
+          </p>
+          <p>
+            Notre approche est toujours la même : protection soignée des lieux, rebouchage et ponçage, impression si nécessaire, puis finitions tendues au rendu impeccable. Le choix des teintes et des finitions (mat, velours, satin) se fait ensemble, lors de la visite. Tous les détails sont sur notre page <a href={`${base}services/peinture-interieure`}>peinture intérieure</a>.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Travaux fréquents à Neupré</h3>
+          <ul class="zp-list">
+            <li>Remise en blanc complète de maisons et d'appartements</li>
+            <li>Mise en couleur de séjours, chambres et bureaux</li>
+            <li>Rénovation de plafonds et de cages d'escalier</li>
+            <li>Peinture de portes, châssis intérieurs et plinthes</li>
+            <li>Rafraîchissement avant vente ou mise en location</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Matières & décor</span>
+          <h2>Enduits décoratifs et tadelakt à Neupré</h2>
+          <p>
+            Au-delà de la peinture classique, nous réalisons des <a href={`${base}services/enduits-decoratifs`}>enduits décoratifs</a> — stuc, enduits à la chaux, effets matière — qui donnent aux murs une profondeur qu'aucune peinture ne peut imiter. C'est un travail de main, appliqué en plusieurs passes, qui se prête particulièrement bien aux pièces de vie et aux murs d'accent.
+          </p>
+          <p>
+            Pour les salles de bain et les pièces d'eau, le <a href={`${base}services/tadelakt`}>tadelakt</a> reste notre spécialité : un enduit à la chaux ciré, naturellement adapté à l'humidité, qui remplace le carrelage sans joints. Habiter à Neupré a un avantage simple : l'atelier n'est jamais loin, ce qui facilite les chantiers en plusieurs passes que demandent ces techniques.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Finitions proposées</h3>
+          <ul class="zp-list">
+            <li>Tadelakt pour salles de bain et douches à l'italienne</li>
+            <li>Enduits à la chaux et stucs vénitiens</li>
+            <li>Béton ciré et effets minéraux</li>
+            <li>Murs d'accent et crédences en enduit décoratif</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Menuiseries</span>
+          <h2>Peinture de portes, boiseries et finitions</h2>
+          <p>
+            Portes intérieures, escaliers, lambris, garde-corps : les <a href={`${base}services/boiserie-et-ferronneries`}>boiseries</a> font souvent la différence entre un intérieur simplement repeint et un intérieur réellement fini. Nous les décapons, ponçons et laquons dans les règles — une porte laquée au pistolet ou à la brosse laqueur n'a rien à voir avec une porte simplement repassée au rouleau.
+          </p>
+          <p>
+            C'est un travail que nous faisons beaucoup dans les maisons de la commune, où escaliers en bois et portes d'origine méritent mieux qu'un remplacement : plusieurs exemples avant/après sont visibles sur notre page <a href={`${base}realisations`}>réalisations</a>.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Une entreprise locale, basée à Neupré</h3>
+          <p style="font-size:0.94rem; line-height:1.7;">
+            Moment D.Art n'est pas « actif dans la région » au sens vague : le siège est établi rue des Moges, à 4120 Neupré. Les visites se font rapidement, les chantiers courts s'intègrent facilement au planning, et plusieurs avis clients publiés sur ce site proviennent d'habitants de Neupré. Une remise en blanc complète réalisée dans la commune est <a href={`${base}galerie/remise-en-blanc-neupre`}>documentée dans notre galerie</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Services</span>
+        <h2>Nos services principaux à Neupré</h2>
+      </div>
+      <div class="zp-services">
+        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
+          <h3>Peinture intérieure</h3>
+          <p>Murs, plafonds, remises en blanc et mises en couleur, avec une préparation de support irréprochable.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/enduits-decoratifs`}>
+          <h3>Enduits décoratifs</h3>
+          <p>Stuc, chaux, béton ciré et effets matière pour des murs qui ont une vraie présence.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/boiserie-et-ferronneries`}>
+          <h3>Portes & boiseries</h3>
+          <p>Laquage de portes, escaliers, lambris et ferronneries — les finitions qui changent tout.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Nos zones proches autour de Neupré</h2>
+        <p class="lead">
+          Depuis Neupré, nous rayonnons naturellement sur les communes voisines et toute la région liégeoise.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/liege`}>Peintre à Liège</a>
+        <a class="zp-chip" href={`${base}zones-intervention/sprimont`}>Peintre à Sprimont</a>
+        <a class="zp-chip" href={`${base}zones-intervention/embourg`}>Peintre à Embourg</a>
+        <a class="zp-chip" href={`${base}zones-intervention/beaufays`}>Peintre à Beaufays</a>
+        <span class="zp-chip">Esneux</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

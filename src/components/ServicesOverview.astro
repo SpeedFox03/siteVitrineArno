@@ -8,6 +8,8 @@ const services = [
   { href: `${import.meta.env.BASE_URL}services/revetement-de-sol`, title: 'Revêtement de sol', text: 'Habillage et rénovation des sols pour apporter résistance, confort visuel et cohérence avec l’ensemble du projet.' },
   { href: `${import.meta.env.BASE_URL}services/revetement-mural`, title: 'Revêtement mural', text: 'Pose de papiers peints, textures murales et finitions décoratives élégantes.' },
   { href: `${import.meta.env.BASE_URL}services/boiserie-et-ferronneries`, title: 'Boiserie et ferronneries', text: 'Portes, châssis, boiseries et éléments métalliques remis en valeur dans un esprit soigné et haut de gamme.' },
+  { href: `${import.meta.env.BASE_URL}services/tadelakt`, title: 'Tadelakt', text: 'L’enduit à la chaux ciré des salles de bain et douches à l’italienne : une matière continue, sans joints, naturellement adaptée à l’eau.' },
+  { href: `${import.meta.env.BASE_URL}services/peinture-a-la-chaux`, title: 'Peinture à la chaux', text: 'Badigeons de chaux et peintures naturelles : des finitions mates, poudrées et respirantes, saines pour l’intérieur comme pour les murs.' },
 ];
 ---
 
@@ -56,9 +58,14 @@ const services = [
   }
 
   .service-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
+  }
+
+  .service {
+    width: calc((100% - 2rem) / 3);
   }
 
   .service {
@@ -172,15 +179,21 @@ const services = [
 
   @media (max-width: 900px) {
     .service-grid {
-      grid-template-columns: repeat(2, 1fr);
       gap: 0.9rem;
+    }
+
+    .service {
+      width: calc((100% - 0.9rem) / 2);
     }
   }
 
   @media (max-width: 600px) {
     .service-grid {
-      grid-template-columns: 1fr;
       gap: 0.9rem;
+    }
+
+    .service {
+      width: 100%;
     }
 
     .service {

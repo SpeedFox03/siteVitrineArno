@@ -1,0 +1,82 @@
+---
+// Layout des pages locales /zones-intervention/<ville>.
+// Fournit : Header, fil d'Ariane (+ BreadcrumbList), hero avec H1 local, FAQ locale (+ FAQPage),
+// CTA devis (QuoteSection) et Footer. Le contenu unique de chaque ville passe dans le slot.
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Faq from '../components/Faq.astro';
+import QuoteSection from '../components/QuoteSection.astro';
+import Footer from '../components/Footer.astro';
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  zoneName: string;
+  heroTitle: string;
+  heroLead: string;
+  faq: FaqItem[];
+}
+
+const { title, description, zoneName, heroTitle, heroLead, faq } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+
+  <Breadcrumb items={[
+    { label: 'Accueil', href: base },
+    { label: "Zones d'intervention", href: `${base}zones-intervention` },
+    { label: zoneName },
+  ]} />
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="card zone-hero">
+        <span class="eyebrow">Zone d'intervention</span>
+        <h1>{heroTitle}</h1>
+        <p class="lead">{heroLead}</p>
+        <div class="btn-row" style="margin-top:0.5rem;">
+          <a class="btn btn-primary" href={`${base}devis`}>Demander un devis</a>
+          <a class="btn btn-secondary" href={`${base}realisations`}>Voir nos réalisations</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="zp-scope">
+    <slot />
+  </div>
+
+  <Faq
+    items={faq}
+    eyebrow="FAQ locale"
+    title={`FAQ — Peintre à ${zoneName}`}
+    lead={`Les questions les plus fréquentes avant de lancer un chantier à ${zoneName}.`}
+  />
+
+  <QuoteSection />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .zone-hero {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 640px) {
+    .zone-hero {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>

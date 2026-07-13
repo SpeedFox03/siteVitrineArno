@@ -18,7 +18,7 @@ const photos = projet.photos.map(p => `${base}${p}`);
       {photos.map((src, i) => (
         <img
           src={src}
-          alt={`${projet.titre} à ${projet.localisation}${projet.photos.length > 1 ? ` — photo ${i + 1}` : ''}`}
+          alt={`${serviceLabels[projet.categorie]} à ${projet.localisation} — ${projet.titre}${projet.photos.length > 1 ? `, photo ${i + 1}` : ''}`}
           class={`photo-slide${i === 0 ? ' is-active' : ''}`}
           loading={i === 0 ? 'eager' : 'lazy'}
           decoding="async"

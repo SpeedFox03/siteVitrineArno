@@ -1,0 +1,161 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Vous déplacez-vous vraiment jusqu’à Ciney ?',
+    a: "Oui. Notre siège est à Neupré, à une quarantaine de minutes de Ciney, et le Condroz fait partie des zones où nous acceptons des chantiers. Nous organisons les visites et les interventions de manière regroupée pour que la distance ne se ressente ni sur la qualité ni sur le suivi.",
+  },
+  {
+    q: 'Le déplacement a-t-il un impact sur le devis ?',
+    a: "Tout est annoncé dès le devis, qui est gratuit et détaillé : il n'y a aucun supplément découvert en cours de chantier. Pour les interventions courtes, nous les regroupons avec d'autres chantiers dans la région de Ciney, ce qui peut simplement jouer sur le délai de planification.",
+  },
+  {
+    q: 'Quels types de chantiers réalisez-vous à Ciney ?',
+    a: "Des rénovations intérieures complètes (murs, plafonds, portes, boiseries) comme des projets de finition plus pointus : enduits décoratifs, tadelakt de salle de bain, laquage de portes. Les chantiers résidentiels et professionnels sont les bienvenus.",
+  },
+  {
+    q: 'Comment se passe le premier contact pour un chantier à Ciney ?',
+    a: "Envoyez votre demande via le formulaire de devis, idéalement avec quelques photos des pièces concernées. Cela nous permet de préparer la visite sur place — gratuite et sans engagement — et souvent de vous proposer une première projection visuelle du résultat avant travaux.",
+  },
+  {
+    q: 'Faites-vous le tadelakt et les enduits à la chaux à Ciney ?',
+    a: "Oui. Le tadelakt et les enduits à la chaux demandent plusieurs passes espacées de temps de séchage : nous planifions ces étapes en conséquence pour les chantiers du Condroz, sans compromis sur le résultat.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Ciney | Peinture intérieure & enduits décoratifs"
+  description="Moment D.Art intervient à Ciney pour vos travaux de peinture intérieure, portes, boiseries, enduits décoratifs et tadelakt. Devis gratuit et finitions haut de gamme."
+  zoneName="Ciney"
+  heroTitle="Peintre à Ciney pour vos travaux de peinture intérieure et décorative"
+  heroLead="Moment D.Art intervient à Ciney et dans le Condroz depuis son siège de Neupré. Peinture intérieure, portes et boiseries, enduits décoratifs et tadelakt : une exécution soignée et des finitions haut de gamme, au cœur de la capitale du Condroz."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Travaux de peinture intérieure à Ciney</h2>
+          <p>
+            À Ciney et dans les villages alentour, les demandes qui nous arrivent le plus souvent concernent la rénovation intérieure : remettre au propre une fermette condrusienne rachetée, moderniser les teintes d'une maison des années 80, ou finir dans les règles une construction neuve dans les nouveaux quartiers. Le bâti du Condroz — pierre calcaire, murs anciens parfois irréguliers, plafonds à rafraîchir — demande une vraie préparation des supports avant de parler de couleur.
+          </p>
+          <p>
+            C'est précisément notre façon de travailler : diagnostic des supports lors de la visite, rebouchage, enduisage et ponçage systématiques, puis application des finitions choisies ensemble. Le détail de notre méthode est décrit sur la page <a href={`${base}services/peinture-interieure`}>peinture intérieure</a>.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Demandes fréquentes dans la région de Ciney</h3>
+          <ul class="zp-list">
+            <li>Rénovation intérieure de fermes et maisons en pierre</li>
+            <li>Finitions complètes de constructions neuves</li>
+            <li>Remise en peinture avant vente ou location</li>
+            <li>Mise en couleur de pièces de vie et de chambres</li>
+            <li>Peinture de plafonds et cages d'escalier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Menuiseries</span>
+          <h2>Peinture de portes et boiseries à Ciney</h2>
+          <p>
+            Dans les maisons anciennes du Condroz, portes massives, escaliers en bois et lambris font partie du caractère du lieu. Plutôt que de les remplacer, nous les remettons en état : décapage si nécessaire, ponçage, puis laquage soigné qui redonne aux <a href={`${base}services/boiserie-et-ferronneries`}>boiseries</a> un aspect net et durable. Une porte correctement laquée transforme un couloir entier — c'est souvent le poste le plus rentable d'une rénovation.
+          </p>
+          <p>
+            Nous traitons aussi les ferronneries : garde-corps, rampes et grilles, préparés et repeints avec des produits adaptés au métal.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Enduits décoratifs, tadelakt et finitions murales</h3>
+          <p style="font-size:0.94rem; line-height:1.7;">
+            Pour les projets qui veulent aller plus loin que la peinture, nous appliquons des <a href={`${base}services/enduits-decoratifs`}>enduits décoratifs</a> — chaux, stuc, effets minéraux — et du <a href={`${base}services/tadelakt`}>tadelakt</a> dans les salles de bain. Ces finitions à l'ancienne s'accordent particulièrement bien avec la pierre et le bois des intérieurs condrusiens.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Notre organisation</span>
+          <h2>Une intervention soignée dans le Condroz et la région de Ciney</h2>
+          <p>
+            Soyons transparents : Moment D.Art n'a pas d'atelier à Ciney. L'entreprise est basée à Neupré, en bordure du Condroz, et intervient à Ciney, Hamois, Havelange, Rochefort et dans les villages voisins en regroupant visites et chantiers. Concrètement, cela ne change rien pour vous : la visite de devis reste gratuite, les délais sont annoncés clairement, et le chantier se déroule comme partout ailleurs — lieux protégés, supports préparés, nettoyage quotidien.
+          </p>
+          <p>
+            Nous n'avons pas encore de chantier documenté à Ciney même dans notre galerie : nos <a href={`${base}realisations`}>réalisations publiées</a> — remises en blanc, enduits, boiseries — donnent en attendant une idée fidèle du niveau de finition que nous visons sur chaque chantier, où qu'il soit.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi choisir Moment D.Art pour un chantier à Ciney ?</h3>
+          <ul class="zp-list">
+            <li>Un seul artisan responsable, du devis à la réception</li>
+            <li>Devis gratuit, détaillé, sans surprise en cours de route</li>
+            <li>Projection visuelle possible du résultat avant travaux</li>
+            <li>Des spécialités rares dans la région : tadelakt, stuc, enduits à la chaux</li>
+            <li>Chantier propre : protection systématique et nettoyage chaque soir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Services</span>
+        <h2>Nos services pour vos travaux à Ciney</h2>
+      </div>
+      <div class="zp-services">
+        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
+          <h3>Peinture intérieure</h3>
+          <p>Rénovation de murs et plafonds, remises en blanc et mises en couleur avec préparation complète des supports.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/tadelakt`}>
+          <h3>Tadelakt</h3>
+          <p>L'enduit à la chaux ciré des salles de bain : sans joints, naturellement adapté aux pièces d'eau.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/boiserie-et-ferronneries`}>
+          <h3>Portes & boiseries</h3>
+          <p>Laquage de portes, escaliers, lambris et ferronneries des maisons de caractère du Condroz.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Ciney</h2>
+        <p class="lead">
+          Un chantier à quelques kilomètres de Ciney ? Nous couvrons l'ensemble du Condroz et ses abords.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/dinant`}>Peintre à Dinant</a>
+        <a class="zp-chip" href={`${base}zones-intervention/namur`}>Peintre à Namur</a>
+        <a class="zp-chip" href={`${base}zones-intervention/hamois`}>Peintre à Hamois</a>
+        <a class="zp-chip" href={`${base}zones-intervention/rochefort`}>Peintre à Rochefort</a>
+        <a class="zp-chip" href={`${base}zones-intervention/marche-en-famenne`}>Peintre à Marche-en-Famenne</a>
+        <span class="zp-chip">Havelange</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

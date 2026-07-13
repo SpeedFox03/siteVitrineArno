@@ -1,14 +1,38 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Faq from '../../components/Faq.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const faq = [
+  {
+    q: 'La préparation des supports est-elle comprise dans le devis ?',
+    a: "Toujours. Rebouchage, ponçage, reprise des fissures et impression font partie intégrante de notre travail — c'est même l'étape qui conditionne le résultat final. Le devis détaille chaque poste, préparation comprise, pour qu'il n'y ait aucune surprise.",
+  },
+  {
+    q: 'Combien de couches de peinture appliquez-vous ?',
+    a: "Deux couches de finition au minimum, précédées d'une impression lorsque le support le demande (plâtre neuf, fond bloqué, changement de teinte marqué). L'objectif est un film régulier, opaque et durable — jamais une couche unique « pour aller vite ».",
+  },
+  {
+    q: 'Peut-on habiter la maison pendant les travaux ?',
+    a: "Oui, dans la grande majorité des cas. Nous travaillons pièce par pièce, protégeons systématiquement sols et mobilier, et nettoyons le chantier chaque soir. Les peintures utilisées en intérieur sont des produits professionnels en phase aqueuse, faiblement odorants.",
+  },
+  {
+    q: 'Combien de temps faut-il pour repeindre une pièce ou un appartement ?',
+    a: "Une pièce standard prend généralement 1 à 2 jours, une rénovation complète d'appartement (4 à 5 pièces) s'étale sur 4 à 7 jours, selon l'état des supports. Les délais sont annoncés avant le démarrage et respectés.",
+  },
+  {
+    q: 'Aidez-vous à choisir les teintes ?',
+    a: "Oui, systématiquement. Le choix des teintes et des finitions (mat, velours, satin) se fait ensemble lors de la visite, et pour certains projets nous proposons une projection visuelle du résultat à partir d'une photo de la pièce, avant le premier coup de pinceau.",
+  },
+];
 ---
 <ServiceLayout
-  title="Peinture intérieure à Ciney, Namur & Condroz | Moment D.Art"
-  description="Peinture intérieure haut de gamme à Ciney, Namur, Rochefort et dans le Condroz — également en région liégeoise. Murs, plafonds, cages d'escalier : préparation soignée, finitions premium."
+  title="Peinture intérieure à Neupré, Liège & Namur | Moment D.Art"
+  description="Peinture intérieure haut de gamme à Neupré et en région liégeoise — également à Namur, Ciney et dans le Condroz. Murs, plafonds, portes et boiseries : préparation soignée, finitions premium."
   heroTitle="Peinture intérieure"
   heroLead="Murs, plafonds, cages d'escalier et espaces de vie traités avec précision pour un rendu net, lumineux et durablement haut de gamme."
   heroImage={`${base}/images/motifs-deco/waterloo-peinture/05.jpg`}
-  heroImageAlt="Peinture intérieure — Mise en peinture complète à Waterloo"
+  heroImageAlt="Peinture intérieure d'une maison à Waterloo — murs et plafonds repeints par Moment D.Art, peintre à Neupré"
   current="Peinture intérieure"
 >
   <div slot="context" class="grid-2">
@@ -53,5 +77,44 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <p>Rendu brillant, très résistant aux frottements. Recommandé pour cuisines, salles de bain et espaces humides.</p>
       </div>
     </div>
+  </Fragment>
+
+  <Fragment slot="extra">
+    <section class="section">
+      <div class="container">
+        <div class="zp-split">
+          <div class="zp-text">
+            <span class="eyebrow">Pièce par pièce</span>
+            <h2>Peinture de murs et plafonds, pièce par pièce</h2>
+            <p>
+              Chaque pièce a ses contraintes : un plafond de séjour qui accroche la lumière rasante ne pardonne aucun défaut d'enduisage, une cage d'escalier demande de travailler en hauteur sans salir les volées, une chambre d'enfant appelle une peinture lessivable. Nous adaptons la préparation, les produits et l'ordre d'intervention à chaque espace plutôt que d'appliquer la même recette partout.
+            </p>
+            <p>
+              C'est aussi valable pour les projets partiels : repeindre uniquement un séjour, rafraîchir les plafonds, ou remettre au propre un bien entre deux locataires. Aucun chantier n'est trop petit pour être bien fait.
+            </p>
+          </div>
+          <div class="card zp-card">
+            <h3>Peinture de portes et boiseries intérieures</h3>
+            <p style="font-size:0.94rem; line-height:1.7;">
+              La mise en peinture des murs s'accompagne presque toujours de celle des portes, plinthes et chambranles : des boiseries laquées avec soin font la différence entre un intérieur « repeint » et un intérieur fini. Ce travail spécifique — ponçage, primaire, laque tendue — est détaillé sur notre page <a href={`${base}/services/boiserie-et-ferronneries`}>portes & boiseries</a>.
+            </p>
+            <div class="zp-chips" style="margin-top:1.25rem;">
+              <a class="zp-chip" href={`${base}/zones-intervention/neupre`}>Peinture intérieure à Neupré</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/liege`}>Liège</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/namur`}>Namur</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/ciney`}>Ciney</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/dinant`}>Dinant</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Faq
+      items={faq}
+      eyebrow="FAQ"
+      title="FAQ — Peinture intérieure"
+      lead="Ce que nos clients demandent le plus souvent avant un chantier de peinture intérieure."
+    />
   </Fragment>
 </ServiceLayout>

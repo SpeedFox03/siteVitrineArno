@@ -1,0 +1,104 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Couvrez-vous tous les villages de Sprimont ?',
+    a: "Oui : Sprimont centre, Louveigné, Banneux, Dolembreux, Gomzé-Andoumont et les hameaux voisins. La commune est à un quart d'heure de notre siège de Neupré, ce qui en fait l'une de nos zones d'intervention les plus rapides à planifier.",
+  },
+  {
+    q: 'Avez-vous déjà des clients à Sprimont ?',
+    a: "Oui, et vous pouvez le vérifier : parmi les avis publiés sur ce site figure celui d'une cliente de Sprimont pour une rénovation. La commune fait partie de notre zone d'activité régulière, pas d'une liste théorique.",
+  },
+  {
+    q: 'Faites-vous les finitions des constructions neuves à Sprimont ?',
+    a: "Oui. Les nouveaux quartiers de la commune nous amènent régulièrement des chantiers de première mise en peinture : plâtres neufs à laisser sécher puis à imprimer correctement, choix des teintes pièce par pièce, laquage des portes et plinthes. C'est un travail spécifique que nous maîtrisons bien.",
+  },
+  {
+    q: 'Acceptez-vous les petits chantiers (une pièce, un escalier) ?',
+    a: "Oui, d'autant plus facilement que Sprimont est tout près : une pièce à repeindre, un escalier à relaquer ou quelques portes s'intègrent sans difficulté dans notre planning, entre deux chantiers plus importants.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Sprimont | Peinture intérieure & enduits décoratifs"
+  description="Moment D.Art, peintre basé à Neupré, intervient à Sprimont, Louveigné et Banneux : peinture intérieure, portes et boiseries, enduits décoratifs et tadelakt. Devis gratuit."
+  zoneName="Sprimont"
+  heroTitle="Peintre à Sprimont pour vos peintures intérieures et finitions"
+  heroLead="Sprimont est à un quart d'heure de notre siège de Neupré — et déjà présente dans nos avis clients. Peinture intérieure, portes et boiseries, enduits décoratifs : nous intervenons sur toute la commune, de Louveigné à Banneux, avec des finitions haut de gamme."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Sprimont, Louveigné et Banneux</h2>
+          <p>
+            Le bâti sprimontois mélange deux mondes : d'un côté les maisons en pierre — la commune a donné son nom à la pierre de Sprimont — et les fermettes rénovées des villages, de l'autre les constructions quatre façades des lotissements récents autour de Louveigné et de Banneux. Deux types de supports, deux façons de travailler : reprise et préparation minutieuse des murs anciens d'un côté, impression et finitions tendues sur plâtre neuf de l'autre.
+          </p>
+          <p>
+            Dans les deux cas, la méthode ne change pas : visite sur place, diagnostic des supports, devis détaillé, puis un chantier propre et des <a href={`${base}services/peinture-interieure`}>finitions de peinture intérieure</a> à la hauteur de ce que vous attendez.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Chantiers courants à Sprimont</h3>
+          <ul class="zp-list">
+            <li>Première mise en peinture de constructions neuves</li>
+            <li>Rénovation de maisons en pierre et fermettes</li>
+            <li>Mise en couleur de pièces de vie et chambres</li>
+            <li>Laquage de portes, plinthes et escaliers</li>
+            <li>Rafraîchissement avant vente ou location</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Finitions</span>
+          <h2>Boiseries, enduits décoratifs et tadelakt à Sprimont</h2>
+          <p>
+            Au-delà de la peinture classique, nous apportons à Sprimont nos spécialités décoratives : <a href={`${base}services/enduits-decoratifs`}>enduits à la chaux, stuc et effets matière</a> pour les murs d'accent, <a href={`${base}services/tadelakt`}>tadelakt</a> pour les salles de bain, et <a href={`${base}services/boiserie-et-ferronneries`}>laquage de portes et boiseries</a> — un poste qui transforme les intérieurs des maisons anciennes de la commune.
+          </p>
+          <p>
+            La proximité du siège facilite les techniques en plusieurs passes : les temps de séchage se planifient au jour près, sans immobiliser vos pièces plus que nécessaire.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Une zone que nous connaissons vraiment</h3>
+          <p style="font-size:0.94rem; line-height:1.7;">
+            Nos <a href={`${base}realisations`}>réalisations</a> en région liégeoise et les <a href={`${base}#temoignages`}>avis publiés</a> — dont celui d'une cliente sprimontoise — donnent une idée concrète du niveau de finition que nous visons. La visite de devis est gratuite et sans engagement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Sprimont</h2>
+        <p class="lead">
+          Entre Ourthe et Amblève, nous couvrons les communes voisines depuis Neupré.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/neupre`}>Peintre à Neupré</a>
+        <a class="zp-chip" href={`${base}zones-intervention/liege`}>Peintre à Liège</a>
+        <a class="zp-chip" href={`${base}zones-intervention/beaufays`}>Peintre à Beaufays</a>
+        <a class="zp-chip" href={`${base}zones-intervention/embourg`}>Peintre à Embourg</a>
+        <span class="zp-chip">Esneux</span>
+        <span class="zp-chip">Aywaille</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

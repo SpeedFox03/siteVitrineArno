@@ -74,11 +74,6 @@
       <circle cx="1060" cy="42" r=".9" fill="#745947" opacity=".22"/>
     </g>
 
-    <g opacity=".16">
-      <path d="M160 0v112M320 0v112M480 0v112M640 0v112M800 0v112M960 0v112" stroke="#8f715a" stroke-width="1"/>
-      <path d="M160 0v112M320 0v112M480 0v112M640 0v112M800 0v112M960 0v112" stroke="#ffffff" stroke-width=".7" transform="translate(1 0)"/>
-    </g>
-
     <rect width="1120" height="112" filter="url(#stucco-grain)" opacity=".28"/>
   </g>
 </svg>

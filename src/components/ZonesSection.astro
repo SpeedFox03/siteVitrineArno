@@ -1,0 +1,73 @@
+---
+// Section "Zones d'intervention" de la homepage : maillage visible vers le hub et les pages locales.
+import { zonesAvecPage } from '../data/zones';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="section zones-section" id="zones">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2>Basés à Neupré, actifs bien au-delà.</h2>
+      <p class="lead">
+        Depuis notre siège de Neupré, nous intervenons dans toute la région liégeoise — Liège, Sprimont, Embourg, Beaufays — et nous nous déplaçons à Namur, Ciney, Dinant, Marche-en-Famenne et dans tout le Condroz et la Famenne selon les projets.
+      </p>
+    </div>
+
+    <div class="zones-links" data-reveal>
+      {zonesAvecPage.map((z) => (
+        <a class="zone-chip" href={`${base}zones-intervention/${z.slug}`}>Peintre à {z.nom}</a>
+      ))}
+      <a class="zone-chip zone-chip-all" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .zones-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .zones-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .zone-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.15rem;
+    border-radius: 999px;
+    border: 1.5px solid rgba(122, 92, 62, 0.35);
+    color: #7A5C3E;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .zone-chip:hover {
+    border-color: #7A5C3E;
+    background: rgba(122, 92, 62, 0.06);
+  }
+
+  .zone-chip-all {
+    background: #7A5C3E;
+    border-color: #7A5C3E;
+    color: #fff;
+  }
+
+  .zone-chip-all:hover {
+    background: #6b4f35;
+    color: #fff;
+  }
+
+  @media (max-width: 640px) {
+    .zones-links {
+      gap: 0.6rem;
+    }
+  }
+</style>

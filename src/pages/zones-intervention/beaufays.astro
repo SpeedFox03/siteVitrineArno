@@ -1,0 +1,108 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'À quelle vitesse pouvez-vous intervenir à Beaufays ?',
+    a: "Beaufays est à un petit quart d'heure de notre siège de Neupré, par Esneux ou par les hauteurs. Les visites de devis s'y organisent rapidement — généralement dans la semaine qui suit votre demande — et les chantiers courts s'intègrent facilement au planning.",
+  },
+  {
+    q: 'Prenez-vous les maisons récentes des lotissements de Beaufays ?',
+    a: "Oui. Les quartiers récents de Beaufays nous amènent des chantiers de première mise en peinture et de personnalisation : sortir du blanc de chantier, poser des teintes réfléchies pièce par pièce, laquer portes et plinthes correctement. C'est souvent là que se joue la différence entre une maison « finie » et une maison aboutie.",
+  },
+  {
+    q: 'Et les maisons plus anciennes du village ?',
+    a: "Aussi. Le vieux Beaufays et les rues autour de l'église comptent des maisons avec du caractère — boiseries, escaliers, murs à reprendre — pour lesquelles notre travail de préparation et de laquage prend tout son sens.",
+  },
+  {
+    q: 'Le devis est-il vraiment gratuit et sans engagement ?',
+    a: "Oui, partout et donc aussi à Beaufays : demande via le formulaire, contact sous 48h, visite sur place gratuite, puis un devis détaillé poste par poste. Vous décidez ensuite en toute liberté.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Beaufays | Peinture intérieure & boiseries"
+  description="Moment D.Art, peintre basé à Neupré, intervient à Beaufays pour vos peintures intérieures, portes et boiseries, enduits décoratifs et tadelakt. Devis gratuit sous 48h."
+  zoneName="Beaufays"
+  heroTitle="Peintre à Beaufays pour vos travaux de peinture et de décoration"
+  heroLead="Entre les bois de la Vecquée et la vallée de l'Ourthe, Beaufays est à un quart d'heure de notre siège de Neupré. Peinture intérieure, portes et boiseries, enduits décoratifs : nous y intervenons pour des chantiers complets comme pour une seule pièce."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Beaufays</h2>
+          <p>
+            Beaufays s'est beaucoup construite ces dernières décennies : les lotissements y côtoient le vieux village, et les demandes qui nous arrivent reflètent ce mélange. D'un côté, des maisons récentes à personnaliser — sortir du blanc de chantier, affirmer une palette, soigner les détails que le gros œuvre a laissés de côté. De l'autre, des maisons plus anciennes dont les murs, plafonds et boiseries méritent une vraie remise à niveau.
+          </p>
+          <p>
+            Dans les deux cas, nous appliquons la même méthode de <a href={`${base}services/peinture-interieure`}>peinture intérieure</a> : préparation sérieuse des supports, choix des teintes et finitions ensemble lors de la visite, chantier protégé et nettoyé chaque soir.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Ce qu'on nous demande à Beaufays</h3>
+          <ul class="zp-list">
+            <li>Personnalisation de maisons récentes (teintes, murs d'accent)</li>
+            <li>Remise en peinture complète avant emménagement</li>
+            <li>Rénovation de pièces de vie et de chambres</li>
+            <li>Laquage de portes, plinthes et escaliers</li>
+            <li>Enduits décoratifs sur un mur signature</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Finitions</span>
+          <h2>Boiseries, enduits et tadelakt à Beaufays</h2>
+          <p>
+            Le <a href={`${base}services/boiserie-et-ferronneries`}>laquage de portes et boiseries</a> est l'un de nos postes les plus demandés dans la commune : une enfilade de portes laquées au rendu tendu change immédiatement la perception d'un couloir ou d'un hall. Côté matières, les <a href={`${base}services/enduits-decoratifs`}>enduits décoratifs</a> et le <a href={`${base}services/tadelakt`}>tadelakt</a> apportent aux séjours et salles de bain une profondeur que la peinture seule ne donne pas.
+          </p>
+          <p>
+            La proximité de Neupré rend ces techniques en plusieurs passes faciles à planifier : nous passons quand il faut, le temps qu'il faut, sans immobiliser votre maison inutilement.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Pourquoi Moment D.Art à Beaufays ?</h3>
+          <ul class="zp-list">
+            <li>Un artisan à un quart d'heure, pas une plateforme</li>
+            <li>Visite et devis gratuits, réponse sous 48h</li>
+            <li>Finitions haut de gamme, du neuf comme de l'ancien</li>
+            <li>Spécialités décoratives : tadelakt, stuc, chaux</li>
+            <li>Des avis clients vérifiables en région liégeoise</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Beaufays</h2>
+        <p class="lead">
+          Chaudfontaine, l'Ourthe et les hauteurs liégeoises : tout le secteur est couvert depuis Neupré.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/embourg`}>Peintre à Embourg</a>
+        <a class="zp-chip" href={`${base}zones-intervention/sprimont`}>Peintre à Sprimont</a>
+        <a class="zp-chip" href={`${base}zones-intervention/liege`}>Peintre à Liège</a>
+        <a class="zp-chip" href={`${base}zones-intervention/neupre`}>Peintre à Neupré</a>
+        <span class="zp-chip">Esneux</span>
+        <span class="zp-chip">Tilff</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

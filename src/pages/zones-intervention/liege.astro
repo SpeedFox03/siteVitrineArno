@@ -1,0 +1,134 @@
+---
+import ZoneLayout from '../../layouts/ZoneLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faq = [
+  {
+    q: 'Quels quartiers de Liège couvrez-vous ?',
+    a: "Tous. Notre siège de Neupré est à une vingtaine de minutes du centre : nous intervenons dans Liège même — du Carré à Saint-Léonard en passant par les Guillemins — comme dans les communes de l'agglomération : Seraing, Chaudfontaine, Embourg, Beaufays, Esneux, Sprimont ou Angleur.",
+  },
+  {
+    q: 'Intervenez-vous dans les appartements et immeubles liégeois ?',
+    a: "Oui, régulièrement. Appartements de maisons de maître divisées, immeubles récents, kots et biens locatifs : nous gérons les contraintes propres aux immeubles (accès, ascenseur, voisinage, horaires) et protégeons systématiquement les communs pendant le chantier.",
+  },
+  {
+    q: 'Travaillez-vous pour les commerces et l’horeca à Liège ?',
+    a: "Oui. Restaurants, commerces, bureaux et cabinets font partie de nos chantiers professionnels : nous planifions les interventions pour limiter la fermeture ou la gêne, y compris en horaires décalés lorsque le projet le justifie.",
+  },
+  {
+    q: 'Vos avis clients viennent-ils de la région liégeoise ?',
+    a: "Oui : la majorité des avis publiés sur ce site proviennent de clients de Liège, Neupré, Sprimont et Embourg. La région liégeoise est notre zone d'activité principale, celle où nous intervenons au quotidien.",
+  },
+  {
+    q: 'Faites-vous les enduits décoratifs et le tadelakt à Liège ?',
+    a: "Oui. Stuc, enduits à la chaux et tadelakt font partie de nos spécialités, et la proximité du siège rend la planification des passes successives particulièrement simple sur les chantiers liégeois.",
+  },
+];
+---
+
+<ZoneLayout
+  title="Peintre à Liège | Peinture intérieure & enduits décoratifs"
+  description="Moment D.Art, peintre basé à Neupré, intervient dans tout Liège et son agglomération : peinture intérieure, appartements, commerces, enduits décoratifs et tadelakt. Devis gratuit."
+  zoneName="Liège"
+  heroTitle="Peintre à Liège pour vos peintures intérieures et enduits décoratifs"
+  heroLead="À vingt minutes de notre siège de Neupré, Liège est notre terrain de jeu quotidien : appartements, maisons de ville, bureaux et commerces. Peinture intérieure, boiseries, enduits décoratifs et tadelakt, avec le niveau de finition qui fait notre signature."
+  faq={faq}
+>
+  <section class="section">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Peinture intérieure</span>
+          <h2>Peinture intérieure à Liège et dans l'agglomération</h2>
+          <p>
+            Liège est la zone où nous travaillons le plus, tout simplement parce qu'elle est à côté de chez nous. Le tissu urbain y est dense et varié : maisons de ville étroites aux nombreuses cages d'escalier, appartements dans d'anciennes maisons de maître, biens locatifs à remettre en état entre deux occupants, lofts et plateaux rénovés le long de la Meuse.
+          </p>
+          <p>
+            Cette variété demande de la méthode : protéger sérieusement des espaces où l'on circule, préparer des murs qui ont connu plusieurs vies, travailler proprement quand le bâtiment reste occupé. C'est le cœur de notre métier de <a href={`${base}services/peinture-interieure`}>peintre en intérieur</a> — et la raison pour laquelle la majorité de nos avis clients viennent de la région liégeoise.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Chantiers courants à Liège</h3>
+          <ul class="zp-list">
+            <li>Remise en état complète de biens locatifs et de kots</li>
+            <li>Rénovation d'appartements et de maisons de ville</li>
+            <li>Peinture de cages d'escalier et de communs d'immeubles</li>
+            <li>Mise en peinture de commerces, horeca et bureaux</li>
+            <li>Mise en couleur sur mesure de pièces de vie</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="zp-split">
+        <div class="zp-text">
+          <span class="eyebrow">Matières & décor</span>
+          <h2>Enduits décoratifs et tadelakt à Liège</h2>
+          <p>
+            Une bonne partie de nos réalisations en <a href={`${base}services/enduits-decoratifs`}>enduits décoratifs</a> visibles sur ce site ont été faites en région liégeoise : murs d'accent en stuc, enduits à la chaux dans des pièces de vie, effets minéraux sur des cheminées et des crédences. Pour les salles de bain, le <a href={`${base}services/tadelakt`}>tadelakt</a> offre une alternative continue et sans joints au carrelage.
+          </p>
+          <p>
+            La proximité du siège change concrètement les choses pour ces techniques : les passes successives et les temps de séchage se planifient au jour près, sans immobiliser votre salle de bain plus que nécessaire.
+          </p>
+        </div>
+        <div class="card zp-card">
+          <h3>Boiseries et ferronneries liégeoises</h3>
+          <p style="font-size:0.94rem; line-height:1.7;">
+            Escaliers en bois, portes anciennes, lambris et garde-corps font partie de l'ADN des maisons liégeoises. Nous les remettons en valeur par un <a href={`${base}services/boiserie-et-ferronneries`}>laquage soigné</a> plutôt que de les voir remplacés — plusieurs avant/après d'escaliers et de boiseries de la région sont visibles dans nos <a href={`${base}realisations`}>réalisations</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Services</span>
+        <h2>Nos services pour vos travaux à Liège</h2>
+      </div>
+      <div class="zp-services">
+        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
+          <h3>Peinture intérieure</h3>
+          <p>Appartements, maisons de ville et espaces professionnels, avec une préparation sérieuse des supports.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/enduits-decoratifs`}>
+          <h3>Enduits décoratifs</h3>
+          <p>Stuc, chaux et effets minéraux — dont plusieurs réalisations liégeoises sont en galerie.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+        <a class="card zp-service-card" href={`${base}services/tadelakt`}>
+          <h3>Tadelakt</h3>
+          <p>Salles de bain sans joints, en enduit à la chaux ciré, planifiées au plus juste grâce à la proximité.</p>
+          <span class="zp-more">Découvrir le service →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zp-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Alentours</span>
+        <h2>Zones proches desservies autour de Liège</h2>
+        <p class="lead">
+          De l'Ourthe aux hauteurs de Chaudfontaine, l'agglomération liégeoise est couverte au quotidien depuis Neupré.
+        </p>
+      </div>
+      <div class="zp-chips">
+        <a class="zp-chip" href={`${base}zones-intervention/neupre`}>Peintre à Neupré</a>
+        <a class="zp-chip" href={`${base}zones-intervention/sprimont`}>Peintre à Sprimont</a>
+        <a class="zp-chip" href={`${base}zones-intervention/embourg`}>Peintre à Embourg</a>
+        <a class="zp-chip" href={`${base}zones-intervention/beaufays`}>Peintre à Beaufays</a>
+        <span class="zp-chip">Seraing</span>
+        <span class="zp-chip">Esneux</span>
+        <a class="zp-chip" href={`${base}zones-intervention`}>Toutes nos zones d'intervention</a>
+      </div>
+    </div>
+  </section>
+</ZoneLayout>

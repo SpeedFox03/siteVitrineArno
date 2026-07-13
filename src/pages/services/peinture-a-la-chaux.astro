@@ -1,0 +1,119 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Faq from '../../components/Faq.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const faq = [
+  {
+    q: 'Quelle est la différence entre un badigeon de chaux et une peinture classique ?',
+    a: "Une peinture acrylique forme un film plastique à la surface du mur ; un badigeon de chaux pénètre le support et le laisse respirer. Visuellement, la chaux donne un mat profond, légèrement nuagé et vivant, qu'aucune peinture industrielle n'imite vraiment. C'est aussi un matériau minéral, naturellement assainissant, sans solvants.",
+  },
+  {
+    q: 'Sur quels supports peut-on appliquer une peinture à la chaux ?',
+    a: "Idéalement sur des supports minéraux : plâtre, enduits, pierre, briques, anciens badigeons. Sur une peinture existante, une sous-couche d'accrochage adaptée est nécessaire — c'est exactement ce que nous vérifions lors de la visite. Certains supports très bloqués orientent plutôt vers une peinture naturelle qu'un badigeon pur.",
+  },
+  {
+    q: 'Les peintures naturelles tiennent-elles aussi bien que les peintures classiques ?',
+    a: "Oui, à condition de choisir le bon produit pour le bon usage : un badigeon de chaux dans une chambre ou un séjour, une peinture minérale plus résistante dans un couloir passant. Nous vous orientons honnêtement — y compris vers une peinture classique de qualité si c'est le choix le plus adapté à la pièce.",
+  },
+  {
+    q: 'La chaux convient-elle aux pièces humides ?',
+    a: "La chaux aime l'humidité : elle régule naturellement la vapeur d'eau, ce qui en fait un bon choix pour les chambres, buanderies et cuisines. Pour les zones directement exposées à l'eau — douches, pourtours de baignoire — c'est sa version cirée, le tadelakt, qui prend le relais : nous lui avons consacré une page dédiée.",
+  },
+  {
+    q: 'Est-ce un bon choix pour une chambre d’enfant ou une personne sensible ?',
+    a: "C'est même l'un des cas où on la recommande le plus : les badigeons de chaux et les peintures naturelles que nous utilisons sont sans solvants et à très faibles émissions (COV), et la chaux est naturellement antibactérienne et antifongique. L'odeur de chantier est quasi inexistante.",
+  },
+];
+---
+<ServiceLayout
+  title="Peinture à la chaux & peintures naturelles | Moment D.Art"
+  description="Badigeon de chaux et peintures naturelles en Belgique : finitions mates et respirantes, saines et sans solvants. Moment D.Art intervient depuis Neupré à Liège, Namur et dans le Condroz."
+  heroTitle="Peinture à la chaux"
+  heroLead="Badigeons de chaux et peintures naturelles : des finitions mates, poudrées et respirantes, qui donnent aux murs une profondeur que les peintures industrielles n'atteignent pas — et un air intérieur plus sain."
+  heroImage={`${base}/images/projets-photo/enduits-decoratifs/05.jpg`}
+  heroImageAlt="Badigeon de chaux et finition minérale réalisés en région liégeoise par Moment D.Art"
+  current="Peinture à la chaux"
+>
+  <div slot="context" class="grid-2">
+    <div>
+      <span class="eyebrow">Contexte</span>
+      <h2>Pour quels projets ?</h2>
+      <p class="lead">
+        La peinture à la chaux s'adresse à deux profils de projets : les maisons anciennes, dont les murs ont besoin de respirer et que les peintures filmogènes finissent par abîmer — et les intérieurs contemporains qui cherchent cette matité profonde, légèrement nuagée, devenue la signature des beaux intérieurs.
+      </p>
+      <p style="margin-top: 1rem;">
+        S'y ajoute un argument de fond : la santé. Badigeons de chaux et peintures naturelles sont des produits minéraux ou d'origine végétale, sans solvants, à très faibles émissions — un vrai sujet dans les chambres, les chambres d'enfants et les pièces de vie.
+      </p>
+    </div>
+    <div class="card detail-card">
+      <h3>Ce que nous faisons concrètement</h3>
+      <ul class="detail-list">
+        <li>Diagnostic du support et choix du produit adapté (chaux, minéral, naturel)</li>
+        <li>Préparation du fond et sous-couche d'accrochage si nécessaire</li>
+        <li>Application du badigeon en passes croisées, à la brosse</li>
+        <li>Nuançage et effets de matière selon le rendu recherché</li>
+        <li>Protection ou fixatif selon l'usage de la pièce</li>
+        <li>Conseils d'entretien remis en fin de chantier</li>
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="cards">
+    <span class="eyebrow">Finitions</span>
+    <h2>Nos finitions à la chaux et naturelles</h2>
+    <div class="finishes-grid">
+      <div class="card finish-card">
+        <h3>Badigeon de chaux</h3>
+        <p>Le classique : un lait de chaux appliqué en passes croisées, pour un mat profond et nuagé qui vit avec la lumière. Idéal sur murs anciens comme sur plâtre neuf préparé.</p>
+      </div>
+      <div class="card finish-card">
+        <h3>Peintures minérales</h3>
+        <p>À base de silicate ou de chaux formulée, plus résistantes au passage : le rendu minéral, avec la robustesse en plus, pour couloirs, cages d'escalier et pièces sollicitées.</p>
+      </div>
+      <div class="card finish-card">
+        <h3>Peintures naturelles</h3>
+        <p>Peintures écologiques à très faibles COV, en phase aqueuse, dans toutes les teintes contemporaines : l'alternative saine à la peinture classique, sans compromis sur la finition.</p>
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="extra">
+    <section class="section">
+      <div class="container">
+        <div class="zp-split">
+          <div class="zp-text">
+            <span class="eyebrow">Comprendre</span>
+            <h2>Chaux, peinture naturelle ou peinture classique ?</h2>
+            <p>
+              Il n'y a pas de bonne réponse universelle — il y a la bonne matière au bon endroit. Un mur ancien en pierre ou en plâtre à la chaux doit respirer : le badigeon s'impose. Une chambre où l'on veut un air sain et une lumière douce : chaux ou peinture naturelle. Un couloir où frottent cartables et mains : peinture minérale renforcée, voire une laque classique de qualité sur les boiseries.
+            </p>
+            <p>
+              Notre rôle est de vous orienter honnêtement entre ces options lors de la visite, échantillons à l'appui. Et si votre projet penche vers plus de matière encore, les <a href={`${base}/services/enduits-decoratifs`}>enduits décoratifs</a> et le <a href={`${base}/services/tadelakt`}>tadelakt</a> prolongent naturellement l'univers de la chaux.
+            </p>
+          </div>
+          <div class="card zp-card">
+            <h3>Peinture à la chaux près de chez vous</h3>
+            <p style="font-size:0.94rem; line-height:1.7;">
+              Nous appliquons badigeons et peintures naturelles depuis notre siège de Neupré, dans toutes nos zones d'intervention — le bâti ancien du Condroz s'y prête particulièrement bien.
+            </p>
+            <div class="zp-chips" style="margin-top:1rem;">
+              <a class="zp-chip" href={`${base}/zones-intervention/neupre`}>Neupré</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/liege`}>Liège</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/namur`}>Namur</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/ciney`}>Ciney</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/hamois`}>Hamois</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Faq
+      items={faq}
+      eyebrow="FAQ"
+      title="FAQ — Peinture à la chaux"
+      lead="Supports, tenue, santé : les réponses avant de choisir une peinture naturelle."
+    />
+  </Fragment>
+</ServiceLayout>

@@ -1,0 +1,234 @@
+---
+// Bouton flottant réseaux sociaux — monté globalement via BaseLayout.
+// Au clic, les icônes se déploient une à une en arc autour du bouton principal.
+const reseaux = [
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/32497282987',
+    pos: 'up',
+    icon: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
+  <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"></path>
+</svg>`,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/momentd.art/',
+    pos: 'diag',
+    icon: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
+  <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+</svg>`,
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61591426027766',
+    pos: 'left',
+    icon: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
+  <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path>
+</svg>`,
+  },
+];
+---
+
+<div class="social-fab" data-social-fab>
+  <ul class="fab-items" id="fab-items">
+    {reseaux.map((r) => (
+      <li class={`fab-item fab-${r.pos}`}>
+        <a
+          href={r.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${r.label} — Moment D.Art (nouvel onglet)`}
+          title={r.label}
+        >
+          <span class="fab-icon" set:html={r.icon}></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <button
+    class="fab-main"
+    type="button"
+    aria-expanded="false"
+    aria-controls="fab-items"
+    aria-label="Nos réseaux sociaux"
+    data-fab-toggle
+  >
+    <svg class="fab-main-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="22.5" cy="8.5" r="3.2" />
+      <circle cx="9.5" cy="16" r="3.2" />
+      <circle cx="22.5" cy="23.5" r="3.2" />
+      <path d="m12.4 14.4 7.3-4.2M12.4 17.6l7.3 4.2" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  .social-fab {
+    position: fixed;
+    right: 1.15rem;
+    bottom: 1.15rem;
+    z-index: 150; /* sous la bannière cookies (200) et la lightbox (1000) */
+  }
+
+  .fab-main {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    background: #7A5C3E;
+    color: #faf7f2;
+    cursor: pointer;
+    box-shadow:
+      0 6px 20px rgba(70, 52, 36, 0.35),
+      0 2px 6px rgba(70, 52, 36, 0.25);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease;
+  }
+
+  .fab-main:hover {
+    background: #6b4f35;
+    transform: translateY(-2px);
+  }
+
+  .fab-main-icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .social-fab.is-open .fab-main-icon {
+    transform: rotate(90deg);
+  }
+
+  .fab-items {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    pointer-events: none;
+  }
+
+  .fab-item {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+    transition:
+      transform 0.34s cubic-bezier(0.34, 1.45, 0.5, 1),
+      opacity 0.22s ease;
+  }
+
+  /* fermeture : le dernier ouvert se replie en premier */
+  .fab-up   { transition-delay: 0.1s; }
+  .fab-diag { transition-delay: 0.05s; }
+  .fab-left { transition-delay: 0s; }
+
+  .social-fab.is-open .fab-item {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ouverture : apparition une à une */
+  .social-fab.is-open .fab-up   { transform: translate(0, -72px);    transition-delay: 0s; }
+  .social-fab.is-open .fab-diag { transform: translate(-51px, -51px); transition-delay: 0.07s; }
+  .social-fab.is-open .fab-left { transform: translate(-72px, 0);     transition-delay: 0.14s; }
+
+  .fab-item a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(250, 243, 232, 0.96);
+    border: 1px solid rgba(143, 119, 86, 0.22);
+    color: #7A5C3E;
+    box-shadow: 0 6px 18px rgba(70, 52, 36, 0.22);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .fab-item a:hover,
+  .fab-item a:focus-visible {
+    transform: scale(1.1);
+    color: #3E2C1C;
+    border-color: rgba(122, 92, 62, 0.45);
+  }
+
+  .fab-icon {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+  }
+
+  .fab-icon :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+  }
+
+  @media (max-width: 640px) {
+    .social-fab {
+      right: 0.9rem;
+      bottom: 0.9rem;
+    }
+
+    .fab-main {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fab-main,
+    .fab-main-icon,
+    .fab-item,
+    .fab-item a {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const fab = document.querySelector<HTMLElement>('[data-social-fab]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-fab-toggle]');
+
+  if (fab && toggle) {
+    const setOpen = (open: boolean) => {
+      fab.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(!fab.classList.contains('is-open'));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (fab.classList.contains('is-open') && !fab.contains(e.target as Node)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && fab.classList.contains('is-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

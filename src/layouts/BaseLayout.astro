@@ -1,6 +1,7 @@
 ---
 import ScrollReveal from '../components/ScrollReveal.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import SocialFab from '../components/SocialFab.astro';
 
 const {
   title = 'Peintre à Neupré | Peinture intérieure & enduits décoratifs — Moment D.Art',
@@ -23,6 +24,10 @@ const businessSchema = {
   logo: 'https://momentdart.be/logo.png',
   email: 'contact@momentdart.be',
   telephone: '+32497282987',
+  sameAs: [
+    'https://www.instagram.com/momentd.art/',
+    'https://www.facebook.com/profile.php?id=61591426027766',
+  ],
   priceRange: '€€€',
   address: {
     '@type': 'PostalAddress',
@@ -351,6 +356,7 @@ const businessSchema = {
   </head>
   <body>
     <slot />
+    <SocialFab />
     <ScrollReveal />
     <CookieBanner />
   </body>

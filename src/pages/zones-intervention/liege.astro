@@ -1,5 +1,6 @@
 ---
 import ZoneLayout from '../../layouts/ZoneLayout.astro';
+import ZoneServices from '../../components/ZoneServices.astro';
 
 const base = import.meta.env.BASE_URL;
 
@@ -85,31 +86,7 @@ const faq = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">Services</span>
-        <h2>Nos services pour vos travaux à Liège</h2>
-      </div>
-      <div class="zp-services">
-        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
-          <h3>Peinture intérieure</h3>
-          <p>Appartements, maisons de ville et espaces professionnels, avec une préparation sérieuse des supports.</p>
-          <span class="zp-more">Découvrir le service →</span>
-        </a>
-        <a class="card zp-service-card" href={`${base}services/enduits-decoratifs`}>
-          <h3>Enduits décoratifs</h3>
-          <p>Stuc, chaux et effets minéraux — dont plusieurs réalisations liégeoises sont en galerie.</p>
-          <span class="zp-more">Découvrir le service →</span>
-        </a>
-        <a class="card zp-service-card" href={`${base}services/tadelakt`}>
-          <h3>Tadelakt</h3>
-          <p>Salles de bain sans joints, en enduit à la chaux ciré, planifiées au plus juste grâce à la proximité.</p>
-          <span class="zp-more">Découvrir le service →</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <ZoneServices zoneName="Liège" />
 
   <section class="section zp-alt">
     <div class="container">

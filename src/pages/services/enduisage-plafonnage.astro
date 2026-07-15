@@ -1,0 +1,119 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import Faq from '../../components/Faq.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const faq = [
+  {
+    q: 'Quelle est la différence entre enduisage et plafonnage ?',
+    a: "Le plafonnage désigne la couche de plâtre qui recouvre les murs et plafonds bruts (blocs, briques, plaques) — c'est la structure de la surface. L'enduisage regroupe les couches plus fines de finition : rebouchage, bandes, enduit de lissage. En rénovation, les deux se combinent souvent : on répare le plafonnage existant, puis on lisse à l'enduit pour obtenir un support parfaitement plan.",
+  },
+  {
+    q: 'Le ponçage fait-il beaucoup de poussière ?',
+    a: "C'est la crainte classique, et elle est légitime. Nous travaillons avec des ponceuses raccordées à un aspirateur à haute filtration et protégeons intégralement les pièces (sols, mobilier, portes) : l'essentiel de la poussière est capté à la source, et le chantier est nettoyé chaque soir.",
+  },
+  {
+    q: 'Combien de temps faut-il attendre avant de peindre ?',
+    a: "Un enduit de lissage se peint généralement après 24 à 48 h de séchage ; un plafonnage neuf demande plusieurs semaines de séchage à cœur avant d'être imprimé et peint. Comme nous assurons les deux étapes, le calendrier est optimisé dès le devis — vous n'avez pas à coordonner deux corps de métier.",
+  },
+  {
+    q: 'Pouvez-vous rattraper des murs très abîmés ou anciens ?',
+    a: "Oui, c'est le cœur du métier : fissures, anciens papiers peints arrachés, saignées d'électricien, plafonnage qui sonne creux par endroits. Après diagnostic, on répare localement ou on ré-enduit entièrement la surface. Un mur très irrégulier ne se « cache » pas sous la peinture — il se remet à niveau d'abord.",
+  },
+  {
+    q: 'Faites-vous l’enduisage seul, sans la peinture ?',
+    a: "Oui. Certains clients veulent peindre eux-mêmes ou poser un revêtement ensuite : nous livrons alors des supports lissés, poncés et dépoussiérés, prêts à peindre. Mais le duo enduisage + peinture par la même équipe reste la garantie du meilleur résultat final.",
+  },
+];
+---
+<ServiceLayout
+  title="Enduisage & plafonnage à Neupré, Liège et Namur | Moment D.Art"
+  description="Plafonnage, enduisage et lissage de murs et plafonds à Neupré, en région liégeoise, à Namur et dans le Condroz. Réparations, remise à niveau et supports prêts à peindre."
+  heroTitle="Enduisage & plafonnage"
+  heroLead="Un mur n'est jamais plus beau que son support. Plafonnage, rebouchage, enduits de lissage : nous remettons murs et plafonds parfaitement plans — pour nos mises en peinture comme pour vos propres projets."
+  heroImage={`${base}/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/03.jpg`}
+  heroImageAlt="Murs enduits et lissés lors d'une remise en blanc complète à Neupré"
+  current="Enduisage & plafonnage"
+>
+  <div slot="context" class="grid-2">
+    <div>
+      <span class="eyebrow">Contexte</span>
+      <h2>Pour quels projets ?</h2>
+      <p class="lead">
+        Murs fissurés ou bosselés, plafonds marqués, saignées à refermer après des travaux d'électricité, anciens papiers peints arrachés, plâtre qui s'effrite : avant de parler couleur, il faut un support sain et plan. C'est aussi l'étape clé des constructions neuves, entre le gros œuvre et la première mise en peinture.
+      </p>
+      <p style="margin-top: 1rem;">
+        Chez Moment D.Art, l'enduisage n'est pas une sous-étape expédiée : c'est un service à part entière, exécuté avec la même exigence que nos finitions — parce que c'est lui qui conditionne tout le reste.
+      </p>
+    </div>
+    <div class="card detail-card">
+      <h3>Ce que nous faisons concrètement</h3>
+      <ul class="detail-list">
+        <li>Diagnostic du support et sondage des zones fragiles</li>
+        <li>Réparation de plafonnage : fissures, éclats, zones creuses</li>
+        <li>Rebouchage, bandes et reprise des angles</li>
+        <li>Enduit de lissage en passes fines sur murs et plafonds</li>
+        <li>Ponçage avec aspiration à la source, dépoussiérage</li>
+        <li>Support livré prêt à peindre — ou peint par nos soins</li>
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="cards">
+    <span class="eyebrow">Prestations</span>
+    <h2>Ce qui est pris en charge</h2>
+    <div class="finishes-grid">
+      <div class="card finish-card">
+        <h3>Réparations de plafonnage</h3>
+        <p>Fissures, trous, zones sonnant creux, angles cassés : réparation locale ou reprise complète, avec raccords invisibles une fois peints.</p>
+      </div>
+      <div class="card finish-card">
+        <h3>Lissage de murs & plafonds</h3>
+        <p>Enduit de finition appliqué en passes fines puis poncé : une planéité impeccable, condition d'un rendu tendu — surtout sous lumière rasante.</p>
+      </div>
+      <div class="card finish-card">
+        <h3>Remise à niveau avant finition</h3>
+        <p>Après arrachage de papier peint, saignées d'électricité ou dégâts des eaux réparés : le support repart de zéro, prêt pour la peinture ou l'enduit décoratif.</p>
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="extra">
+    <section class="section">
+      <div class="container">
+        <div class="zp-split">
+          <div class="zp-text">
+            <span class="eyebrow">Notre conviction</span>
+            <h2>La peinture ne cache rien : elle révèle</h2>
+            <p>
+              Une peinture satinée sur un mur mal enduit, c'est un projecteur braqué sur chaque défaut. C'est pourquoi nos chantiers de <a href={`${base}/services/peinture-interieure`}>peinture intérieure</a> intègrent systématiquement la préparation — et pourquoi nous proposons l'enduisage comme service à part entière, y compris pour ceux qui finiront le travail eux-mêmes.
+            </p>
+            <p>
+              Un support parfaitement lissé ouvre aussi la porte aux finitions exigeantes : <a href={`${base}/services/enduits-decoratifs`}>enduits décoratifs</a>, <a href={`${base}/services/peinture-a-la-chaux`}>badigeons de chaux</a> ou teintes sombres et mates, qui ne pardonnent aucune irrégularité.
+            </p>
+          </div>
+          <div class="card zp-card">
+            <h3>Enduisage & plafonnage près de chez vous</h3>
+            <p style="font-size:0.94rem; line-height:1.7;">
+              Comme tous nos services, l'enduisage et le plafonnage se déplacent partout où nous intervenons depuis Neupré.
+            </p>
+            <div class="zp-chips" style="margin-top:1rem;">
+              <a class="zp-chip" href={`${base}/zones-intervention/neupre`}>Neupré</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/liege`}>Liège</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/namur`}>Namur</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/ciney`}>Ciney</a>
+              <a class="zp-chip" href={`${base}/zones-intervention/dinant`}>Dinant</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Faq
+      items={faq}
+      eyebrow="FAQ"
+      title="FAQ — Enduisage & plafonnage"
+      lead="Poussière, séchage, murs abîmés : les réponses avant de remettre vos supports à neuf."
+    />
+  </Fragment>
+</ServiceLayout>

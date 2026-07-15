@@ -52,12 +52,19 @@ export const serviceIcons = {
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
   <path d="M223.45,40.07a8,8,0,0,0-7.52-7.52C139.8,28.08,78.82,51,52.82,86a87.09,87.09,0,0,0-12.76,81.07,8,8,0,0,0,1.5,2.7L27.14,184.14a8,8,0,0,0,11.31,11.31l14.34-14.34a8,8,0,0,0,2.7,1.5,87.09,87.09,0,0,0,81.07-12.76C171.77,143.86,227.92,116.2,223.45,40.07ZM153.75,157.29a71.1,71.1,0,0,1-63.19,11l89.72-89.71a8,8,0,0,0-11.31-11.31L79.25,157a71.1,71.1,0,0,1,11-63.19c22.09-29.74,74.11-49.83,117.28-45.32C212.07,91.86,183.5,135.2,153.75,157.29Z"></path>
 </svg>
+`,
+  enduisagePlafonnage: `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
+  <path d="M229.66,42.34l-16-16a8,8,0,0,0-11.32,0L163.03,65.66,190.34,93l39.32-39.32A8,8,0,0,0,229.66,42.34Z"></path>
+  <path d="M179,104.31,151.69,77,33.42,131.28a12,12,0,0,0-3.44,19.4l75.34,75.34a12,12,0,0,0,19.4-3.44Zm-66.15,101.5L46.19,139.15l99.4-45.61,16.87,16.87Z"></path>
+</svg>
 `
 };
 
 export const serviceIconsList = [
   serviceIcons.peintureInterieure,
   serviceIcons.peintureExterieure,
+  serviceIcons.enduisagePlafonnage,
   serviceIcons.enduitsDecoratifs,
   serviceIcons.revetementDeSol,
   serviceIcons.revetementMural,

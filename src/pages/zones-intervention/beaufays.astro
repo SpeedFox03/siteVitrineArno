@@ -1,5 +1,6 @@
 ---
 import ZoneLayout from '../../layouts/ZoneLayout.astro';
+import ZoneServices from '../../components/ZoneServices.astro';
 
 const base = import.meta.env.BASE_URL;
 
@@ -85,7 +86,9 @@ const faq = [
     </div>
   </section>
 
-  <section class="section">
+  <ZoneServices zoneName="Beaufays" />
+
+  <section class="section zp-alt">
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Alentours</span>

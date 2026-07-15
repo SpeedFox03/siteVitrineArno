@@ -1,5 +1,6 @@
 ---
 import ZoneLayout from '../../layouts/ZoneLayout.astro';
+import ZoneServices from '../../components/ZoneServices.astro';
 
 const base = import.meta.env.BASE_URL;
 
@@ -111,31 +112,7 @@ const faq = [
     </div>
   </section>
 
-  <section class="section zp-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">Services</span>
-        <h2>Nos services principaux à Neupré</h2>
-      </div>
-      <div class="zp-services">
-        <a class="card zp-service-card" href={`${base}services/peinture-interieure`}>
-          <h3>Peinture intérieure</h3>
-          <p>Murs, plafonds, remises en blanc et mises en couleur, avec une préparation de support irréprochable.</p>
-          <span class="zp-more">Découvrir le service →</span>
-        </a>
-        <a class="card zp-service-card" href={`${base}services/enduits-decoratifs`}>
-          <h3>Enduits décoratifs</h3>
-          <p>Stuc, chaux, béton ciré et effets matière pour des murs qui ont une vraie présence.</p>
-          <span class="zp-more">Découvrir le service →</span>
-        </a>
-        <a class="card zp-service-card" href={`${base}services/boiserie-et-ferronneries`}>
-          <h3>Portes & boiseries</h3>
-          <p>Laquage de portes, escaliers, lambris et ferronneries — les finitions qui changent tout.</p>
-          <span class="zp-more">Découvrir le service →</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <ZoneServices zoneName="Neupré" alt />
 
   <section class="section">
     <div class="container">

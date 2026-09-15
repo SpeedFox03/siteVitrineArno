@@ -20,6 +20,7 @@ export const handler = async (event) => {
   let body;
   try {
     body = JSON.parse(event.body || '{}');
+    if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('Invalid body');
   } catch {
     return { statusCode: 400, headers, body: JSON.stringify({ message: 'Requête invalide.' }) };
   }
@@ -47,27 +48,57 @@ export const handler = async (event) => {
     };
   }
 
-  const port = Number(process.env.SMTP_PORT ?? 587);
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port,
-    secure: port === 465,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-  });
+  const host = process.env.SMTP_HOST?.trim();
+  const user = process.env.SMTP_USER?.trim();
+  const to = process.env.CONTACT_TO_EMAIL?.trim() || process.env.DEVIS_TO_EMAIL?.trim();
+  const port = Number(process.env.SMTP_PORT?.trim() || 587);
+  const missing = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS'].filter((key) => !process.env[key]?.trim());
+  if (!to) missing.push('CONTACT_TO_EMAIL (ou DEVIS_TO_EMAIL)');
+  const failure = {
+    statusCode: 503,
+    headers,
+    body: JSON.stringify({ message: "L’envoi est momentanément indisponible. Contactez-nous directement à contact@momentdart.be." }),
+  };
 
-  await transporter.sendMail({
-    from: `"Moment D.Art — Site" <${process.env.SMTP_USER}>`,
-    to: process.env.CONTACT_TO_EMAIL ?? process.env.DEVIS_TO_EMAIL,
-    replyTo: email,
-    subject: `Contact — ${nom}`,
-    text: `Nom : ${nom}\nE-mail : ${email}\n\n${message}`,
-    html: `
-      <p><strong>Nom :</strong> ${escapeHtml(nom)}</p>
-      <p><strong>E-mail :</strong> ${escapeHtml(email)}</p>
-      <hr>
-      <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
-    `,
-  });
+  if (missing.length || !Number.isInteger(port) || port < 1 || port > 65535) {
+    console.error('[contact] Invalid SMTP configuration', { missing, invalidPort: !Number.isInteger(port) || port < 1 || port > 65535 });
+    return failure;
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass: process.env.SMTP_PASS },
+      connectionTimeout: 5000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000,
+      dnsTimeout: 5000,
+    });
+
+    await transporter.sendMail({
+      from: { name: 'Moment D.Art — Site', address: user },
+      to,
+      replyTo: email,
+      subject: `Contact — ${nom}`,
+      text: `Nom : ${nom}\nE-mail : ${email}\n\n${message}`,
+      html: `
+        <p><strong>Nom :</strong> ${escapeHtml(nom)}</p>
+        <p><strong>E-mail :</strong> ${escapeHtml(email)}</p>
+        <hr>
+        <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
+      `,
+    });
+  } catch (error) {
+    // Do not log SMTP responses or message contents: they may contain personal data.
+    console.error('[contact] SMTP send failed', {
+      code: error.code,
+      command: error.command,
+      responseCode: error.responseCode,
+    });
+    return failure;
+  }
 
   return {
     statusCode: 200,

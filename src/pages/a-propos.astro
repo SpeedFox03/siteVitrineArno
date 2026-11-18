@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import QuoteSection from '../components/QuoteSection.astro';
 import Footer from '../components/Footer.astro';
+import { imageProps } from '../utils/image';
 
 const stats = [
   { value: '10+', label: "Ans d'expérience" },
@@ -49,11 +50,9 @@ const values = [
         </div>
         <div class="hero-img-wrap">
           <img
-            src="/images/a-propos/img-momentdart.png"
+            {...imageProps('/images/a-propos/img-momentdart.png', '(max-width: 900px) calc(100vw - 2rem), 560px')}
             alt="Arno Momin, peintre à Neupré — l'artisan derrière Moment D.Art"
             class="hero-img"
-            width="1448"
-            height="1086"
             decoding="async"
           />
         </div>

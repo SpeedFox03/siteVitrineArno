@@ -1,6 +1,7 @@
 ---
 import type { Projet } from '../data/projets';
 import { serviceLabels } from '../data/projets';
+import { imageProps } from '../utils/image';
 
 interface Props {
   projet: Projet;
@@ -9,18 +10,18 @@ interface Props {
 
 const { projet, base = '' } = Astro.props;
 const hasMultiple = projet.photos.length > 1;
-const photos = projet.photos.map(p => `${base}${p}`);
+const photos = projet.photos.map(p => imageProps(p, '(max-width: 640px) calc(100vw - 2rem), (max-width: 980px) 50vw, 400px', 640));
 ---
 
 <article class="projet-card" data-projet-card data-category={projet.categorie}>
   <a href={`${base}/galerie/${projet.slug}`} class="card-link" aria-label={`${projet.titre} — ${projet.localisation}`}>
     <div class="card-media">
-      {photos.map((src, i) => (
+      {photos.map((image, i) => (
         <img
-          src={src}
+          {...(i === 0 ? image : { width: image.width, height: image.height, sizes: image.sizes, 'data-src': image.src, 'data-srcset': image.srcset })}
           alt={`${serviceLabels[projet.categorie]} à ${projet.localisation} — ${projet.titre}${projet.photos.length > 1 ? `, photo ${i + 1}` : ''}`}
           class={`photo-slide${i === 0 ? ' is-active' : ''}`}
-          loading={i === 0 ? 'eager' : 'lazy'}
+          loading="lazy"
           decoding="async"
           draggable="false"
         />
@@ -241,23 +242,42 @@ const photos = projet.photos.map(p => `${base}${p}`);
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-projet-card]').forEach((card) => {
-    const slides = card.querySelectorAll<HTMLElement>('.photo-slide');
+    const slides = card.querySelectorAll<HTMLImageElement>('.photo-slide');
     const dots = card.querySelectorAll<HTMLElement>('.dot');
     if (slides.length <= 1) return;
 
     let current = 0;
+    let inView = false;
+    let changing = false;
     let timer: ReturnType<typeof setInterval> | null = null;
 
-    const goTo = (n: number) => {
-      slides[current].classList.remove('is-active');
-      dots[current]?.classList.remove('is-active');
-      current = ((n % slides.length) + slides.length) % slides.length;
-      slides[current].classList.add('is-active');
-      dots[current]?.classList.add('is-active');
+    const goTo = async (n: number) => {
+      if (changing) return;
+      changing = true;
+      try {
+        const next = ((n % slides.length) + slides.length) % slides.length;
+        const image = slides[next];
+        if (image.dataset.src) {
+          image.srcset = image.dataset.srcset || '';
+          image.src = image.dataset.src;
+          delete image.dataset.src;
+          delete image.dataset.srcset;
+        }
+        await image.decode();
+        slides[current].classList.remove('is-active');
+        dots[current]?.classList.remove('is-active');
+        current = next;
+        slides[current].classList.add('is-active');
+        dots[current]?.classList.add('is-active');
+      } catch {
+        // Keep the current photo visible when the next image cannot load.
+      } finally {
+        changing = false;
+      }
     };
 
     const start = () => {
-      if (timer) return;
+      if (timer || !inView || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       timer = setInterval(() => goTo(current + 1), 3200);
     };
 
@@ -269,7 +289,11 @@ const photos = projet.photos.map(p => `${base}${p}`);
     card.addEventListener('mouseleave', start);
 
     const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => e.isIntersecting ? start() : stop()),
+      (entries) => entries.forEach((entry) => {
+        inView = entry.isIntersecting;
+        if (inView) start();
+        else stop();
+      }),
       { threshold: 0.3 }
     );
     io.observe(card);

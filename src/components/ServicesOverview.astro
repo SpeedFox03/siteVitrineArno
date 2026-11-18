@@ -28,7 +28,7 @@ const services = [
           href={service.href}
           class="service card service-reveal"
           data-services-reveal
-          style={`--reveal-delay: ${0.12 * (index + 1)}s;`}
+          style={`--reveal-delay: ${(index % 3) * 0.08}s;`}
         >
           <span class="service-icon" set:html={serviceIconsList[index]}></span>
           <h3>{service.title}</h3>
@@ -256,36 +256,3 @@ const services = [
     }
   }
 </style>
-
-<script>
-  const servicesSection = document.querySelector('[data-services-section]');
-
-  if (servicesSection && typeof window !== 'undefined') {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items = servicesSection.querySelectorAll('[data-services-reveal]');
-
-    if (prefersReducedMotion) {
-      items.forEach((item) => item.classList.add('is-visible'));
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                items.forEach((item) => item.classList.add('is-visible'));
-              }, 180);
-
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.18,
-          rootMargin: '0px 0px -8% 0px',
-        }
-      );
-
-      observer.observe(servicesSection);
-    }
-  }
-</script>

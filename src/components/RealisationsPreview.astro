@@ -130,36 +130,3 @@ const projects = [avantApresProjects[3], avantApresProjects[5]].map((project) =>
     }
   }
 </style>
-
-<script>
-  const realisationsSection = document.querySelector('[data-realisations-section]');
-
-  if (realisationsSection && typeof window !== 'undefined') {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items = realisationsSection.querySelectorAll('[data-realisations-reveal]');
-
-    if (prefersReducedMotion) {
-      items.forEach((item) => item.classList.add('is-visible'));
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                items.forEach((item) => item.classList.add('is-visible'));
-              }, 180);
-
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.18,
-          rootMargin: '0px 0px -8% 0px',
-        }
-      );
-
-      observer.observe(realisationsSection);
-    }
-  }
-</script>

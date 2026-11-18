@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { projets, serviceLabels } from '../../data/projets';
+import { imageProps } from '../../utils/image';
 
 export async function getStaticPaths() {
   return projets.map(projet => ({
@@ -73,9 +74,9 @@ const serviceHref = `${base}/${serviceHrefs[projet.categorie]}`;
             type="button"
           >
             <img
-              src={src}
+              {...imageProps(src, '(max-width: 560px) calc(100vw - 2rem), (max-width: 860px) 50vw, 400px', 640)}
               alt={`${serviceLabels[projet.categorie]} à ${projet.localisation} — ${projet.titre}, photo ${i + 1}`}
-              loading={i < 4 ? 'eager' : 'lazy'}
+              loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"
             />
           </button>
@@ -116,7 +117,7 @@ const serviceHref = `${base}/${serviceHrefs[projet.categorie]}`;
     </button>
 
     <div class="lb-content">
-      <img src="" alt="" id="lb-img" />
+      <img alt="" id="lb-img" decoding="async" />
     </div>
 
     <button class="lb-nav lb-next" id="lb-next" aria-label="Photo suivante" type="button">

@@ -148,36 +148,3 @@
     }
   }
 </style>
-
-<script>
-  const quoteSection = document.querySelector('[data-quote-section]');
-
-  if (quoteSection && typeof window !== 'undefined') {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items = quoteSection.querySelectorAll('[data-quote-reveal]');
-
-    if (prefersReducedMotion) {
-      items.forEach((item) => item.classList.add('is-visible'));
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                items.forEach((item) => item.classList.add('is-visible'));
-              }, 180);
-
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.18,
-          rootMargin: '0px 0px -8% 0px',
-        }
-      );
-
-      observer.observe(quoteSection);
-    }
-  }
-</script>

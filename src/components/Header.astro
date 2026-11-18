@@ -1,5 +1,7 @@
 ---
+import { imageProps } from '../utils/image';
 const baseUrl = import.meta.env.BASE_URL;
+const logo = imageProps('/logo.png', '(max-width: 560px) 60px, 80px', 192);
 
 const navItems = [
   {
@@ -81,7 +83,7 @@ const navItems = [
   <div class="container header-shell">
     <div class="header-inner" data-header>
       <a class="mobile-brand" href={baseUrl} aria-label="Moment D.Art accueil">
-        <span class="brand-mark"><img src={`${baseUrl}logo.png`} alt="" loading="eager" /></span>
+        <span class="brand-mark"><img {...logo} alt="" loading="eager" decoding="async" /></span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
@@ -95,7 +97,7 @@ const navItems = [
         <ul>
           <li class="brand-item">
             <a class="brand" href={baseUrl} aria-label="Moment D.Art accueil">
-              <span class="brand-mark"><img src={`${baseUrl}logo.png`} alt="" loading="eager" /></span>
+              <span class="brand-mark"><img {...logo} alt="" loading="eager" decoding="async" /></span>
             </a>
           </li>
 

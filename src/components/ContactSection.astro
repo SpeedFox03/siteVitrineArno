@@ -64,7 +64,7 @@
           </div>
 
           <div class="form-loading-overlay" data-loading-overlay aria-hidden="true"></div>
-          <p class="form-status" data-form-status></p>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -238,6 +238,7 @@
     min-height: 1.2rem;
     font-weight: 700;
     font-size: 0.9rem;
+    overflow-wrap: anywhere;
   }
 
   .form-status.is-error { color: #b12626; }
@@ -334,31 +335,7 @@
 </style>
 
 <script>
-  const section = document.querySelector('[data-contact-section]');
-
-  if (section && typeof window !== 'undefined') {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items = section.querySelectorAll('[data-contact-reveal]');
-
-    if (prefersReducedMotion) {
-      items.forEach((item) => item.classList.add('is-visible'));
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                items.forEach((item) => item.classList.add('is-visible'));
-              }, 120);
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
-      );
-      observer.observe(section);
-    }
-  }
+  import { submitForm } from '../utils/submit-form';
 
   const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
 
@@ -395,6 +372,7 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (submitBtn.disabled) return;
       clearErrors();
 
       const data = new FormData(form);
@@ -420,15 +398,11 @@
       setLoading(true);
 
       try {
-        const res = await fetch('/.netlify/functions/contact', {
-          method: 'POST',
-          body: JSON.stringify({ nom: get('nom'), email: get('email'), message: get('message'), website: get('website') }),
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        const { result, recorded, notified } = await submitForm(form, '/.netlify/functions/contact', {
+          nom: get('nom'), email: get('email'), message: get('message'), website: get('website'),
         });
 
-        const result = await res.json();
-
-        if (!res.ok) {
+        if (!recorded) {
           if (result?.errors) {
             Object.entries(result.errors as Record<string, string>).forEach(([k, v]) => setError(k, v));
           }
@@ -437,12 +411,12 @@
           return;
         }
 
-        form.reset();
-        status.textContent = result?.message || 'Votre message a bien été envoyé.';
-        status.classList.add('is-success');
-        pushDL({ event: 'form_submit', form_id: 'form-contact' });
+        if (notified) form.reset();
+        status.textContent = result.message || `Votre message est enregistré. Référence : ${result.reference}.`;
+        status.classList.add(notified ? 'is-success' : 'is-error');
+        pushDL({ event: 'form_submit', form_id: 'form-contact', notification_status: result.notificationStatus });
       } catch {
-        status.textContent = 'Impossible d\'envoyer le message pour le moment.';
+        status.textContent = 'Impossible de confirmer l’enregistrement de votre message. Votre saisie est conservée : réessayez ou contactez directement Arno.';
         status.classList.add('is-error');
       } finally {
         setLoading(false);

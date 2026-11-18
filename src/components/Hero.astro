@@ -1,12 +1,16 @@
+---
+import { imageProps } from '../utils/image';
+const portrait = imageProps('/images/a-propos/img-momentdart.png', '(max-width: 900px) calc(100vw - 2rem), 480px');
+---
 <section class="hero section" id="top">
   <div class="container hero-grid">
-    <div class="hero-copy hero-reveal-left">
-      <span class="eyebrow">Peinture & décoration · Résidentiel & professionnel</span>
+    <div class="hero-copy">
+      <span class="eyebrow">Moment D.Art · Peinture & décoration</span>
 
-      <h1>Peinture et décoration à Ciney et dans le Condroz</h1>
+      <h1>Peintre-décorateur à Ciney et à Liège</h1>
 
       <p class="lead">
-        <strong>Moment D. Art</strong> vous accompagne sur vos chantiers de <strong>peinture</strong>, de <strong>finition</strong> et de <strong>décoration</strong> avec une approche sobre, précise et accessible à tous. Actifs principalement à Ciney, Namur et dans le Condroz — également en région liégeoise depuis notre siège de Neupré.
+        Je suis Arno. Je prépare, j’enduis et je peins vos murs, vos portes et vos escaliers, jusque dans les détails que vous voyez chaque jour.
       </p>
 
       <div class="hero-buttons">
@@ -19,15 +23,17 @@
       </div>
     </div>
 
-    <div class="hero-image hero-reveal-right" aria-hidden="true">
-      <img
-        src={`${import.meta.env.BASE_URL}images/a-propos/img-momentdart.png`}
-        alt="Arno Momin, peintre à Neupré et en région liégeoise — fondateur de Moment D.Art"
-        width="1448"
-        height="1086"
-        loading="eager"
-        decoding="async"
-      />
+    <div class="hero-image" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 640px)" srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E" />
+        <img
+          {...portrait}
+          alt="Arno Momin, peintre à Neupré et en région liégeoise — fondateur de Moment D.Art"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </div>
   </div>
 </section>
@@ -125,46 +131,6 @@
     width: 100%;
     height: auto;
     display: block;
-  }
-
-  /* Animations */
-  .hero-reveal-left,
-  .hero-reveal-right {
-    opacity: 0;
-    animation-duration: 1s;
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    animation-fill-mode: forwards;
-  }
-
-  .hero-reveal-left {
-    transform: translateX(-32px);
-    animation-name: heroRevealLeft;
-    animation-delay: 0.12s;
-  }
-
-  .hero-reveal-right {
-    transform: translateX(32px);
-    animation-name: heroRevealRight;
-    animation-delay: 0.28s;
-  }
-
-  @keyframes heroRevealLeft {
-    from { opacity: 0; transform: translateX(-32px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes heroRevealRight {
-    from { opacity: 0; transform: translateX(32px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-reveal-left,
-    .hero-reveal-right {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
   }
 
   /* Tablette */

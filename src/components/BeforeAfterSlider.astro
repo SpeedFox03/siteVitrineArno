@@ -1,4 +1,5 @@
 ---
+import { imageProps } from '../utils/image';
 interface Props {
   title: string;
   description: string;
@@ -24,6 +25,8 @@ const {
   afterImage,
 } = props;
 
+const imageSizes = '(max-width: 980px) calc(100vw - 4rem), 580px';
+
 // Localité réelle du chantier dans les alt (SEO images), sans changer l'affichage.
 const altSuffix = location ? ` (${location})` : '';
 
@@ -38,7 +41,7 @@ const beforeLabelClip = axis === 'vertical'
   : 'clip-path: inset(0 0 0 50%);';
 const dividerPosition = axis === 'vertical' ? 'top: 50%;' : 'left: 50%;';
 const sliderStyle = (frame === 'portrait' && blurSides)
-  ? `--blur-before: url("${beforeImage}"); --blur-after: url("${afterImage}");`
+  ? `--blur-before: url("${imageProps(beforeImage, '320px', 320).src}"); --blur-after: url("${imageProps(afterImage, '320px', 320).src}");`
   : undefined;
 ---
 
@@ -51,10 +54,10 @@ const sliderStyle = (frame === 'portrait' && blurSides)
   </div>
 
   <div class="ba-slider" data-ba-slider data-axis={axis} style={sliderStyle}>
-    <img src={afterImage} alt={`${title}${altSuffix} — ${afterLabel} travaux par Moment D.Art`} class="base-image" loading="lazy" />
+    <img {...imageProps(afterImage, imageSizes)} alt={`${title}${altSuffix} — ${afterLabel} travaux par Moment D.Art`} class="base-image" loading="lazy" decoding="async" />
 
     <div class="overlay" style={overlayClip}>
-      <img src={beforeImage} alt={`${title}${altSuffix} — ${beforeLabel} travaux`} class="overlay-image" loading="lazy" />
+      <img {...imageProps(beforeImage, imageSizes)} alt={`${title}${altSuffix} — ${beforeLabel} travaux`} class="overlay-image" loading="lazy" decoding="async" />
       <span class="label label-before">{beforeLabel}</span>
     </div>
 

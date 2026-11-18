@@ -3,7 +3,14 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "prebuild": "npm run images:optimize",
+    "predev": "npm run images:optimize",
+    "test": "node --test tests/*.test.js",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -11,11 +18,13 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
+    "@netlify/blobs": "^11.1.9",
     "astro": "^4.16.18",
     "nodemailer": "^8.0.4",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/nodemailer": "^7.0.11"
+    "@types/nodemailer": "^7.0.11",
+    "sharp": "^0.33.5"
   }
 }

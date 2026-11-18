@@ -1,0 +1,1170 @@
+{
+  "/images/a-propos/img-momentdart.jpg": {
+    "width": 1448,
+    "height": 1086,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/91fa7855ff50888d-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/91fa7855ff50888d-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/91fa7855ff50888d-1000.webp"
+      }
+    ]
+  },
+  "/images/a-propos/img-momentdart.png": {
+    "width": 1448,
+    "height": 1086,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/896c586f82a8b90b-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/896c586f82a8b90b-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/896c586f82a8b90b-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/01-escalier-bois-apres.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/0011e10b78fb953a-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/0011e10b78fb953a-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/0011e10b78fb953a-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/01-escalier-bois-avant.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/94645fa81b660f58-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/94645fa81b660f58-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/94645fa81b660f58-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/02-plafond-lambris-salon-apres.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/c23759d29c7a8d7c-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/c23759d29c7a8d7c-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/c23759d29c7a8d7c-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/02-plafond-lambris-salon-avant.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/fa1a00f825f6d6c5-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/fa1a00f825f6d6c5-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/fa1a00f825f6d6c5-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/03-salon-boiseries-cheminee-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/8f01f92dd5d4ed1d-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/8f01f92dd5d4ed1d-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/8f01f92dd5d4ed1d-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/03-salon-boiseries-cheminee-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/6eb263f7452a7ab0-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/6eb263f7452a7ab0-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/6eb263f7452a7ab0-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/04-mur-lambris-porte-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/2cbb2946f9793bfb-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/2cbb2946f9793bfb-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/2cbb2946f9793bfb-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/04-mur-lambris-porte-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9fc540f484f78ce4-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9fc540f484f78ce4-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/9fc540f484f78ce4-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/05-couloir-bois-entree-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/f7ea3fb3542154f0-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/f7ea3fb3542154f0-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/f7ea3fb3542154f0-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/05-couloir-bois-entree-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/0a250df71446ebba-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/0a250df71446ebba-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/0a250df71446ebba-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/06-salon-mur-vert-sauge-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/3e4ac49e3b32ff70-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/3e4ac49e3b32ff70-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/3e4ac49e3b32ff70-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/06-salon-mur-vert-sauge-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/2ebb8977d2e85ebe-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/2ebb8977d2e85ebe-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/2ebb8977d2e85ebe-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/07-salon-degat-eau-apres.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/49a0cad84b1dc207-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/49a0cad84b1dc207-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/49a0cad84b1dc207-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/07-salon-degat-eau-avant.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/c7fd588630a0e8c5-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/c7fd588630a0e8c5-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/c7fd588630a0e8c5-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/08-piece-fenetres-boiseries-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/885be53bed1bb5fc-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/885be53bed1bb5fc-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/885be53bed1bb5fc-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/08-piece-fenetres-boiseries-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/bfba44ea8281d0e5-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/bfba44ea8281d0e5-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/bfba44ea8281d0e5-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/09-salon-parquet-gris-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/519904e86a2f22b3-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/519904e86a2f22b3-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/519904e86a2f22b3-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/09-salon-parquet-gris-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/dad72ea0285a0f47-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/dad72ea0285a0f47-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/dad72ea0285a0f47-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/10-chambre-portes-bois-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9468dcbe6fa3a59c-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9468dcbe6fa3a59c-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/9468dcbe6fa3a59c-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/10-chambre-portes-bois-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9d3b5182ac26d04c-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9d3b5182ac26d04c-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/9d3b5182ac26d04c-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/11-palier-salle-bain-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9f2c91c3bcab1c17-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9f2c91c3bcab1c17-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/9f2c91c3bcab1c17-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/11-palier-salle-bain-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/8d677822024adbab-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/8d677822024adbab-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/8d677822024adbab-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/12-mezzanine-garde-corps-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/6ccf0d9d8ca7a1ce-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/6ccf0d9d8ca7a1ce-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/6ccf0d9d8ca7a1ce-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/12-mezzanine-garde-corps-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/6ec9e6beaddd03fe-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/6ec9e6beaddd03fe-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/6ec9e6beaddd03fe-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/13-petite-chambre-lambris-apres.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/833769e70324c898-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/833769e70324c898-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/833769e70324c898-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/13-petite-chambre-lambris-avant.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/6f306189aabeeb2f-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/6f306189aabeeb2f-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/6f306189aabeeb2f-1000.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/14-cheminee-moderne-enduit-apres.jpg": {
+    "width": 700,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/634d4ed05ee26265-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/634d4ed05ee26265-640.webp"
+      },
+      {
+        "width": 700,
+        "src": "/images/optimized/634d4ed05ee26265-700.webp"
+      }
+    ]
+  },
+  "/images/avant-apres/14-cheminee-moderne-enduit-avant.jpg": {
+    "width": 700,
+    "height": 1250,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/71aaeb5a550b35f4-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/71aaeb5a550b35f4-640.webp"
+      },
+      {
+        "width": 700,
+        "src": "/images/optimized/71aaeb5a550b35f4-700.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/01.jpg": {
+    "width": 1033,
+    "height": 1197,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/91b069f022042c83-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/91b069f022042c83-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/91b069f022042c83-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/02.jpg": {
+    "width": 987,
+    "height": 1160,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9d5639d58b985a3f-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9d5639d58b985a3f-640.webp"
+      },
+      {
+        "width": 987,
+        "src": "/images/optimized/9d5639d58b985a3f-987.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/03.jpg": {
+    "width": 1928,
+    "height": 2047,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/c38233a5e7a281f0-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/c38233a5e7a281f0-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/c38233a5e7a281f0-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/04.jpg": {
+    "width": 1856,
+    "height": 2062,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/8a12150f71af5c41-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/8a12150f71af5c41-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/8a12150f71af5c41-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/05.jpg": {
+    "width": 1926,
+    "height": 2047,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/7efb9c6724d61c5e-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/7efb9c6724d61c5e-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/7efb9c6724d61c5e-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/06.jpg": {
+    "width": 981,
+    "height": 1304,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/8c289c3ab3735259-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/8c289c3ab3735259-640.webp"
+      },
+      {
+        "width": 981,
+        "src": "/images/optimized/8c289c3ab3735259-981.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/peinture-interieure/remise-en-blanc-neupre/07.jpg": {
+    "width": 1371,
+    "height": 2055,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/3d18280af0e018b5-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/3d18280af0e018b5-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/3d18280af0e018b5-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/01.jpg": {
+    "width": 1852,
+    "height": 2048,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/f26bad5f7e9a1982-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/f26bad5f7e9a1982-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/f26bad5f7e9a1982-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/02.jpg": {
+    "width": 1518,
+    "height": 2047,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/3a0b8d5d53ba4d7c-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/3a0b8d5d53ba4d7c-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/3a0b8d5d53ba4d7c-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/03.jpg": {
+    "width": 1898,
+    "height": 2048,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9f5edc8a7316c364-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9f5edc8a7316c364-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/9f5edc8a7316c364-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/04.jpg": {
+    "width": 1408,
+    "height": 2092,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/bc1325ce329aa808-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/bc1325ce329aa808-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/bc1325ce329aa808-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/05.jpg": {
+    "width": 2048,
+    "height": 1923,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/95726e975de9c3a0-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/95726e975de9c3a0-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/95726e975de9c3a0-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/06.jpg": {
+    "width": 1682,
+    "height": 2047,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/aa4f69d009d9ec38-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/aa4f69d009d9ec38-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/aa4f69d009d9ec38-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/07.jpg": {
+    "width": 1464,
+    "height": 2047,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/f7a0e42414c31fcf-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/f7a0e42414c31fcf-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/f7a0e42414c31fcf-1000.webp"
+      }
+    ]
+  },
+  "/images/motifs-deco/waterloo-peinture/08.jpg": {
+    "width": 604,
+    "height": 1080,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/a829f2345d529a6a-320.webp"
+      },
+      {
+        "width": 604,
+        "src": "/images/optimized/a829f2345d529a6a-604.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/01.jpg": {
+    "width": 736,
+    "height": 981,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/255e911824dbe538-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/255e911824dbe538-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/255e911824dbe538-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/02.jpg": {
+    "width": 736,
+    "height": 1308,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/787416f907085324-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/787416f907085324-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/787416f907085324-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/03.jpg": {
+    "width": 736,
+    "height": 981,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/ca1ad112127f03a0-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/ca1ad112127f03a0-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/ca1ad112127f03a0-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/04.jpg": {
+    "width": 736,
+    "height": 981,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/273f2d7c41c8643f-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/273f2d7c41c8643f-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/273f2d7c41c8643f-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/05.jpg": {
+    "width": 720,
+    "height": 720,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/10b8165db81e1509-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/10b8165db81e1509-640.webp"
+      },
+      {
+        "width": 720,
+        "src": "/images/optimized/10b8165db81e1509-720.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/06.jpg": {
+    "width": 736,
+    "height": 980,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/2c5c2511dbced471-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/2c5c2511dbced471-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/2c5c2511dbced471-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/07.jpg": {
+    "width": 600,
+    "height": 923,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/af238030412ae73e-320.webp"
+      },
+      {
+        "width": 600,
+        "src": "/images/optimized/af238030412ae73e-600.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/08.jpg": {
+    "width": 736,
+    "height": 981,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/7d456d8ab948d9db-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/7d456d8ab948d9db-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/7d456d8ab948d9db-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/09.jpg": {
+    "width": 600,
+    "height": 800,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/a18375bd4a208961-320.webp"
+      },
+      {
+        "width": 600,
+        "src": "/images/optimized/a18375bd4a208961-600.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/10.jpg": {
+    "width": 736,
+    "height": 1057,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/6c2a2c5e81ed07e0-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/6c2a2c5e81ed07e0-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/6c2a2c5e81ed07e0-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/11.jpg": {
+    "width": 736,
+    "height": 920,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/c34fd24bd19af13f-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/c34fd24bd19af13f-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/c34fd24bd19af13f-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/enduits-decoratifs/12.jpg": {
+    "width": 736,
+    "height": 981,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/3ebb730d42fccb43-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/3ebb730d42fccb43-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/3ebb730d42fccb43-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/01.jpg": {
+    "width": 736,
+    "height": 736,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/ae7036d8521987ad-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/ae7036d8521987ad-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/ae7036d8521987ad-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/02.jpg": {
+    "width": 736,
+    "height": 552,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/62611aa03238d69a-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/62611aa03238d69a-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/62611aa03238d69a-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/03.jpg": {
+    "width": 736,
+    "height": 981,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/1205743c46106588-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/1205743c46106588-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/1205743c46106588-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/04.jpg": {
+    "width": 1548,
+    "height": 2049,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/e8ada8feae5eadfa-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/e8ada8feae5eadfa-640.webp"
+      },
+      {
+        "width": 1000,
+        "src": "/images/optimized/e8ada8feae5eadfa-1000.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/05.jpg": {
+    "width": 736,
+    "height": 1104,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/64e329e820103eb5-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/64e329e820103eb5-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/64e329e820103eb5-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/06.jpg": {
+    "width": 736,
+    "height": 1247,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/9b83cf5a46474155-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/9b83cf5a46474155-640.webp"
+      },
+      {
+        "width": 736,
+        "src": "/images/optimized/9b83cf5a46474155-736.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/07.jpg": {
+    "width": 735,
+    "height": 1124,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/3b6915ddfffe3c4d-320.webp"
+      },
+      {
+        "width": 640,
+        "src": "/images/optimized/3b6915ddfffe3c4d-640.webp"
+      },
+      {
+        "width": 735,
+        "src": "/images/optimized/3b6915ddfffe3c4d-735.webp"
+      }
+    ]
+  },
+  "/images/projets-photo/peinture-decorative/08.jpg": {
+    "width": 545,
+    "height": 813,
+    "images": [
+      {
+        "width": 320,
+        "src": "/images/optimized/a9f3ba6ea5960e89-320.webp"
+      },
+      {
+        "width": 545,
+        "src": "/images/optimized/a9f3ba6ea5960e89-545.webp"
+      }
+    ]
+  },
+  "/logo.png": {
+    "width": 1904,
+    "height": 2047,
+    "images": [
+      {
+        "width": 96,
+        "src": "/images/optimized/7ba9a55a32edfb11-96.webp"
+      },
+      {
+        "width": 192,
+        "src": "/images/optimized/7ba9a55a32edfb11-192.webp"
+      }
+    ]
+  }
+}
